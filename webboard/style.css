@@ -1,0 +1,96 @@
+body {  margin: 0px  0px; padding: 0px  0px }
+body  {font-family : MS Sans Serif; font-size : 10pt; color : #000000;}
+
+td {font-size : 10pt; font-family : MS Sans Serif;  color : #000000;}
+.size3 {font-size : 12pt; font-family : MS Sans Serif;}
+
+A:link {text-decoration: none; color: blue }
+A:visited {text-decoration: none; color: #6495ED }
+A:active {text-decoration: none; color: blue }
+A:hover {text-decoration: none; color: red }
+
+{ scrollbar-3d-light-color: #ff00ff;
+scrollbar-arrow-color: #ff0000;
+scrollbar-base-color: #ffffff;
+scrollbar-dark-shadow-color: #ffffff;
+scrollbar-face-color: #dddddd;
+scrollbar-highlight-color: #ffffff;
+scrollbar-shadow-color: #ffffff}
+
+INPUT.orenge { /*��ͧ�ͺ��з�� (����� reply)*/
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #ff9900 1px; 
+	BORDER-TOP: #ff9900 1px solid; 
+	FONT-SIZE: 9pt; 
+	BACKGROUND: #faf2e6; 
+	BORDER-LEFT: #ff9900 1px; 
+	COLOR: #333333; 
+	BORDER-BOTTOM: #ff9900 1px solid;
+}
+
+INPUT.violet { /*��ͧ input ����*/
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #686898 1px; 
+	BORDER-TOP: #686898 2px solid; 
+	FONT-SIZE: 9pt; 
+	BACKGROUND: #FFFFFF; 
+	BORDER-LEFT: #686898 1px; 
+	COLOR: #FF0000; 
+	BORDER-BOTTOM: #686898 2px solid;
+}
+
+INPUT { /*�ء��ͧ input ���������˹�����*/
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #686898 1px; 
+	BORDER-TOP: #686898 1px solid; 
+	FONT-SIZE: 9pt; 
+	BACKGROUND: #FFFFFF; 
+	BORDER-LEFT: #686898 1px; 
+	COLOR: #FF0000; 
+	BORDER-BOTTOM: #686898 1px solid;
+}
+
+TEXTAREA.orenge{ /*��ͧ�ͺ��з�� (����� reply)*/
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #ff9900 1px solid; 
+	BORDER-TOP: #ff9900 1px solid; 
+	FONT-SIZE: 9pt; 
+	BACKGROUND: #faf2e6; 
+	BORDER-LEFT: #ff9900 1px solid; 
+	COLOR: #333333; 
+	BORDER-BOTTOM: #ff9900 1px solid;
+}
+
+TEXTAREA.violet { /*��ͧ��駡�з�� (����� postnew)*/
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #686898 1px solid; 
+	BORDER-TOP: #686898 1px solid; 
+	FONT-SIZE: 9pt; 
+	BACKGROUND: #FFFFFF; 
+	BORDER-LEFT: #686898 1px solid; 
+	COLOR: #333333; 
+	BORDER-BOTTOM: #686898 1px solid;
+}
+
+.BUTTON { /*�ء����*/
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #000000 1px solid; 
+	BORDER-TOP: #FFFFFF 1px solid; 
+	FONT-SIZE: 9pt; 
+	BACKGROUND: #CCCCCC; 
+	BORDER-LEFT: #FFFFFF 1px solid; 
+	COLOR: #000000; 
+	BORDER-BOTTOM: #000000 1px solid;
+}
+
+
+SELECT.violet {
+	font-family: MS Sans Serif, sans-serif; 
+	BORDER-RIGHT: #686898 1px; 
+	BORDER-TOP: #686898 1px; 
+	FONT-SIZE: 8pt; 
+	BACKGROUND: #FFFFCC; 
+	BORDER-LEFT: #686898 1px; 
+	COLOR: #333333; 
+	BORDER-BOTTOM: #686898 1px;
+}

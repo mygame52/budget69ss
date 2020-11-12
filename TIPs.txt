@@ -1,0 +1,189 @@
+# การเปลี่ยนสีพื้นหลัง ขณะ ทำ Mouse Over
+     <tr <?if($i !=1){echo "bgcolor='#eaeaea'";}?> class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand' >	
+
+# การสั้งให้ refresh แล้วไปหน้าต่อไป
+	echo "<meta http-equiv=\"refresh\" content=\"0;URL=w1.php\" />";
+
+# การ เรียกหน้าที่ผ่านมา เป็น bottom
+<INPUT TYPE="submit" name="Submit"value="< < Back" onClick="jascript:history.go(-1)"> 
+
+# กการจัดตำแหน่ง
+	style="text-align:center;vertical-align:middle;";
+# การปิด error 
+	@ini_set("display_errors", "0"); //ใส่บรรทัดแรก
+
+# การเปลี่ยน style Input 
+	SIZE="16" style="font: 12pt tahoma; color: #ff0000;background: #C0F9BD; border: 1px black solid" 
+
+# การแสดง popup javascript
+
+-java
+
+<script type="text/javascript">
+function popup(url,name,windowWidth,windowHeight){    
+	myleft=(screen.width)?(screen.width-windowWidth)/2:100;	
+	mytop=(screen.height)?(screen.height-windowHeight)/2:100;	
+	properties = "width="+windowWidth+",height="+windowHeight;
+	properties +=",scrollbars=yes, top="+mytop+",left="+myleft;   
+	window.open(url,name,properties);
+}
+</script>
+
+-html
+<a href="javascript:popup('http://www.google.com','',400,400)" >เปิด google.com แบบ popup </a>
+
+
+
+# การเช็คข้อความในประโยค
+	ตัวอย่างโปรแกรม
+	123456789 
+	<?       
+		$date = date("Ymd");     
+		echo "Original data = ".$date;     
+		echo "<br/>substr year = ".substr($date, 0, 4);     
+		echo "<br/>substr month = ".substr($date, 4, 2);     
+		echo "<br/>substr month = ".substr($date, 6, 2);   
+	?> 
+ 
+	ผลลัพธ์
+
+		1234 Original data = 20130320 
+		substr year = 2013 
+		substr month = 03 
+		substr month = 20 
+
+# การ
+			echo "<script type='text/javascript'>";
+			echo "alert('asfdasds');";
+			echo "</script>";
+# การเปิด ปิด windows
+
+วิธี้นี้เลยคับ ต้องการจะปิดโดยที่ IE มันไม่ถาม Confirm popup ใช่มั้ย
+
+	<script language="JavaScript">
+	function NOPopup()
+	{
+	window.open('','_self');
+	self.close(); 
+	}
+	</script> 
+
+	เรียกฟังชั่น
+
+	<p><a href="javascript:NOPopup()">ปิดแบบไม่มี popup</a>
+
+# การให้ alert ใน script แสดงได้ หลายบรรทัด ใช้ \n
+	echo "<scrip>alert('ข้อความที่ \n ข้อความที่2');</script>";
+
+# การเลือก
+			<select name="Name">
+			<option value="">กรุณาเลือกประเภทวิชา</option>
+			for($i=0;$i<$จำนวนแถว;$i++){
+			echo"<option value='".$ตัวแปรจากDB."'>".$ตัวแปรจากDB."</option>";
+			}
+			</select>
+
+# การคำนวน วัน 
+
+
+
+/*									// แปลงวัันที่จาก วันที่ตั้งเบิก ในฐานข้อมูล
+										$date_yuem11 = substr($row_Recordset1['note_item'],0,10);
+										$yd = substr($date_yuem11,0,2);
+										$ym = substr($date_yuem11,3,2);
+										$yy = substr($date_yuem11,6,4);
+										$ydd = mktime(0,0,0,$ym,$yd,$yy);
+
+									// แปลงวันที่จากปัจจุบัน
+										$date_now = date('Y-m-d',strtotime("now"));
+										$ny = substr($date_now,0,4);
+										$nm = substr($date_now,5,2);
+										$nd = substr($date_now,8,2);
+										$ndd = mktime(0,0,0,$nm,$nd,$ny);
+
+									// คำนวณ หาจำนวนวัน
+										$diff = $ndd-$ydd;//ทำการแปลงจากผลต่างเป็นวินาทีเป็นระยะเวลา
+
+										$Days = floor($diff / 86400);
+										{
+										  if($Days<1) { $Days=0;}			
+										  echo $Days;
+										}
+*/
+
+
+
+# การค้นหา ผู้ยืมเงิน
+
+								$id_yuemc_ = explode("-", $row_Recordset2['item']);
+								$id_yuem_ = $id_yuemc_[1];
+
+//							echo "----------".$id_yuem_;
+								if ($id_yuem_<>"0")
+								{
+									$psql="SELECT * FROM person_yuem where id_yuem =$id_yuem_";
+									$dbquery = mysql_db_query($dbname, $psql);
+									$num_rows = mysql_num_rows($dbquery);
+									while ($result = mysql_fetch_array($dbquery))
+									{
+										$citizenid_= $result[citizenid];
+										$person_ = $result[person];
+										echo $citizenid_." : ".$person_;
+									}
+								} 
+
+
+
+# การแยกข้อมูล โดยใช้ explod 
+	$id_yueam_ = explode("-", $i_tem);
+
+2558 10 06
+# การเปลี่ยน Header ใหม่ จะได้เป็นรูปแบบเดียวกัน ง่ายต่อการแก้ไขครั้งต่อไป
+
+	<?php include 'include/header.inc.php'; ?>
+
+# การปักหมุด User ที่ Login
+
+	<font size="4" color="ffffff">Login โดย :&nbsp;<?php echo $user_?></font>
+
+# การ
+
+			<div style="vertical-align:middle"><font size="3" color="#FFCCCC">
+                            <?php   echo "หน่วยงาน   : " . $sele_amp;
+                                    echo " : " . $full_name;
+                            ?></font>
+                        </div>
+
+# การรับค่า ผ่าน Input 
+<div align='center'><table><tr><td width='20px'><INPUT TYPE='text' NAME='ok_' size = '1' style='font: 12pt tahoma; color: #ff0000;background: #83deca; border: 1px black solid'></td></tr></table></div>
+
+# การ Redirect ไป หน้า ใหม่  php
+	echo "<meta http-equiv=\"refresh\" content=\"0;URL=prov_director.php\" />";
+
+
+
+# การจัดการ กรอบข้อความ ของ fpdf
+
+		MultiCell(float w, float h, string txt [, mixed border [, string align [, boolean fill]]])
+
+		คำอธิบาย
+		สำหรับพิมพ์ข้อความลงในเอกสาร pdf
+
+		พารามิเตอร์
+		w : (ตัวเลข) ความกว้างของกล่องข้อความ ถ้าระบุเป็น 0 กล่องจะกว้างไปจนถึงกั้นขวาของกระดาษ
+		h : (ตัวเลข) ความสูงของกล่องข้อความ
+		txt : (ตัวหนังสือ) ข้อความที่ต้องการพิมพ์
+		border : เส้นขอบของกล่องข้อความ
+		ค่าที่เป็นไปได้ •0 : ไม่มีขอบ (default)
+		•1 : มีขอบ
+		นอกจากเป็น 0 1 แล้วเรายังระบุได้ด้วยว่าเอาเฉพาะกรอบด้านไหนได้ด้วย •L: ขอบซ้าย
+		•T: ขอบบน
+		•R: ขอบขวา
+		•B: ขอบล่าง
+		align : (ตัวหนังสือ) จัดเรียงข้อความภายในกล่อง
+		ค่าที่เป็นไปได้ •L or ค่าว่าง : ชิดซ้าย (default value)
+		•C: จัดกึ่งกลาง
+		•R: ชิดขวา
+		fill : (true/false) แรเงากล่องข้อความหรือไม่หรือไม่ สำหรับสีที่จะใช้ในการแรเงานั้นกำหนดได้ด้วยคำสั่ง SetFillColor ซึ่งจะอธิบายในบทต่อๆ ไป
+		ค่าที่เป็นไปได้ •false : ไม่แรเงา (default)
+		•true : แรเงา

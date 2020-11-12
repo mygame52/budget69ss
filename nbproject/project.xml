@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.php.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/php-project/1">
+            <name>budget60</name>
+        </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>กษา</word>
+            <word>งงาน</word>
+            <word>ด</word>
+            <word>ดสรร</word>
+            <word>น</word>
+            <word>วไป</word>
+            <word>อน</word>
+            <word>านสถานศ</word>
+            <word>ไปราชการ</word>
+        </spellchecker-wordlist>
+    </configuration>
+</project>

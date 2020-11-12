@@ -1,0 +1,9 @@
+<?php
+require('makefont/makefont.php'); // á·Ã¡ä¿ÅìÊÃéÒ§¿Í¹µì¨Ò¡â¿Åà´ÍÃì makefont ÁÒãªé§Ò¹
+
+MakeFont('C:\AppServ\www\ereport2011\fpdf\THSarabunNew.ttf','cp874'); // MakeFont('¾Ò¸¢Í§¿Í¹µì','Encode ¢Í§¿Í¹µì');
+MakeFont('C:\AppServ\www\ereport2011\fpdf\THSarabunNew Bold.ttf','cp874'); // MakeFont('¾Ò¸¢Í§¿Í¹µì','Encode ¢Í§¿Í¹µì');
+MakeFont('C:\AppServ\www\ereport2011\fpdf\THSarabunNew BoldItalic.ttf','cp874'); // MakeFont('¾Ò¸¢Í§¿Í¹µì','Encode ¢Í§¿Í¹µì');
+MakeFont('C:\AppServ\www\ereport2011\fpdf\THSarabunNew Italic.ttf','cp874'); // MakeFont('¾Ò¸¢Í§¿Í¹µì','Encode ¢Í§¿Í¹µì');
+
+?>

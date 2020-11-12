@@ -1,0 +1,171 @@
+<?php	session_start();
+	//session_register("session");
+	//$session[id]=$id;
+
+include("../config.inc.php");
+@mysql_query("SET NAMES UTF8");        
+        
+
+//echo $id_item_pdf;        
+// กำหนด เปลี่ยนเลข อารบิก เป็นเลขไทย
+include ('../include/function.php');
+require('../fpdf/fpdf.php'); 
+
+$pdf=new FPDF('P','mm','A4');
+// convert font database
+//$this->Cell($w[$i],7,iconv('UTF-8', 'TIS-620', $header[$i]),1,0,'C');
+
+$pdf->Ln(35);
+
+$pdf->AddFont('THSarabunNew','','THSarabunNew.php');
+$pdf->Open();
+$pdf->AliasNbPages();
+$pdf->SetMargins(20,5,1);
+
+$amp_ = $_REQUEST['amp_pdf'];
+$id_item_ = $_REQUEST['id_item_pdf'];
+//----------------------------------------------------------------------------------------------------------------------------------- หน้า 1
+$pdf->AddPage();
+//กำหนดวาดรูปสี่เหลี่ยม (rectangle) ไม่มีพื้นหลัง (no fill)
+//$pdf->Rect(20, 25, 175, 250 , 'D');
+
+
+// --------------------------------------------- ��§ҹ  ��è��¤���Ҹ�óٻ��� ------------------------//
+
+
+
+$pdf->Image('../images/krut.jpg',95,10,25,0,'','');
+//$pdf->Image('logo.png',5,12,25,0,'','http://www.select2web.com');
+
+// Set font
+$pdf->SetFont('THSarabunNew','',16);
+
+$pdf->SetXY(20,64);$pdf->Write(10,'เรื่อง');
+
+
+// ���ҷ������ ���˹ѧ���
+			$sql="select * from amp where id=$amp_";	
+                        @mysql_query("SET NAMES TIS620");
+			$dbquery = mysql_db_query($dbname, $sql);
+			$num_rows = mysql_num_rows($dbquery);
+			$i=0;
+			while ($i < $num_rows)
+				{
+					$result = mysql_fetch_array($dbquery);
+					$code = $result['id'];
+                                        $name = $result['Name'];
+                                        $numbook = $result['numbook'];
+					$add1 = $result['add1'];
+					$add2 = $result['add2'];
+					$add3 = $result['add3'];
+					$director = $result['director'];
+					$tel_org = $result['tel'];
+					$fax = $result['fax'];
+					$i++;
+				}
+
+//��������˹ѧ���
+$pdf->SetXY(20,30);$pdf->Write(10,thainumDigit("��� $numbook"));
+$pdf->SetXY(140,30);$pdf->Write(10,thainumDigit($add1));
+$pdf->SetXY(140,37);$pdf->Write(10,thainumDigit($add2));
+$pdf->SetXY(140,44);$pdf->Write(10,thainumDigit($add3));
+
+//
+//  -------- ���� ��¡�è��»�Ш���͹ -------------
+//  -------------- Connect Database -----------------------
+
+$sql="SELECT * FROM `item` where id_item= '$id_item_' ";
+$dbquery = mysql_db_query($dbname, $sql);
+$num_rows = mysql_num_rows($dbquery);
+$i=1;
+
+if ($i == $num_rows)
+{
+	$result = mysql_fetch_array($dbquery);
+	$id =$result[0];
+	$fire = $result[1];
+	$water = $result[2];
+	$tel = $result[3];
+	$post =  $result[4];
+	$oil =  $result[5];
+	$note =  $result[6];
+	$foryear =  $result[7];
+	$monthpay =   trim($result[8]);
+	$fireunit = $result[9];
+	$waterunit = $result[10];
+	$oilunit = $result[11];
+}
+// �ѹ���
+//$pdf->SetXY(105,55);$pdf->Write(10,'�� ���Ҥ� ����');
+$thai_n=array("���Ҥ�", "����Ҿѹ��", "�չҤ�", "����¹", "����Ҥ�", "�Զع�¹", "�á�Ҥ�", "�ԧ�Ҥ�","�ѹ��¹", "���Ҥ�", "��Ȩԡ�¹", "�ѹ�Ҥ�");
+$d=date("d");
+$m=$thai_n[date("n") -1];
+$y=date("Y") +543;
+$pdf->SetXY(105,55);$pdf->Write(10,thainumDigit("$d $m $y"));
+
+//$pdf->Write(10,$today));
+
+// ����ͧ
+$pdf->SetXY(20,64);$pdf->Write(10,'����ͧ');
+$pdf->SetXY(30,64);$pdf->Write(10,'����Ẻ��§ҹ����Ҹ�óٻ���');
+// ���¹
+$pdf->SetXY(20,74);$pdf->Write(10,'���¹');
+$pdf->SetXY(30,74);$pdf->Write(10,'�ŢҸԡ�� �ȹ.');
+// ��觷�����Ҵ���
+$pdf->SetXY(20,84);$pdf->Write(10,'��觷�����Ҵ���');
+$pdf->SetXY(45,84);$pdf->Write(10,'Ẻ��§ҹ����Ҹ�óٻ��� (�����͹) �է�����ҳ ');
+$pdf->Write(10,thainumDigit($foryear));
+$pdf->Write(10,' �ӹǹ � �ش');
+$month_s = substr($monthpay,0,2);  // ��͹������͡
+	if ($month_s=='10'){ $month_select = 1;}
+	if ($month_s=='11'){ $month_select = 2;}
+	if ($month_s=='12'){ $month_select = 3;}
+	if ($month_s=='01'){ $month_select = 4;}
+	if ($month_s=='02'){ $month_select = 5;}
+	if ($month_s=='03'){ $month_select = 6;}
+	if ($month_s=='04'){ $month_select = 7;}
+	if ($month_s=='05'){ $month_select = 8;}
+	if ($month_s=='06'){ $month_select = 9;}
+	if ($month_s=='07'){ $month_select = 10;}
+	if ($month_s=='08'){ $month_select = 11;}
+	if ($month_s=='09'){ $month_select = 12;}
+
+// ���ͤ��� ˹ѧ���
+$pdf->SetXY(35,94);$pdf->Write(10,'�����ӹѡ�ҹ�����������֡�ҹ͡�к���С���֡�ҵ���Ѹ����� �ѧ��Ѵ����ɮ��ҹ�  ��Ѵ��Ẻ');
+$pdf->SetXY(20,101);$pdf->Write(10,"��§ҹ����Ҹ�óٻ�����дѪ�վ�ѧ�ҹ ��Ш���͹");
+$pdf->Write(10,substr($monthpay,3,10));
+$pdf->Write(10," �է�����ҳ ");
+$pdf->Write(10,thainumDigit($foryear));
+$pdf->Write(10,' �������º�������� �֧�͹���');
+$pdf->SetXY(20,108);
+$pdf->Write(10,'�Ҿ���� ˹ѧ��ͩ�Ѻ���');
+
+
+// ŧ����˹ѧ���
+$pdf->SetXY(35,125);$pdf->Write(10,'�֧���¹�������ô��Һ');
+$pdf->SetXY(104,135);$pdf->Write(10,'���ʴ������Ѻ���');
+
+// ŧ����˹ѧ��� ���� ��.  㹺ҧ�ó� ����������Ҫ���
+//$pdf->SetXY(101,160);$pdf->Write(10,"( $director )");
+//$pdf->SetXY(55,167);$pdf->Write(10,'����ӹ�¡���ٹ�����֡�ҹ͡�к���С���֡�ҵ���Ѹ�����');
+//$pdf->Write(10,substr($name,4,25));
+
+
+// ŧ����˹ѧ���  �ҡ˹��§ҹ
+$pdf->SetXY(20,240);$pdf->Write(10,$name);
+$pdf->SetXY(20,247);$pdf->Write(10,thainumDigit("��. $tel"));
+$pdf->SetXY(20,254);$pdf->Write(10,thainumDigit("����� $fax"));
+
+
+//-------------------------------------------------------
+// ˹�� ��� 2 ��§ҹ��ػ  - �͡���Ṻ
+//$pdf=new FPDF('P','mm','A4');
+
+
+//----------------------------------------------------------------------------------------- ˹�� 2
+//$pdf->AddPage( 'L' ,'A4' ); 
+
+//����ش��û����ż�������͡����� PDF ��� 
+$pdf->Output();
+//$pdf->Output("MyPDF/MyPDF.pdf","F");
+?>

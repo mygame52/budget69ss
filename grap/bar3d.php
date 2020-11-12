@@ -1,0 +1,32 @@
+<?php		# bar3d.php
+$image = imagecreate(110, 100);
+$bg = imagecolorallocate($image, 220, 220, 220);
+$front = imagecolorallocate($image, 160, 50, 200);
+$side = imagecolorallocate($image, 190, 50, 200);
+$top = imagecolorallocate($image, 250, 50, 200);
+$x = 40;
+$y = 90;
+$w = 20;
+$h = 60;
+$t = 7;
+imagefilledRectangle($image, $x, $y, $x+$w, $y-$h, $front);
+$x1= $x +$w;
+$y1= $y;
+$x2= $x+$w +  $t ;
+$y2= $y1 -  $t ;
+$x3= $x2;
+$y3= $y2-$h;
+$x4=$x1;
+$y4=$y1-$h;
+$pts=array($x1,$y1, $x2,$y2, $x3,$y3, $x4,$y4 );
+imagefilledPolygon($image, $pts,4, $side);
+$tx1=$x;
+$ty1=$y4;
+$tx2=$x3-$w;
+$ty2=$y3;
+$pts=array($tx1,$ty1, $tx2,$ty2, $x3,$y3, $x4,$y4 );
+imagefilledPolygon($image, $pts,4, $top);
+header("Content-type: image/png");
+imagepng($image);
+imagedestroy($image);	
+?> 

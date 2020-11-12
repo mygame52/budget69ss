@@ -1,0 +1,141 @@
+----------ga--
+<!--#set var="TITLE" value="Acmhainn imithe!"
+--><!--#include virtual="include/top.html" -->
+
+    N&iacute;l an URL iarraithe ar f&aacute;il ar an fhreastala&iacute; seo 
+    a thuilleadh, agus n&iacute;l aon seoladh nua ann d&oacute;.
+
+  <!--#if expr="$HTTP_REFERER" -->
+
+    Cur in &uacute;il do &uacute;adar an
+    <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">leathanach
+    thagarthach</a> go bhfuil an nasc as-d&aacute;ta, le do thoil.
+
+  <!--#else -->
+
+    M&aacute; leanf&aacute; nasc &oacute; leathanach iasachta, t&eacute;igh i
+    dteaghmh&aacute;il le &uacute;adar an leathanach sin, le do thoil.
+
+  <!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------ga--
+
+Content-language: it
+Content-type: text/html; charset=ISO-8859-1
+Body:----------it--
+<!--#set var="CONTENT_LANGUAGE" value="it"
+--><!--#set var="TITLE" value="La risorsa non &egrave; pi&ugrave; disponibile!"
+--><!--#include virtual="include/top.html" -->
+
+    L'URL richiesto non &egrave; pi&ugrave; disponibile su questo server
+    e non esistono indirizzi verso i quali sia possibile inoltrare
+    la richiesta.
+
+  <!--#if expr="$HTTP_REFERER" -->
+
+    Per favore, informa l'autore della
+    <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">pagina
+    di provenienza</a> che il link non &egrave; pi&ugrave; valido.
+
+  <!--#else -->
+
+    Se sei arrivato da una pagina esterna, informa l'autore della
+    pagina di provenienza che il link non &egrave; pi&ugrave; valido.
+
+  <!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------it--
+
+Content-language: ja
+Content-type: text/html; charset=ISO-2022-JP
+Body:----------ja--
+<!--#set var="CONTENT_LANGUAGE" value="ja"
+--><!--#set var="CHARACTER_ENCODING" value="iso-2022-jp"
+--><!--#set var="TITLE" value="Resource is no longer available!"
+--><!--#include virtual="include/top.html" -->
+
+    $BMW5a$5$l$?(B URL $B$O4{$KK\%5!<%P$G$OMxMQ$G$-$^$;$s$7!"(B
+    $B0\F0@h$b$o$+$j$^$;$s!#(B
+  
+  <!--#if expr="$HTTP_REFERER" -->
+  
+    <a href="<!--#echo encoding="url" var="HTTP_REFERER"-->"
+    >$B;2>H85%Z!<%8(B</a>$B$NCx<T$K!"(B
+    $B%j%s%/$,8E$/$J$C$F$$$k$3$H$r$4O"Mm$/$@$5$$!#(B
+   
+  <!--#else -->
+  
+    $BB>$N%Z!<%8$+$i$N%j%s%/$rC)$C$F$-$?>l9g$O!"(B
+    $B$=$N%Z!<%8$NCx<T$K$4O"Mm$/$@$5$$!#(B
+   
+  <!--#endif -->
+  
+<!--#include virtual="include/bottom.html" --> 
+----------ja--
+
+Content-language: ko
+Content-type: text/html; charset=EUC-KR
+Body:----------ko--
+<!--#set var="CONTENT_LANGUAGE" value="ko"
+--><!--#set var="TITLE" value="°´Ã¼°¡ ¾ø¾îÁ³À½!"
+--><!--#set var="CHARACTER_ENCODING" value="EUC-KR"
+--><!--#include virtual="include/top.html" -->
+
+   ¿äÃ»ÇÑ URLÀº ´õ ÀÌ»ó ÀÌ ¼­¹ö¿¡ ³²¾ÆÀÖÁö ¾ÊÀ¸¸ç,
+   ±× °´Ã¼°¡ ¿Å°ÜÁø ´Ù¸¥ URL ¿ª½Ã ³²¾ÆÀÖÁö ¾Ê½À´Ï´Ù.
+
+  <!--#if expr="$HTTP_REFERER" -->
+
+    <a href="<!--#echo encoding="url" var="HTTP_REFERER"-->">ÀÌÀü
+    ÆäÀÌÁö</a>ÀÇ ¸¸µçÀÌ¿¡°Ô ÁÖ¼Ò°¡ Àß¸øµÇ¾ú´Ù°í ¾Ë·ÁÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.
+
+  <!--#else -->
+
+    ´Ù¸¥ ÆäÀÌÁöÀÇ ¸µÅ©¸¦ µû¶ó¿À¼Ì´Ù¸é, ±× ÆäÀÌÁöÀÇ ¸¸µçÀÌ¿¡°Ô ¿¬¶ôÀ» ÇÏ½Ã±â
+    ¹Ù¶ø´Ï´Ù.
+
+  <!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------ko--
+
+Content-language: nl
+Content-type: text/html; charset=ISO-8859-1
+Body:----------nl--
+<!--#set var="CONTENT_LANGUAGE" value="nl"
+--><!--#set var="TITLE" value="Dit object is niet langer beschikbaar!"
+--><!--#include virtual="include/top.html" -->
+
+   De gevraagde URL is niet langer beschikbaar op deze server en er is geen
+   doorverwijsadres.
+
+  <!--#if expr="$HTTP_REFERER" -->
+
+   Gelieve aan de auteur van
+   <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">deze pagina</a>
+   te melden dat deze link niet langer actueel is.
+
+  <!--#else -->
+
+   Indien u deze link hebt gekregen van een andere pagina, gelieve
+   de auteur van deze pagina te contacteren.
+
+  <!--#endif -->
+
+<!--#include virtual="include/bottom.html" -->
+----------nl--
+
+Content-language: pl
+Content-type: text/html; charset=ISO-8859-2
+Body:----------pl--
+<!--#set var="CONTENT_LANGUAGE" value="pl"
+--><!--#set var="TITLE" value="Zasób usuniêty!"
+--><!--#set var="CHARACTER_ENCODING" value="ISO-8859-2"
+--><!--#include virtual="include/top.html" -->
+
+    Poszukiwany zasób nie jest ju¿ dostêpny na tym serwerze i nie
+    podano nowego adresu zasobu.
+
+  <!--#if expr="$HTTP_REFERER" 

@@ -1,0 +1,47 @@
+ทำ WEBBOARD แบบ TXT คล้ายๆของ Thaimisc พัฒนาโดย พีกับยู
+
+*วิธีการติดตั้ง*
+
+1. ใช้โปรแกรม Notepad (อยู่ที่ Start -> All Programs -> Accessories -> Notepad) เปิด File ชื่อ config.php ครับ
+2. ให้ไปแก้ไข CODE ในไฟล์นี้ครับ (ที่สำคัญจะอธิบายเป็นภาษาไทย)
+3. แก้เสร็จแล้วก็ Save ครับ (ไปที่ File --> Save นะ)
+4. เสร็จแล้วให้ UPLOAD ไฟล์ทั้งหมดขึ้นไปใน SERVER ที่คุณใช้เลยครับ
+5. ใช้โปรแกรม FTP ของคุณทำการ เปลี่ยนโหมดไฟล์ - Folder (CHMOD) ของไฟล์ดังต่อไปนี้ (สำหรับ Unix/Linux) ครับ สำคัญมากครับ 
+
+        ไฟล์ - Folder ที่ต้องเปลี่ยน		CHMOD เป็น
+                   lastip.txt			       666
+                number.txt			       666
+	toc.txt			       666
+           โฟลเดอร์ชื่อ question		       777
+   โฟลเดอร์ชื่อ question/imagefiles		       777
+                นอกเหนือจากนี้		                 ปล่อยไว้ไม่ต้องเปลี่ยน
+
+6. ก็เป็นอันเสร็จสิ้นการติดตั้งครับ เปิดใช้งานได้เลย (หน้าหลักของ Webboard คือ webboard.php)
+7. ใครมีข้อสงสัยอะไรก็อีเมล์มาถามกันได้นะครับที่ au_cty@hotmail.com ครับ
+
+*การทำให้โชว์ 10 กระทู้แรกที่ถูกตั้ง*
+
+1. ใช้โปรแกรม Notepad (อยู่ที่ Start -> All Programs -> Accessories -> Notepad) เปิด File ชื่อ show10.php ครับ
+2. เข้าไปแก้บรรทัด "พาธของเว็บบอร์ด" ครับ
+3. ต้องการให้แสดงที่ไหนก็นำ Code ด้านล่างไปไว้ที่นั่นครับ <body> นะครับ (โดยหน้านั้นต้องมีนามสกุล .php นะครับ)
+     ดูตัวอย่างการวางในหน้า test.php นะ
+
+
+<table width=520 border="0" cellspacing="1" cellpadding="4" bordercolor="#FFCCFF" bgcolor="#FFCCFF">
+<tr><td align="center"><font color=blue size=3><b>10 อันดับกระทู้ล่าสุด</b></font></td></tr>
+<tr><td bgcolor="#FFFFFF"> 
+<!-- ตรง show10.php คือ ให้คุณใส่ URL ของไฟล์ show10.php ครับ -->
+<? 
+	include("show10.php"); 
+	showTop(10);
+?>
+<!-- ด้านล่างก็ให้คุณแก้ URL ของไฟล์ webboard.php และ new.php ให้ถูกต้อง -->
+<div align="right"><a href="webboard.php">ดูกระทู้ทั้งหมด</a> :: <a href="new.php">ตั้งกระทู้ใหม่</a></div>
+</td></tr>
+</table>
+
+
+4. ใครมีข้อสงสัยอะไรก็อีเมล์มาถามกันได้นะครับที่ au_cty@hotmail.com ครับ
+
+
+**ไปดู PHP SCRIPT เด็ดๆอีกมากมายที่ http://www.codetukyang.com/php ครับ**

@@ -1,0 +1,64 @@
+<?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+// save to database //
+function addhistorydetail($user_login_, $operate_, $budget_note_, $ip_) {
+    $date1 = date("d/m/Y H:i:s");
+    $sqladdhistorydetail = "INSERT INTO `history_detail` (`id_login` , `user_login` , `date_time` , `operate` , `budget_note`, `ip`)VALUES('',  '$user_login_','$date1', '$operate_', '$budget_note_', '$ip_')";
+    $result_detail = mysql_query($sqladdhistorydetail);
+}
+?>
+<div id="rnut-page-background-glare-wrapper">
+    <div id="rnut-page-background-glare"></div>
+</div>
+<div id="rnut-main">
+    <div class="cleared reset-box"></div>
+    <div class="rnut-box rnut-sheet">
+        <div class="rnut-box-body rnut-sheet-body">
+            <div class="rnut-header">
+                <div class="rnut-headerobject"></div>
+                <div class="rnut-logo">
+                    <div class="rnut-object2064617867" data-left="27px"></div>
+                    <h1 class="rnut-headline"><a href="./#"><?php echo $mess_budget ?></a></h1>
+                    <h2 class="rnut-slogan"><?php echo $mess_header1 ?></h2>
+                    <h2 class="rnut-slogan2"><?php echo $mess_header2 ?></h2>
+                    <div class="rnut-shapes">
+                        <div class="rnut-object429479579" data-left="3.3%"></div>   </div>                
+                </div>
+                <header class="rnut-header">
+
+
+
+
+            </div>
+
+            <div id="rnut-flash-area">
+                <div id="rnut-flash-container">
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1727" height="431" id="rnut-flash-object">
+                        <param name="movie" value="images/flash.swf">
+                        <param name="quality" value="high">
+                        <param name="scale" value="exactfit">
+                        <param name="wmode" value="transparent">
+                        <param name="flashvars" value="color1=0xFFFFFF&amp;alpha1=.50&amp;framerate1=24&amp;loop=true&amp;wmode=transparent">
+                        <param name="swfliveconnect" value="true">
+                        <!--[if !IE]>-->
+                        <object type="application/x-shockwave-flash" data="images/flash.swf" width="1727" height="431">
+                            <param name="quality" value="high">
+                            <param name="scale" value="exactfit">
+                            <param name="wmode" value="transparent">
+                            <param name="flashvars" value="color1=0xFFFFFF&amp;alpha1=.50&amp;framerate1=24&amp;loop=true&amp;wmode=transparent">
+                            <param name="swfliveconnect" value="true">
+                            <!--<![endif]-->
+                            
+                            <!--[if !IE]>-->
+                        </object>
+                        <!--<![endif]-->
+                    </object>
+                </div>
+            </div>
+
+            </header> 

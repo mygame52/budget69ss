@@ -1,0 +1,540 @@
+<?php	session_start();
+ob_start();
+	//session_register("session");
+	//$session[id]=$id;
+	include("../config.inc.php");
+
+//echo $id_item_pdf;        
+// กำหนด เปลี่ยนเลข อารบิก เป็นเลขไทย 
+include ('../include/function.php');
+require('../fpdf/fpdf.php'); 
+
+
+$pdf=new FPDF('P','mm','A4');
+
+$pdf->AddFont('THSarabunNew','','THSarabunNew.php');
+$pdf->Open();
+$pdf->AliasNbPages();
+$pdf->SetMargins(20,5,1);
+
+//$amp_ = $_REQUEST['amp_pdf'];
+$amp_ = $_REQUEST['amp_pdf'];
+$id_item_ = $_REQUEST['id_item_pdf'];
+//----------------------------------------------------------------------------------------------------------------------------------- หน้า 1
+$pdf->AddPage();
+//กำหนดวาดรูปสี่เหลี่ยม (rectangle) ไม่มีพื้นหลัง (no fill) 
+//$pdf->Rect(20, 25, 175, 250 , 'D');
+
+
+// --------------------------------------------- รายงาน  การจ่ายค่าสาธารณูปโภค ------------------------//
+
+
+//กำหนดตัวแปร บรรทัด
+//$cline == 25;
+
+// เพิ่มรูปครุฑ 
+$pdf->Image('../images/krut.jpg',95,10,25,0,'','');
+//$pdf->Image('logo.png',5,12,25,0,'','http://www.select2web.com');
+
+// Set font
+$pdf->SetFont('THSarabunNew','',16);
+
+// ค้นหาที่อยู่ หัวหนังสือ
+			$sql="select * from amp where id=$amp_";	
+			$dbquery = mysql_db_query($dbname, $sql);
+			$num_rows = mysql_num_rows($dbquery);
+			$i=0;
+			while ($i < $num_rows)
+				{
+					$result = mysql_fetch_array($dbquery);
+					$code = $result['id'];
+                                        $name = $result['Name'];
+                                        $numbook = $result['numbook'];
+					$add1 = $result['add1'];
+					$add2 = $result['add2'];
+					$add3 = $result['add3'];
+					$director = $result['director'];
+					$tel_org = $result['tel'];
+					$fax = $result['fax'];
+					$i++;
+				}
+
+//พิมพ์หัวหนังสือ
+$pdf->SetXY(20,30);$pdf->Write(10,thainumDigit("ที่ $numbook"));
+$pdf->SetXY(140,30);$pdf->Write(10,thainumDigit($add1));
+$pdf->SetXY(140,37);$pdf->Write(10,thainumDigit($add2));
+$pdf->SetXY(140,44);$pdf->Write(10,thainumDigit($add3));
+
+//
+
+//  -------- ค้นหา รายการจ่ายประจำเดือน -------------
+//  -------------- Connect Database -----------------------
+
+$sql="SELECT * FROM `item` where id_item= '$id_item_' ";
+$dbquery = mysql_db_query($dbname, $sql);
+$num_rows = mysql_num_rows($dbquery);
+$i=1;
+
+if ($i == $num_rows)
+{
+	$result = mysql_fetch_array($dbquery);
+	$id =$result[0];
+	$fire = $result[1];
+	$water = $result[2];
+	$tel = $result[3];
+	$post =  $result[4];
+	$oil =  $result[5];
+	$note =  $result[6];
+	$foryear =  $result[7];
+	$monthpay =   trim($result[8]);
+	$fireunit = $result[9];
+	$waterunit = $result[10];
+	$oilunit = $result[11];
+}
+// วันที่
+//$pdf->SetXY(105,55);$pdf->Write(10,'๑๐ ตุลาคม ๒๕๕๕');
+$thai_n=array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม","กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+$d=date("d");
+$m=$thai_n[date("n") -1];
+$y=date("Y") +543;
+$pdf->SetXY(105,55);$pdf->Write(10,thainumDigit("$d $m $y"));
+
+//$pdf->Write(10,$today));
+
+// เรื่อง
+$pdf->SetXY(20,64);$pdf->Write(10,'เรื่อง');
+$pdf->SetXY(30,64);$pdf->Write(10,'ขอส่งแบบรายงานค่าสาธารณูปโภค');
+// เรียน
+$pdf->SetXY(20,74);$pdf->Write(10,'เรียน');
+$pdf->SetXY(30,74);$pdf->Write(10,'เลขาธิการ กศน.');
+// สิ่งที่ส่งมาด้วย
+$pdf->SetXY(20,84);$pdf->Write(10,'สิ่งที่ส่งมาด้วย');
+$pdf->SetXY(45,84);$pdf->Write(10,'แบบรายงานค่าสาธารณูปโภค (รายเดือน) ปีงบประมาณ ');
+$pdf->Write(10,thainumDigit($foryear));
+$pdf->Write(10,' จำนวน ๑ ชุด');
+$month_s = substr($monthpay,0,2);  // เดือนที่เลือก
+	if ($month_s=='10'){ $month_select = 1;}
+	if ($month_s=='11'){ $month_select = 2;}
+	if ($month_s=='12'){ $month_select = 3;}
+	if ($month_s=='01'){ $month_select = 4;}
+	if ($month_s=='02'){ $month_select = 5;}
+	if ($month_s=='03'){ $month_select = 6;}
+	if ($month_s=='04'){ $month_select = 7;}
+	if ($month_s=='05'){ $month_select = 8;}
+	if ($month_s=='06'){ $month_select = 9;}
+	if ($month_s=='07'){ $month_select = 10;}
+	if ($month_s=='08'){ $month_select = 11;}
+	if ($month_s=='09'){ $month_select = 12;}
+
+// เนื้อความ หนังสือ
+$pdf->SetXY(35,94);$pdf->Write(10,'ด้วยสำนักงานส่งเสริมการศึกษานอกระบบและการศึกษาตามอัธยาศัย จังหวัดสุราษฎร์ธานี  ได้จัดทำแบบ');
+$pdf->SetXY(20,101);$pdf->Write(10,"รายงานค่าสาธารณูปโภคและดัชนีพลังงาน ประจำเดือน");
+$pdf->Write(10,substr($monthpay,3,10));
+$pdf->Write(10," ปีงบประมาณ ");
+$pdf->Write(10,thainumDigit($foryear));
+$pdf->Write(10,' เสร็จเรียบร้อยแล้ว จึงขอนำส่ง');
+$pdf->SetXY(20,108);
+$pdf->Write(10,'มาพร้อม หนังสือฉบับนี้');
+
+
+// ลงท้ายหนังสือ
+$pdf->SetXY(35,125);$pdf->Write(10,'จึงเรียนมาเพื่อโปรดทราบ');
+$pdf->SetXY(104,135);$pdf->Write(10,'ขอแสดงความนับถือ');
+
+// ลงท้ายหนังสือ ชื่อ ผอ.  ในบางกรณี ผู้บริหารไปราชการ
+//$pdf->SetXY(101,160);$pdf->Write(10,"( $director )");
+//$pdf->SetXY(55,167);$pdf->Write(10,'ผู้อำนวยการศูนย์การศึกษานอกระบบและการศึกษาตามอัธยาศัย');
+//$pdf->Write(10,substr($name,4,25));
+
+
+// ลงท้ายหนังสือ  จากหน่วยงาน
+$pdf->SetXY(20,240);$pdf->Write(10,$name);
+$pdf->SetXY(20,247);$pdf->Write(10,thainumDigit("โทร. $tel"));
+$pdf->SetXY(20,254);$pdf->Write(10,thainumDigit("โทรสาร $fax"));
+
+
+//-------------------------------------------------------
+// หน้า ที่ 2 รายงานสรุป  - เอกสารแนบ
+//$pdf=new FPDF('P','mm','A4');
+
+
+//----------------------------------------------------------------------------------------- หน้า 2
+$pdf->AddPage( 'L' ,'A4' ); 
+// หัวกระดาษรายงาน
+	$pdf->SetXY(110,20);
+	$pdf->SetFont('THSarabunNew','',18);
+	$pdf->Write(10,'แบบรายงานการจ่ายค่าสาธารณูปโภค รายเดือน');
+	$pdf->SetXY(100,28);
+	$pdf->Write(10,'ปีงบประมาณ  '); 
+
+			// ------------ start   คำนวณ ปีงบประมาณ -----------------
+						$cday = date("d/m/Y");
+						list($day, $month, $year) = split('[/.-]', $cday);
+						$year = $year + 543;
+						if ($month=='10' or $month=='11' or $month=='12')
+							{$year=$year+1;}
+			// ------------ end   คำนวณ ปีงบประมาณ ---------------------
+
+	$pdf->Write(10,thainumDigit("$year ประจำเดือน "));
+	$pdf->Write(10,substr($monthpay,3,10));
+	$pdf->Write(10,'  ');
+	$pdf->Write(10,thainumDigit("พ.ศ. $foryear"));
+	$pdf->SetXY(75,36);
+	$pdf->Write(10,"ชื่อหน่วยงาน : ศูนย์การศึกษานอกระบบและการศึกษาตามอัธยาศัย");
+	$pdf->Write(10,substr($name,4,30));
+	$pdf->SetXY(65,44);$pdf->Write(10,"สังกัด / กรม สำนักงานการศึกษานอกระบบและการศึกษาตามอัธยาศัย สำนักงานปลัดกระทรวงศึกษาธิการ");
+
+// ------------------------ ทำหัวตาราง  -------------------------
+// ตีกรอบสี่เหลี่ยม	 (แนวนอน 1, แนวตั้ง 1,แนวนอน 1 + จำนวนขยาย, แนวตั้ง 1+จำนวนขยาย )	
+	$pdf->SetFont('THSarabunNew','',16);
+	$pdf->Rect(20, 60, 260, 73 , 'D'); // กรอบสี่เหลี่ยม
+	$pdf->Line(20,82,280,82);  // เส้นแนวนอน ใต้คำว่า "รายการ"
+
+
+	$pdf->AddFont('THSarabunNew','','THSarabunNew.php');//ธรรมดา
+	$pdf->SetFont('THSarabunNew','',16);
+
+	$pdf->SetXY(44,64);$pdf->Write(10,"รายการ");
+	$pdf->Line(80, 60, 80, 133); // เส้นแนวตั้งหลัง "รายการ"
+	$pdf->SetXY(103,60);$pdf->Write(10,"ข้อมูลการใช้จ่ายเดือนนี้");
+	$pdf->Line(80, 70, 160, 70); // แนวนอน ใต้คำว่า "ข้อมูลการใช้จ่ายเดือนนี้"
+	$pdf->SetXY(86,70);$pdf->Write(10,"จำนวนหน่วยที่ใช้");
+	$pdf->SetXY(131,70);$pdf->Write(10,"จำนวนเงิน");
+	$pdf->Line(120, 70, 120, 133);  // แนวตั้ง กึ่งกลางคำว่า "ข้อมูลการใช้จ่ายเดือนนี้"
+	$pdf->Line(160, 60, 160, 133);   // แนวตั้ง หลัง "ข้อมูลการใช้จ่ายเดือนนี้ " 
+	$pdf->SetXY(165,62);$pdf->Write(10,"รวมตั้งแต่ต้นปีงบประมาณ");
+	$pdf->SetXY(166,68);$pdf->Write(10,"ถึงเดือนที่รายงาน (บาท)");
+	$pdf->Line(210, 60, 210, 133); // เส้นแนวตั้ง ก่อน "หมายเหตุ"
+	$pdf->SetXY(235,65);$pdf->Write(10,"หมายเหตุ");
+// ---------------------------- ป้ายชื่อในตาราง -----------------------
+	$pdf->SetXY(22,82);$pdf->Write(10,"ค่าไฟฟ้า (ยูนิต)");
+	$pdf->Line(20,92,280,92);  // เส้นแนวนอน ใต้คำว่า "ค่าไฟฟ้า"
+	$pdf->SetXY(22,92);$pdf->Write(10,"ค่าน้ำประปา (ลบ.ม.)");
+	$pdf->Line(20,102,280,102);  // เส้นแนวนอน ใต้คำว่า "ค่าน้ำประปา"
+	$pdf->SetXY(22,102);$pdf->Write(10,"ค่าโทรศัพท์ (เคลื่อนที่+สำนักงาน)");
+	$pdf->Line(20,112,280,112);  // เส้นแนวนอน ใต้คำว่า "ค่าโทรศัพท์"
+	$pdf->SetXY(22,112);$pdf->Write(10,"ค่าไปรษณีย์และอื่นๆ (มูลฝอย)");
+	$pdf->Line(20,122,280,122);  // เส้นแนวนอน ใต้คำว่า "ค่าไปรษณีย์"
+	$pdf->SetXY(60,122);$pdf->Write(10,"รวมทั้งสิ้น");
+	$pdf->SetXY(60,122);$pdf->Write(10,"รวมทั้งสิ้น");
+
+// ---------------------------- ข้อมูลในตาราง -----------------------
+//	$pdf->Write(10,thainumDigit("พ.ศ. $foryear"));
+	$pdf->SetFont('THSarabunNew','',16);
+
+// จำนวนหน่วยค่าไฟฟ้า
+	$pdf->SetXY(78,82);$pdf->MultiCell( 40  , 10 ,thainumDigit(number_format($fireunit,2)),0,R,false);
+	$pdf->SetXY(118,82);$pdf->MultiCell( 40  , 10 , thainumDigit(number_format($fire,2)),0,R,false);
+
+// จำนวนหน่วยค่าน้ำ
+	$pdf->SetXY(78,92);$pdf->MultiCell( 40  , 10 , thainumDigit(number_format($waterunit,2)),0,R,false);
+	$pdf->SetXY(118,92);$pdf->MultiCell( 40  , 10 , thainumDigit(number_format($water,2)),0,R,false);
+
+// จำนวนหน่วยค่าน้ำมัน
+//	$pdf->SetXY(80,102);$pdf->MultiCell( 40  , 10 , 'หน่วยค่าน้ำมัน',1,R,false);
+//	$pdf->SetXY(95,102);$pdf->Write(10,thainumDigit(number_format($oilunit,2)));
+//	$pdf->SetXY(120,102);$pdf->MultiCell( 40  , 10 , 'ค่าน้ำมัน',1,R,false);
+//	$pdf->SetXY(130,102);$pdf->Write(10,thainumDigit(number_format($oil,2)));
+
+
+// จำนวนหน่วยค่าโทรศัพท์
+	$pdf->SetXY(78,102);$pdf->MultiCell( 40  , 10 , '-',0,R,false);
+	$pdf->SetXY(118,102);$pdf->MultiCell( 40  , 10 , thainumDigit(number_format($tel,2)),0,R,false);
+
+// จำนวนหน่วยค่าไปรษณีย์
+	$pdf->SetXY(78,112);$pdf->MultiCell( 40  , 10 , '-',0,R,false);
+	$pdf->SetXY(118,112);$pdf->MultiCell( 40  , 10 , thainumDigit(number_format($post,2)),0,R,false);
+
+// ---------------- แสดงยอดรวมสะสมรวมรายเดือน ----------------------------
+    $pdf->SetXY(118,122);$pdf->MultiCell( 40  , 10 ,thainumDigit(number_format($fire+$water+$tel+$post,2)),0,R,false); 
+
+
+// ---------------- คำนวณ ค่าใช้จ่ายสะสมทั้งปี --------------------------
+
+		$sql="SELECT `monthpay` ,`fire` ,`water` ,`tel` ,`post` ,`oil` ,`note` , `foryear`, `id` ,`fireunit`,`waterunit`,`oilunit`,`num_person` ,`area_in` ,`work_hour` ,`customer` ,`area_service` ,`out_area`,numorder FROM `detail_fwt` ";
+
+	$tfireunit =  0;		$tfire = 0;		$twaterunit =  0;		$twater = 0;		$toilunit =  0;
+	$toil =  0;				$ttel = 0;		$tpost =  0;	
+
+$dbquery = mysql_db_query($dbname, $sql);
+$num_rows = $month_select;
+$i=0;
+while ($i < $num_rows)
+{
+	$result = mysql_fetch_array($dbquery);
+	$monthpay = trim($result[0]);
+	$fire = $result[1];
+	$water = $result[2];
+	$tel = $result[3];
+	$post =  $result[4];
+	$oil =  $result[5];
+	$note =  $result[6];
+	$foryear =  $result[7];
+	$id =  $result[8];
+	$fireunit =  $result[9];
+	$waterunit =  $result[10];
+	$oilunit =  $result[11];
+	$num_person =  $result[12];
+	$area_in =  $result[13];
+	$work_hour =  $result[14];
+	$customer =  $result[15];
+	$area_service =  $result[16];
+	$out_area =  $result[17];
+
+// คำนวณยอดสะสม
+	$tfireunit =  $tfireunit+$fireunit;
+	$tfire = $tfire+$fire;
+	$twaterunit =  $twaterunit+$waterunit;
+	$twater = $twater+$water;
+	$toilunit =  $toilunit+$oilunit;
+	$toil =  $toil+$oil;
+	$ttel = $ttel+$tel;
+	$tpost =  $tpost+$post;
+$i++;
+}
+// ---------------- สิ้นสุด คำนวณ ค่าใช้จ่ายสะสมทั้งปี ----------------------
+// ---------------- แสดงยอดรวมสะสมรายปี ----------------------------
+	$pdf->SetXY(158,82);$pdf->MultiCell( 50  , 10 ,thainumDigit(number_format($tfire,2)),0,R,false);
+	$pdf->SetXY(158,92);$pdf->MultiCell( 50  , 10 ,thainumDigit(number_format($twater,2)),0,R,false);
+	$pdf->SetXY(158,102);$pdf->MultiCell( 50  , 10 ,thainumDigit(number_format($ttel,2)),0,R,false);
+	$pdf->SetXY(158,112);$pdf->MultiCell( 50  , 10 ,thainumDigit(number_format($tpost,2)),0,R,false);
+// ---------------- แสดงยอดรวมสะสมรวมทั้งปี ----------------------------
+$pdf->SetXY(158,122);$pdf->MultiCell(50,10,thainumDigit(number_format($tfire+$twater+$ttel+$tpost,2)),0,R,false);
+
+// ------------------  ลงท้ายหนังสือ ------------------------
+$pdf->SetXY(135,160);$pdf->Write(10,"( $director )");
+$pdf->SetXY(90,167);$pdf->Write(10,'ผู้อำนวยการศูนย์การศึกษานอกระบบและการศึกษาตามอัธยาศัย');
+$pdf->Write(10,substr($name,4,25));
+
+
+//----------------------------------------------------------------------------------------------------- หน้า 3
+//$pdf->SetMargins(5,5,1);
+$pdf->AddPage( 'L' ,'A4' ); 
+// หัวกระดาษรายงาน
+	$pdf->SetXY(110,5);
+	$pdf->SetFont('THSarabunNew','',18);
+	$pdf->Write(10,'ข้อมูลสำหรับการจัดทำค่าดัชนีการใช้พลังงาน');
+	$pdf->SetXY(75,13);$pdf->Write(10,"ชื่อหน่วยงาน : ศูนย์การศึกษานอกระบบและการศึกษาตามอัธยาศัย");
+	$pdf->Write(10,substr($name,4,30));
+	$pdf->SetXY(65,21);$pdf->Write(10,"สังกัด / กรม สำนักงานการศึกษานอกระบบและการศึกษาตามอัธยาศัย สำนักงานปลัดกระทรวงศึกษาธิการ");
+
+// ------------------------ ทำตารางที่ 1  -------------------------
+// ตีกรอบสี่เหลี่ยม	 (แนวนอน 1, แนวตั้ง 1,แนวนอน 1 + จำนวนขยาย, แนวตั้ง 1+จำนวนขยาย )	
+	$pdf->SetFont('THSarabunNew','',14);
+	$pdf->Rect(7, 35, 285, 80 , 'D'); // กรอบสี่เหลี่ยม
+	$pdf->SetXY(7,35);$pdf->MultiCell( 45  , 20 ,thainumDigit('ข้อมูล '),1,C,false);
+	$pdf->SetXY(52,35);$pdf->MultiCell( 240  , 10 ,thainumDigit('ปีงบประมาณ '.$year),1,C,false);
+	$pdf->SetXY(52,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('ตุลาคม'),1,C,false);
+	$pdf->SetXY(72,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('พฤศจิกายน'),1,C,false);
+	$pdf->SetXY(92,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('ธันวาคม'),1,C,false);
+	$pdf->SetXY(112,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('มกราคม'),1,C,false);
+	$pdf->SetXY(132,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('กุมภาพันธ์'),1,C,false);
+	$pdf->SetXY(152,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('มีนาคม'),1,C,false);
+	$pdf->SetXY(172,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('เมษายน'),1,C,false);
+	$pdf->SetXY(192,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('พฤษภาคม'),1,C,false);
+	$pdf->SetXY(212,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('มิถุนายน'),1,C,false);
+	$pdf->SetXY(232,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('กรกฎาคม'),1,C,false);
+	$pdf->SetXY(252,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('สิงหาคม'),1,C,false);
+	$pdf->SetXY(272,45);$pdf->MultiCell( 20  , 10 ,thainumDigit('กันยายน'),1,C,false);
+	$pdf->Line(52, 40, 52, 110); // เส้นแนวตั้งหลัง "ข้อมูล"
+// รายการข้อมูล
+	$pdf->SetXY(7,55);$pdf->MultiCell(45,10 ,thainumDigit('1.บุคลากรทำงานเต็มเวลา (คน)'),1,L,false);
+	$pdf->SetXY(7,65);$pdf->Write(10,"2.พื้นที่ใช้สอยภายในอาคาร (ตรม)");
+	//MultiCell( 45  , 10 ,thainumDigit('2.พื้นที่ใช้สอยภายในอาคาร (ตรม)'),0,L,false);
+	//$pdf->MultiCell( 45  , 10 ,thainumDigit('2.พื้นที่ใช้สอยภายในอาคาร (ตรม)'),0,L,false);
+	$pdf->SetXY(7,75);$pdf->MultiCell(45,10 ,thainumDigit('3.เวลาทำการ (ชั่วโมง)'),1,L,false);
+	$pdf->SetXY(7,85);$pdf->MultiCell(45,10 ,thainumDigit('4.ผู้มาใช้บริการ (คน)'),1,L,false);
+	$pdf->SetXY(7,95);$pdf->MultiCell(45,10 ,thainumDigit('5.พื้นที่การให้บริการ (ตร.กม.)'),1,L,false);	$pdf->SetXY(7,105);$pdf->MultiCell(45,10 ,thainumDigit('6.การออกพื้นที่ (ครั้ง)'),1,L,false);
+// เริ่มค้นหาข้อมูลและแสดงในตารางที่ 1-2-3 
+
+		$sql="SELECT `monthpay` ,`fire` ,`water` ,`tel` ,`post` ,`oil` ,`note` , `foryear`, `id` ,`fireunit`,`waterunit`,`oilunit`,`num_person` ,`area_in` ,`work_hour` ,`customer` ,`area_service` ,`out_area`,numorder FROM `detail_fwt` ";
+
+//		$sql="SELECT `monthpay` ,`fire` ,`water` ,`tel` ,`post` ,`oil` ,`note` , `foryear`, `id` ,`fireunit`,`waterunit`,`oilunit`,`num_person` ,`area_in` ,`work_hour` ,`customer` ,`area_service` ,`out_area`,numorder FROM `detail_fwt` where code = '$code' and numorder BETWEEN 1 AND $month_select";
+
+
+
+		$dbquery = mysql_db_query($dbname, $sql);
+		$num_rows = $month_select;
+		$i=0;$c=0;
+		while ($i < $num_rows)
+		{
+			$result = mysql_fetch_array($dbquery);
+			$monthpay = trim($result[0]);
+			$fire =  $result[1];
+			$fireunit =  $result[2];
+			$oil =  $result[3];
+			$oilunit =  $result[4];
+			$num_person =  $result[5];
+			$area_in =  $result[6];
+			$work_hour =  $result[7];
+			$customer =  $result[8];
+			$area_service =  $result[9];
+			$out_area =  $result[10];
+			//แสดงผล ดัชนี
+			if (substr($monthpay,0,2) == '10'){
+				$c=0;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '11'){
+				$c=20;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+				
+			if (substr($monthpay,0,2) == '12'){
+				$c=40;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '01'){
+				$c=60;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '02'){
+				$c=80;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '03'){
+				$c=100;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '04'){
+				$c=120;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '05'){
+				$c=140;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '06'){
+				$c=160;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '07'){
+				$c=180;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '08'){
+				$c=200;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+			if (substr($monthpay,0,2) == '09'){
+				$c=220;
+				$pdf->SetXY(52+$c,55);$pdf->MultiCell(20,10,thainumDigit(number_format($num_person,2)),1,R,false);
+				$pdf->SetXY(52+$c,65);$pdf->MultiCell(20,10,thainumDigit(number_format($area_in,2)),1,R,false);
+				$pdf->SetXY(52+$c,75);$pdf->MultiCell(20,10,thainumDigit(number_format($work_hour,2)),1,R,false);
+				$pdf->SetXY(52+$c,85);$pdf->MultiCell(20,10,thainumDigit(number_format($customer,2)),1,R,false);
+				$pdf->SetXY(52+$c,95);$pdf->MultiCell(20,10,thainumDigit(number_format($area_service,2)),1,R,false);
+				$pdf->SetXY(52+$c,105);$pdf->MultiCell(20,10,thainumDigit(number_format($out_area,2)),1,R,false);}
+
+			//แสดงผลไฟฟ้า
+			if($fireunit==0||$fire==0)
+			{
+//			$pdf->SetXY(52+$c,130);$pdf->MultiCell(20,10,'-',1,R,false);
+//			$pdf->SetXY(52+$c,140);$pdf->MultiCell(20,10,'-',1,R,false);
+			}else{
+			$pdf->SetXY(52+$c,130);$pdf->MultiCell(20,10,thainumDigit(number_format($fireunit,2)),1,R,false);
+			$pdf->SetXY(52+$c,140);$pdf->MultiCell(20,10,thainumDigit(number_format($fire,2)),1,R,false);
+			}
+
+			//แสดงผลน้ำมัน
+			if($oilunit==0||$oil==0) 
+			{
+//			$pdf->SetXY(52+$c,165);$pdf->MultiCell(20,10,'-',1,R,false);
+//			$pdf->SetXY(52+$c,175);$pdf->MultiCell(20,10,'-',1,R,false);
+			}else{
+			$pdf->SetXY(52+$c,165);$pdf->MultiCell(20,10,thainumDigit(number_format($oilunit,2)),1,R,false);
+			$pdf->SetXY(52+$c,175);$pdf->MultiCell(20,10,thainumDigit(number_format($oil,2)),1,R,false);
+			}
+		$i++;
+		}
+// สิ้นสุดการค้นหาข้อมูลและแสดงในตารางที่ 1
+
+// ------------------------ ทำตารางที่ 2  ไฟฟ้า -------------------------
+// ตีกรอบสี่เหลี่ยม	 (แนวนอน 1, แนวตั้ง 1,แนวนอน 1 + จำนวนขยาย, แนวตั้ง 1+จำนวนขยาย )	
+	$pdf->SetFont('THSarabunNew','',14);
+	$pdf->Rect(7, 120, 285, 30 , 'D'); // กรอบสี่เหลี่ยม
+	$pdf->SetXY(7,120);$pdf->MultiCell( 45  , 10 ,thainumDigit('การใช้ไฟฟ้า'),1,C,false);
+	$pdf->SetXY(52,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('ตุลาคม'),1,C,false);
+	$pdf->SetXY(72,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('พฤศจิกายน'),1,C,false);
+	$pdf->SetXY(92,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('ธันวาคม'),1,C,false);
+	$pdf->SetXY(112,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('มกราคม'),1,C,false);
+	$pdf->SetXY(132,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('กุมภาพันธ์'),1,C,false);
+	$pdf->SetXY(152,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('มีนาคม'),1,C,false);
+	$pdf->SetXY(172,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('เมษายน'),1,C,false);
+	$pdf->SetXY(192,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('พฤษภาคม'),1,C,false);
+	$pdf->SetXY(212,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('มิถุนายน'),1,C,false);
+	$pdf->SetXY(232,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('กรกฎาคม'),1,C,false);
+	$pdf->SetXY(252,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('สิงหาคม'),1,C,false);
+	$pdf->SetXY(272,120);$pdf->MultiCell( 20  , 10 ,thainumDigit('กันยายน'),1,C,false);
+// รายการข้อมูล
+	$pdf->SetXY(7,130);$pdf->MultiCell( 45  , 10 ,thainumDigit('จำนวนหน่วย (KW/H)'),1,L,false);
+	$pdf->SetXY(7,140);$pdf->MultiCell( 45  , 10 ,thainumDigit('จำนวนเงิน (บาท)'),1,L,false);
+
+// ------------------------ ทำตารางที่ 3 น้ำมัน  -------------------------
+// ตีกรอบสี่เหลี่ยม	 (แนวนอน 1, แนวตั้ง 1,แนวนอน 1 + จำนวนขยาย, แนวตั้ง 1+จำนวนขยาย )	
+	$pdf->SetFont('THSarabunNew','',14);
+	$pdf->Rect(7, 155, 285, 30 , 'D'); // กรอบสี่เหลี่ยม
+	$pdf->SetXY(7,155);$pdf->MultiCell( 45  , 10 ,thainumDigit('การใช้น้ำมัน'),1,C,false);
+	$pdf->SetXY(52,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('ตุลาคม'),1,C,false);
+	$pdf->SetXY(72,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('พฤศจิกายน'),1,C,false);
+	$pdf->SetXY(92,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('ธันวาคม'),1,C,false);
+	$pdf->SetXY(112,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('มกราคม'),1,C,false);
+	$pdf->SetXY(132,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('กุมภาพันธ์'),1,C,false);
+	$pdf->SetXY(152,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('มีนาคม'),1,C,false);
+	$pdf->SetXY(172,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('เมษายน'),1,C,false);
+	$pdf->SetXY(192,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('พฤษภาคม'),1,C,false);
+	$pdf->SetXY(212,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('มิถุนายน'),1,C,false);
+	$pdf->SetXY(232,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('กรกฎาคม'),1,C,false);
+	$pdf->SetXY(252,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('สิงหาคม'),1,C,false);
+	$pdf->SetXY(272,155);$pdf->MultiCell( 20  , 10 ,thainumDigit('กันยายน'),1,C,false);
+// รายการข้อมูล
+	$pdf->SetXY(7,165);$pdf->MultiCell( 45  , 10 ,thainumDigit('จำนวนหน่วย (ลิตร)'),1,L,false);
+	$pdf->SetXY(7,175);$pdf->MultiCell( 45  , 10 ,thainumDigit('จำนวนเงิน (บาท)'),1,L,false);
+
+//สิ้นสุดการประมวลผลและส่งออกไฟล์เป็น PDF ไฟล์ 
+$pdf->Output();
+
+?>

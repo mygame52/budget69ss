@@ -1,0 +1,441 @@
+<?php	session_start();
+@ini_set('display_errors', '0');
+	include("config.inc.php");
+	 $j=0;
+if($act  != "ok") {
+	echo "ต้องเข้าสู่ระบบปกติ";
+	exit();
+}
+
+		session_unregister('M_rab');
+		session_unregister('M_rab2');
+		session_unregister('M_rab3');
+		session_unregister('M_rab4');
+		session_unregister('M_rua');
+//		session_unregister('cmoney');
+		session_unregister('check_yuem');
+
+		require_once('config.inc.php'); 
+//		$cmoney = '';
+
+		$jsel3 = $_REQUEST['sel3'];
+		session_register('jsel3','work');
+
+//		$cmoney = isset($_REQUEST['cmoney']); 
+		$cmoneyid_ = $_REQUEST['cmoneyid']; 
+
+//		 echo "sel3--".$jsel3."-work-".$work;
+
+			mysql_select_db($dbname, $objConnect);
+			$rand = rand(); 
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <!--
+    Created by Artisteer v3.1.0.48375
+    Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
+    -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><?php echo $mess_title?></title>
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+	<script type="text/javascript">
+	<!--
+		
+	 
+	function addCommas(nStr) 
+	{     
+			nStr += ''; 
+			x = nStr.split('.'); 
+			x1 = x[0]; 
+			x2 = x.length > 1 ? '.' + x[1] : ''; 
+			var rgx = /(\d+)(\d{3})/; 
+			while (rgx.test(x1)) 
+				{ 
+					x1 = x1.replace(rgx, '$1' + ',' + '$2'); 
+				} 
+		document.getElementById('bath_t').value = x1 + x2; 
+	}
+
+	function addComma_berg(nStr) 
+	{     
+			nStr += ''; 
+			x = nStr.split('.'); 
+			x1 = x[0]; 
+			x2 = x.length > 1 ? '.' + x[1] : ''; 
+			var rgx = /(\d+)(\d{3})/; 
+			while (rgx.test(x1)) 
+				{ 
+					x1 = x1.replace(rgx, '$1' + ',' + '$2'); 
+				} 
+		document.getElementById('bath_berg').value = x1 + x2; 
+	}
+
+	function addCommas_cal(nStr) 
+	{     
+		nStr += ''; 
+		x = nStr.split('.'); 
+		x1 = x[0]; 
+		x2 = x.length > 1 ? '.' + x[1] : ''; 
+		var rgx = /(\d+)(\d{3})/; 
+		while (rgx.test(x1)) { 
+			x1 = x1.replace(rgx, '$1' + ',' + '$2'); 
+		} 
+		document.getElementById('bath_use').value = x1 + x2; 
+	} 
+
+
+	function chk_cal(){
+		var a1 = parseFloat(document.form1.aa1.value);
+		var a2 = parseFloat(document.form1.aa2.value);
+
+		  if (a2>a1)
+			{
+				alert("เงินล้างมากกว่าเงินยืมไม่ได้");
+				return(false);
+			}
+		document.form1.aa3.value=a1-a2;
+
+		if (a2<a1)
+		{
+			return(true);
+		}
+	}
+
+	//-->
+	</script>
+
+</head>
+<body onload='document.form1.aa2.focus()'>
+<?php include 'include/header.inc.php';?>
+            <div class="cleared reset-box"></div>
+<div class="rnut-bar rnut-nav">
+<div class="rnut-nav-outer">
+	<ul class="rnut-hmenu">
+		<li>
+			<a href="./amp_yuem_person_clear_list" class="active">Back</a>
+		</li>	
+		<li><font size="3" color="#FFCCCC">
+			<?php 
+			echo "หน่วยงาน   : ".$sele_amp;
+			echo " : ".$full_name;  
+			?></font>
+		</li>
+	</ul>
+</div>
+</div>
+<div class="cleared reset-box"></div>
+<div class="rnut-layout-wrapper">
+                <div class="rnut-content-layout">
+                    <div class="rnut-content-layout-row">
+                        <div class="rnut-layout-cell rnut-content">
+						<div class="rnut-box rnut-post">
+						<div class="rnut-box-body rnut-post-body">
+						<div class="rnut-post-inner rnut-article">
+						<h2 class="rnut-postheader" style="text-align: center;">สถานศึกษาล้างเงินยืม</h2>
+
+<!-- start การแก้ไขข้อมูล -->
+
+	<!-- คอนเน็กเพื่ออ่านค่ามารายงาน -->
+
+	<?php
+		//echo "<HR size='5' color='#FFCC00'>";
+	   if ($hid8 <> 908) {
+			echo $hid8;
+			echo "<h3> ERROR : --- ไม่ถูกต้อง ---  </h3>";  
+			exit();
+		} 
+
+	?>
+<br>
+<center>
+	<table width="80%" border="0" cellspacing="0" cellpadding="7">
+	  <tr>
+		<th width="42%" scope="col"><div align="right">สถานศึกษา&nbsp;</div></th>
+		<th width="58%" scope="col">
+			<div align="left">			
+		<?php 
+			echo " : ".$sele_amp;
+			echo $full_name;  //ชื่อ กศน.อำเภอ
+		?></div></th>
+	  </tr>
+	  <tr>
+		<td><div align="right">รหัสงาน/โครงการ&nbsp;</div></td>
+		<td>
+				<?php 
+				include("help_yod4.php");
+				echo "     ".$cod_work; 
+				echo " =>   ".$work; 
+				?></td>
+	  </tr>
+
+	<?php //------------- ค้นหารายการยืมเงิน  --------------------------------
+//	เริ่มการยืมเงิน
+			{
+//				session_register('cmoney');
+				$sele_amp;
+				mysql_select_db($dbname, $objConnect);
+
+				$sql="SELECT id_item, amp_item, item, doc, date_time, bath, date_pay, c_khong,id_yuem FROM item where id_item=$cmoneyid_ and amp_item=$sele_amp and chk_id=1";
+				// and ((substr(c_khong,5,3))= $work)";//ใช้จริง
+
+				$dbquery = mysql_db_query($dbname, $sql);
+
+				$num_rows = mysql_num_rows($dbquery);
+
+				$i=1;$cname_item="";
+				if ($i != $num_rows)
+					{ 	$doc = $doc; }
+						if ($i == $num_rows)
+							{
+							//	echo "----------------------เจอแล้ว-------------------";
+							$result = mysql_fetch_array($dbquery);
+							$id_item =$result[0];
+							$item =$result[2];
+							$docs = $result[3];
+							$date_time = $result[4];
+							$bath = $result[5];
+							$date_pay = $result[6];
+							$c_khong = substr($result[7],5,3);
+							$id_yuem2 = $result[8];
+
+					//if ($c_khong == substr($work,0,3))
+						{
+							$cname_item="ล้างเงินยืม :- ".$id_item."-".$docs."-".$item;
+							$id_item_update =$result[0]; 
+							$check_yuem = "1";
+							session_register('check_yuem');
+							if ((strlen($date_pay) < 3) and ($bath!=0))
+								{
+									echo "<tr>";
+									echo "<td colspan=2><font color='#FF0000'><div align='center'><h3>ท่านยังไม่ได้รับเงินยืม :: ไม่สามารถล้างเงินยืมได้</h3></div></font></td>";
+									echo "</div></td>";
+									echo "</tr>";
+									exit;
+								}
+
+							echo "<tr>";
+							echo "<td><font color='#FF0000'><div align='right'>รายการล้างเงินยืม</div></font></td>";
+							echo "<td><font color='#FF0000'><div align='left'>";
+							echo $cmoneyid_,"-",$item," - เลขหนังสือ : ",$docs;
+							echo "</div></font>";
+							echo "<tr>";
+							echo "    <td><font color='#FF0000'><div align='right'>วันที่ยืม</div></font></td>";
+							echo "    <td><font color='#FF0000'><div align='left'>",$date_time,"   วันที่ได้รับ : ",$date_pay;
+							echo "</div></font></td>";
+							echo "</tr>";
+							echo "<tr>";
+							echo "    <td><font color='#FF0000'><div align='right'>จำนวนเงินยืม</div></font></td>";
+							echo "    <td><font color='#FF0000'><div align='left'>",number_format($bath,2),"   บาท  &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;  </font>";
+							echo "<font color='#0000ff'>";
+							// ค้นหา ผู้ยืมเงิน
+							$sql11="SELECT * FROM person_yuem where id_yuem =$id_yuem2";
+							$dbquery11 = mysql_db_query($dbname, $sql11);
+							$num_rows11 = mysql_num_rows($dbquery11);$i=0;
+							while ($result = mysql_fetch_array($dbquery11))
+							{
+								$citizenid_= $result[citizenid];
+								$person_ = $result[person];
+								echo $citizenid_." : ".$person_;
+							}
+
+							// สิ้นสุดการค้นหาผู้ยืมเงิน
+							
+							echo "&nbsp;&nbsp;&nbsp;:==>&nbsp;&nbsp;เป็นผู้ยืม </font></div></td>";
+							echo "</tr>";
+							echo "</div></td>";
+							echo "</tr>";
+						   }
+                                                   /*else
+								{
+									echo "<tr>";
+									echo "<td colspan=2><font color='#FF0000'><div align='center'><h3>------ ท่านไม่ได้ยืมเงินใน รหัสงบประมาณนี้ ----</h3></div></font></td>";
+									echo "";
+									exit;
+								}
+                                                    * 
+                                                    */
+					}
+
+				echo "</div></td>";
+				echo "</tr>";
+			}
+	 //------------- สิ้นสุดค้นหารายการยืมเงิน ---------------------------
+
+	?> 
+	  <tr>
+		<td><div align="right">จำนวนเงินจัดสรร</div></td>
+		<td><div align="left"> <?php $trab = $M_rab+$M_rab2+$M_rab3+$M_rab4;
+				echo number_format($trab,2),"  บาท";
+				?> </div></td>
+	  </tr>
+	  <tr>
+		<td><div align="right">จำนวนเงินคงเหลือ</div></td>
+		<td><div align="left">
+		   <?php $M_ = $trab-$M_rua;
+			  echo number_format($M_,2),"  บาท";
+		   ?>
+			</div></td>
+	  </tr>
+	  <tr>
+		<td><div align="right">รายการจ่าย</div></td>
+		<td><div align="left">
+		<form name="form1" method="post" action="./amp_payment_data3.php?rand=<?php echo $rand?>">
+			<?php
+			 if (isset($cname_item) != "")
+				{ 
+					$item_ = $cname_item;
+					echo $item_;
+					echo "<INPUT TYPE='hidden' NAME='item_' value='$cname_item'>";
+				}
+				else 
+				{ echo "<input type='text' name='item_' size= '50'>";   
+				  echo "&nbsp;&nbsp;&nbsp;<input type='checkbox' name='yuem_money' value='check'/> <font color='#ff0000'>ยืมเงิน</font>";
+				}
+				echo "<INPUT TYPE='hidden' NAME='sel3' value ='$jsel3'>";
+
+				{
+				  echo "<tr>";
+				  echo "<td><div align='right'>";
+				  echo "เงินยืม";
+				  echo "</div></td>";
+				  echo "<td>";
+				  echo "<input type='text' name='aa1' value='$bath' onKeyUp='chk_cal(this.value)' readonly='readonly'  SIZE='16' style='font: 12pt tahoma; color: ##630a76;background: #f9ebbf; border: 1px black solid' > &nbsp;&nbsp;บาท ";
+
+				  echo "</td></tr>";
+				  echo "<tr><td><div align='right'>";
+				  echo "ใช้จริง </div> </td><td>";
+				  echo "<input type='text' name='aa2' id='aa2' onKeyUp='chk_cal(this.value)'  SIZE='16' style='font: 12pt tahoma; color: #990099;background: #9ff4f2; border: 1px black solid' >&nbsp; บาท ";
+				  echo "<br></td></tr>";
+				  echo "<tr>";
+				  echo "<td><div align='right'> เงินคืน </div></td>";
+				  echo "<td>";
+				  echo "<input type='text' name='aa3' onKeyUp='chk_cal(this.value)' readonly='readonly' SIZE='16' style='font: 12pt tahoma; color: #000099;background: #b5eea6; border: 1px black solid' >&nbsp;&nbsp; บาท";
+
+				  echo "</div></td>";
+				  echo "</tr>";
+
+				}
+
+		?>
+
+
+
+		  <tr>
+				<td><div align="right">เลขที่เอกสาร</div></td>
+				<td><div align="left">
+					<input type="text" value='<?php echo $doc; ?>' size = "40" name="doc_" SIZE="16" style="font: 12pt tahoma; color: #330000;background: #afc2d1; border: 1px black solid" >
+					</div></td>
+		  </tr>
+		  <tr><td colspan="3" align="center">
+			<fieldset>    <legend>Link-โครงการ e-GP</legend>
+				<table border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#ccffff">
+				  <tr>
+					<td width="132"><div align="center" class="style1" ></div></td>
+					<td width="90"><div align="center" class="style1">โครงการ 1 </div></td>
+					<td width="90"><div align="center" class="style1">โครงการ 2 </div></td>
+					<td width="90"><div align="center" class="style1">โครงการ 3 </div></td>
+					<td width="90"><div align="center" class="style1">โครงการ 4 </div></td>
+					<td width="90"><div align="center" class="style1">โครงการ 5 </div></td>
+					<td width="90"><div align="center" class="style1">โครงการ 6 </div></td>
+				  </tr>
+				  <tr>
+					<td><div align="right">เลขโครงการ : </div></td>
+					<td><div align="center">
+						<input name="egp11_" type="text" size="15" maxlength="20"  value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp21_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp31_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp41_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp51_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp61_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+				</tr>
+				  <tr>
+					<td><div align="right">เลขที่สัญญา : </div></td>
+					<td><div align="center">
+						<input name="egp12_" type="text" size="15" maxlength="20"  value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp22_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp32_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp42_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp52_" type="text" size="15" maxlength="20" value="-"/>
+						</div></td>
+					<td><div align="center">
+						<input name="egp62_" type="text" size="15" maxlength="20" value="-"/>
+						 </div></td>
+				 </tr>
+				</table>
+			   </fieldset>
+			</td>
+			</tr>
+			 <tr>
+			 <td colspan="4"><div align="center">
+			 <INPUT TYPE="hidden" NAME="trab" value="<?php echo $trab?>"><!-- จัดสรร -->
+			 <INPUT TYPE="hidden" NAME="M_" value="<?php echo $M_?>"><!-- เหลือ -->
+			 <!-- <INPUT TYPE="hidden" NAME="cmoney" value="<?php echo session_register('cmoney');?>"> -->
+			 <!-- เหลือ	-->
+			 <INPUT TYPE="hidden" NAME="id_item_update" value="<?php echo $id_item_update?>">
+			 <INPUT TYPE="hidden" NAME="bath_use" value="<?php echo $bath_use?>">
+			 <INPUT TYPE="hidden" NAME="bath" value="<?php echo $bath?>">
+			 <INPUT TYPE="hidden" NAME="id_yuem2" value="<?php echo $id_yuem2?>">
+
+
+			 <input type="submit" name="Submit" value=" ตกลง ">
+			
+		  </form>
+		  </td>
+	  </tr>
+	</table>
+</center>
+	<p>&nbsp;</p>
+
+<!-- end การแก้ไขข้อมูล -->
+<?php include("./include/footer.inc");?>
+                                    </body>
+                                    </html>
+
+
+
+<script language="javascript">
+
+	function isNumeric(elem, helperMsg)  //ตรวจสอบการป้อนตัวเลข
+	 {  
+		 var numericExpression = /^[0-9.]+$/; // ตัวเลขและทศนิยม
+         if(elem.value.match(numericExpression)){  
+                 return true;  
+         }else{  
+//                 alert(helperMsg);  
+                 elem.value=elem.value.substr(0,elem.value.length-1);  
+                 elem.focus();  
+                 return false;  
+        }  
+	 } 
+
+
+</script>

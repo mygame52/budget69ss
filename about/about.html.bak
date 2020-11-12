@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head><!-- Created by Artisteer v4.1.0.59861 -->
+        <meta charset="utf-8">
+        <title>Home</title>
+        <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+        <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <link rel="stylesheet" href="style.css" media="screen">
+        <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+        <link rel="stylesheet" href="style.responsive.css" media="all">
+
+
+        <script src="jquery.js"></script>
+        <script src="script.js"></script>
+        <script src="script.responsive.js"></script>
+
+
+        <script>jQuery(function ($) {
+                'use strict';
+                if ($.fn.slider) {
+                    $(".art-slidecontainershutterstock_228189642").each(function () {
+                        var slideContainer = $(this), tmp;
+                        var inner = $(".art-slider-inner", slideContainer);
+                        var helper = null;
+
+                        if ($.support.transition) {
+                            helper = new BackgroundHelper();
+                            helper.init("fade", "next", $(".art-slide-item", inner).first().css($.support.transition.prefix + "transition-duration"));
+                            inner.children().each(function () {
+                                helper.processSlide($(this));
+                            });
+
+                        }
+
+                        inner.children().eq(0).addClass("active");
+                        slideContainer.slider({
+                            pause: 2600,
+                            speed: 600,
+                            repeat: true,
+                            animation: "fade",
+                            direction: "next",
+                            navigator: slideContainer.siblings(".art-slidenavigatorshutterstock_228189642"),
+                            helper: helper
+                        });
+                    });
+                }
+            });
+        </script><style>.art-content .art-postcontent-0 .layout-item-0 { margin-right: 10px;  }
+            .art-content .art-postcontent-0 .layout-item-1 { padding-top: 0px;padding-right: 10px;padding-left: 0px;  }
+            .art-content .art-postcontent-0 .layout-item-2 { padding-right: 10px;padding-left: 10px;  }
+            .art-content .art-postcontent-0 .layout-item-3 { padding-right: 20px;padding-left: 0px;  }
+            .art-content .art-postcontent-0 .layout-item-4 { border-top-style:dashed;border-right-style:dashed;border-bottom-style:dashed;border-left-style:dashed;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#53A25A;border-right-color:#53A25A;border-bottom-color:#53A25A;border-left-color:#53A25A; color: #36312B; background: #C7F0D7; padding: 15px;  }
+            .ie7 .art-post .art-layout-cell {border:none !important; padding:0 !important; }
+            .ie6 .art-post .art-layout-cell {border:none !important; padding:0 !important; }
+
+            .art-slidecontainershutterstock_228189642 {
+                position: relative;
+                width: 350px;
+                height: 230px;
+            }
+
+            .art-slidecontainershutterstock_228189642 .art-slide-item
+            {
+
+            }
+
+            .art-slidecontainershutterstock_228189642 .art-slide-item {
+                -webkit-transition: 600ms ease-in-out opacity;
+                -moz-transition: 600ms ease-in-out opacity;
+                -ms-transition: 600ms ease-in-out opacity;
+                -o-transition: 600ms ease-in-out opacity;
+                transition: 600ms ease-in-out opacity;
+                position: absolute;
+                display: none;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                width:  100%;
+                height: 100%;
+            }
+
+            .art-slidecontainershutterstock_228189642 .active, .art-slidecontainershutterstock_228189642 .next, .art-slidecontainershutterstock_228189642 .prev {
+                display: block;
+            }
+
+            .art-slidecontainershutterstock_228189642 .active {
+                opacity: 1;
+            }
+
+            .art-slidecontainershutterstock_228189642 .next, .art-slidecontainershutterstock_228189642 .prev {
+                width: 100%;
+            }
+
+            .art-slidecontainershutterstock_228189642 .next.forward, .art-slidecontainershutterstock_228189642 .prev.back {
+                opacity: 1;
+            }
+
+            .art-slidecontainershutterstock_228189642 .active.forward {
+                opacity: 0;
+            }
+
+            .art-slidecontainershutterstock_228189642 .active.back {
+                opacity: 0;
+            }
+
+
+            .art-slideshutterstock_2281896420 {
+                background-image:  url('images/s1.png');
+                background-size:  100%;
+                background-position:  0 0;
+                background-repeat: no-repeat;
+            }
+            .art-slideshutterstock_2281896421 {
+                background-image:  url('images/s2.png');
+                background-size:  100%;
+                background-position:  0 0;
+                background-repeat: no-repeat;
+            }
+            .art-slideshutterstock_2281896422 {
+                background-image:  url('images/s6.png');
+                background-size:  100%;
+                background-position:  0 0;
+                background-repeat: no-repeat;
+            }
+            .art-slideshutterstock_2281896423 {
+                background-image:  url('images/s7.jpg');
+                background-size:  100%;
+                background-position:  0 0;
+                background-repeat: no-repeat;
+            }
+
+
+            .art-slidenavigatorshutterstock_228189642 {
+                display: inline-block;
+                position: absolute;
+                direction: ltr !important;
+                top: 206px;
+                left: 76%;
+                z-index: 101;
+                line-height: 0 !important;
+                -webkit-background-origin: border !important;
+                -moz-background-origin: border !important;
+                background-origin: border-box !important;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .art-slidenavigatorshutterstock_228189642
+            {
+                background: #F8B05D;background: linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;background: -webkit-linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;background: -moz-linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;background: -o-linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;background: -ms-linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;background: linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;-svg-background: linear-gradient(top, rgba(251, 212, 167, 0.6) 0, rgba(245, 138, 15, 0.6) 100%) no-repeat;
+                -webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+
+
+                padding:7px;
+
+
+
+
+
+            }
+            .art-slidenavigatorshutterstock_228189642 > a
+            {
+                background: #985406;
+                -webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+                margin:0 10px 0 0;
+
+                width: 10px;
+
+                height: 10px;
+            }
+            .art-slidenavigatorshutterstock_228189642 > a.active
+            {
+                background: #C2BBB2;
+                -webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+                margin:0 10px 0 0;
+
+                width: 10px;
+
+                height: 10px;
+            }
+            .art-slidenavigatorshutterstock_228189642 > a:hover
+            {
+                background: #817465;
+                -webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+                margin:0 10px 0 0;
+
+                width: 10px;
+
+                height: 10px;
+            }
+
+        </style></head>
+    <body>
+        <div id="art-main">
+            <header class="art-header">
+
+
+                <div class="art-shapes">
+
+                </div>
+                <h1 class="art-headline" data-left="9.58%">
+                    <a href="#">เกี่ยวกับโปรแกรม</a>
+                </h1>
+                <h2 class="art-slogan" data-left="9.72%">About Program..</h2>
+
+
+
+
+
+
+            </header>
+            <div class="art-sheet clearfix">
+                <div class="art-layout-wrapper">
+                    <div class="art-content-layout">
+                        <div class="art-content-layout-row">
+                            <div class="art-layout-cell art-content"><article class="art-post art-article">
+
+
+                                    <div class="art-postcontent art-postcontent-0 clearfix"><div class="art-content-layout-wrapper layout-item-0">
+                                            <div class="art-content-layout">
+                                                <div class="art-content-layout-row">
+                                                    <div class="art-layout-cell layout-item-1" style="width: 57%" >
+                                                        <p></p><div id="shutterstock_228189642" style="position: relative; display: inline-block; z-index: 0; margin: 0px;  border-style: solid; border-color: #FFFFFF; border-width: 5px;  " class="art-collage">
+                                                            <div class="art-slider art-slidecontainershutterstock_228189642" data-width="350" data-height="230">
+                                                                <div class="art-slider-inner">
+                                                                    <div class="art-slide-item art-slideshutterstock_2281896420">
+
+                                                                    </div>
+                                                                    <div class="art-slide-item art-slideshutterstock_2281896421">
+
+                                                                    </div>
+                                                                    <div class="art-slide-item art-slideshutterstock_2281896422">
+
+                                                                    </div>
+                                                                    <div class="art-slide-item art-slideshutterstock_2281896423">
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="art-slidenavigator art-slidenavigatorshutterstock_228189642" data-left="76">
+                                                                <a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a>
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                        <p>
+                                                        </p>
+                                                    </div><div class="art-layout-cell layout-item-2" style="width: 43%" >
+                                                        <p><span style="font-weight: bold; color: rgb(226, 52, 29); font-size: 16px; text-shadow: rgba(23, 23, 23, 0.808594) 1.4px 1.4px 0px;">โปรแกรมบริหารจัดการงบประมาณ<br>e-Budget60@Surat V6.1002</span></p>
+                                                        <p><span style="font-weight: bold;">&nbsp; &nbsp; &nbsp;</span>โปรแกรมบริหารจัดการงบประมาณออนไลน์นี้ พัฒนาต่อเนื่องจาก e-Budget เดิม ที่ท่าน ผอ.อดิศักดิ์ คัมภีระ ได้เคยพัฒนาไว้ โดยในเวอร์ชันนี้ 
+                                                            ได้เพิ่มเติมและอำนวยความสะดวกในส่วนของ
+                                                        <ul>
+                                                            <li>การเบิกจ่ายทั่วไป</li>
+                                                            <li>การเบิกจ่ายค่าสาธารณูปโภค</li>
+                                                            <li>การยืมเงินโครงการ</li>
+                                                            <li>การยืมเงินไปราชการ</li>
+                                                            <li>การล้างเงินยืม</li>
+                                                            <li>การบันทึกเลขที่เงินยืมของการเงิน</li>
+                                                            <li>ระบุวันที่เบิกจ่ายและทำรายการ</li>
+                                                            <li>ระบุ-รายงาน เจ้าหนี้ร้านค้า</li>
+                                                            <li>ตรวจสอบการยืม-ล้างเงินยืม</li>
+                                                            <li>ระบบติดตามการค้างเงินยืม</li>
+                                                            <li>ป้องกันการยืมเงินซ้ำซ้อน</li>
+                                                            <li>พิมพ์หนังสือราชการและแบบยืมเงิน 8500</li>
+                                                            <li>สมุดคุมเงินยืม</li>
+                                                            <li>การตรวจสอบสถานะการเบิกจ่ายของครู กศน.ตำบล</li>
+                                                            <li>อืน ๆ</li>
+                                                        </ul>ซึ่งจะช่วยเจ้าหน้าที่ กศน.จังหวัด และสถานศึกษา ในการตรวจสอบข้อมูล เอกสารได้ง่าย ว่าอยู่ฝ่ายใด และดำเนินการถึงขั้นตอนไหน.<br></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="art-content-layout-wrapper layout-item-0">
+                                            <div class="art-content-layout">
+                                                <div class="art-content-layout-row">
+                                                    <div class="art-layout-cell layout-item-3" style="width: 57%" >
+                                                        <h3>รายละเอียดโปรแกรม</h3><p>ขอขอบคุณ&nbsp;
+                                                            <br>1. อ.อดิศักดิ์ &nbsp;คัมภีระ  : ผ้พัฒนาต้นแบบ
+                                                            <br>2. ผอ.ธนกร &nbsp;เกื้อกูล  : ระบบวันที่เบิกจ่าย
+                                                            <br>2. ผอ.กานดา &nbsp;ทองคลองไทร : ระบบเงินยืม
+                                                            <br>3. ผอ.อรณิช&nbsp;วรรณนุช : วันที่แสดงการดำเนินงาน
+                                                            <br>4. รองฯ ศุภโชค ศิริสุข : อำนวยการ
+                                                            <br>5. อ.จิราพร กาญจนจรัส  : ผู้ร่วมก่อตั้ง
+                                                            <br>6. ผู้อำนวยการ สถานศึกษา กศน.สุราษฎร์ธานีทุกท่าน
+                                                            <br>7. นายวิเลิศ &nbsp;ไชยสิทธิ : ผู้ร่วมก่อตั้ง
+                                                            <br>8. เจ้าหน้าที่ กศน.จังหวัดทุกท่าน : ผู้ร่วมทดสอบ
+                                                        <p>ผู้พัฒนา : <font  color="0000ff">อนัตชัย &nbsp;เกตุแก้ว&nbsp;</font><br></p><p>e-Mail : rhce2005@hotmail.com<br>Line ID : rnutsurat</p>update : 30/กันยายน/2559
+                                                    </div><div class="art-layout-cell layout-item-4" style="width: 43%" >
+                                                        <h4 style="text-align: center;"><br><br><img width="167" height="155" alt="" class="art-lightbox" src="images/mit2.png"><br></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </article></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="art-footer">
+                <div class="art-footer-inner">
+                    <p>Copyright © 2015, Venice Restaurant. All Rights Reserved.</p>   
+                </div>
+            </footer>
+
+        </div>
+
+
+    </body></html>

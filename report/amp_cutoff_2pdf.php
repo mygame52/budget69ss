@@ -1,0 +1,278 @@
+<?php session_start();
+ob_start();
+include("../config.inc.php");
+//echo $id_item_pdf;        
+// กำหนด เปลี่ยนเลข อารบิก เป็นเลขไทย 
+include ('../include/function.php');
+require('../fpdf/fpdf.php');
+
+$pdf = new FPDF('P', 'mm', 'A4');
+
+$pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
+$pdf->Open();
+$pdf->AliasNbPages();
+$pdf->SetMargins(20, 5, 1);
+
+//$amp_ = $_REQUEST['amp_pdf'];
+$amp_ = $_REQUEST['amp_pdf'];
+$id_item_ = $_REQUEST['id_item_pdf'];
+$doc_ = $_REQUEST['doc_'];
+//$date_check = strpos($date_pdf2,"-");
+$lua_ = $_SESSION["lua"];
+$judson_ = $_SESSION["judson2"];
+$date_check2 =$_REQUEST['date_workpdf'];
+
+//----------------------------------------------------------------------------------------------------------------------------------- หน้า 1
+$pdf->AddPage();
+//กำหนดตัวแปร บรรทัด
+// เพิ่มรูปครุฑ 
+$pdf->Image('../images/krut.jpg', 95, 10, 25, 0, '', '');
+// Set font
+$pdf->SetFont('THSarabunNew', '', 16);
+// ค้นหาที่อยู่ หัวหนังสือ จะต้องเป็นของ จังหวัด
+$sql = "select * from amp where id='00'";
+$dbquery = mysql_db_query($dbname, $sql);
+@mysql_query("SET NAMES UTF8");
+$num_rows = mysql_num_rows($dbquery);
+$i = 0;
+while ($i < $num_rows) {
+    $result = mysql_fetch_array($dbquery);
+    $code = $result['id'];
+    $name = $result['Name'];
+    $numbook = $result['numbook'];
+    $add1 = $result['add1'];
+    $add2 = $result['add2'];
+    $add3 = $result['add3'];
+    $director = $result['director'];
+    $tel = $result['tel'];
+    $fax = $result['fax'];
+    $i++;
+}
+// ค้นหาที่อยู่ หัวหนังสือ จะต้องเป็นของ กศน.อำเภอที่ต้างเงินยืม
+$sql = "select * from amp where id='$amp_'";
+$dbquery = mysql_db_query($dbname, $sql);
+@mysql_query("SET NAMES UTF8");
+$num_rows = mysql_num_rows($dbquery);
+$ii = 0;
+while ($ii < $num_rows) {
+    $result_amp = mysql_fetch_array($dbquery);
+    $codeS_amp = $result_amp['id'];
+    $name_amp = $result_amp['Name'];
+    $numbook_amp = $result_amp['numbook'];
+    $add1_amp = $result_amp['add1'];
+    $add2_amp = $result_amp['add2'];
+    $add3_amp = $result_amp['add3'];
+    $director_amp = $result_amp['director'];
+    $tel_amp = $result_amp['tel'];
+    $fax_amp = $result_amp['fax'];
+    $ii++;
+}
+
+//พิมพ์หัวหนังสือ
+$pdf->SetXY(20, 30);
+$pdf->Write(10, iconv('UTF-8', 'TIS620','ที่ '));
+$pdf->Write(10, iconv('UTF-8', 'TIS620',$doc_));
+$pdf->SetXY(140, 30);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', ($add1_amp)));
+$pdf->SetXY(140, 37);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', ($add2_amp)));
+$pdf->SetXY(140, 44);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', ($add3_amp)));
+//
+//  -------- ค้นหา รายการเงินยืม -------------
+//  -------------- Connect Database -----------------------
+
+$sql = "SELECT * FROM `item` where id_item= '$id_item_' ";
+$dbquery = mysql_db_query($dbname, $sql);
+$num_rows = mysql_num_rows($dbquery);
+$i = 1;
+
+if ($i == $num_rows) {
+    $row_reg = mysql_fetch_array($dbquery);
+    $idd = $row_reg['id_item'];
+    $i3d = $idd;
+    $amp = $row_reg['amp_item'];
+    $doc = $row_reg['doc'];
+    $c_khong = $row_reg['c_khong'];
+    $item = $row_reg['item'];
+    $item2 = substr($item,0);
+    $bath = $row_reg['bath'];
+    $staus = $row_reg['staus'];
+    $date_time_pdf = $row_reg['date_time'];
+    $datepay2 = $row_reg['date_pay'];
+    $chk_id = $row_reg['chk_id'];
+    $id_yuem_2 = $row_reg['id_yuem'];
+    $dateInput = $row_reg['note_item'];
+}
+// แปลงตัวเลข -> ตัวหนังสือ
+$num2thai = ThaiBahtConversion($bath);
+// วันที่
+//$pdf->SetXY(105,55);$pdf->Write(10,'๑๐ ตุลาคม ๒๕๕๕');
+$thai_n = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+$d_ = date("j");
+$d = iconv('UTF-8', 'TIS620', ($d_));
+
+$m_ = $thai_n[date("n") - 1];
+$m = iconv('UTF-8', 'TIS620', $m_);
+
+$y_ = date("Y") + 543;
+$y = iconv('UTF-8', 'TIS620', ($y_));
+
+$pdf->SetXY(105, 55);
+$pdf->Write(10, ($d . ' ' . $m . ' ' . $y));
+
+//$pdf->Write(10,$today));
+// เรื่อง
+$pdf->SetXY(20, 64);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'เรื่อง'));
+$pdf->SetXY(30, 64);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'ขอเบิกเงินงบประมาณ'));
+// เรียน
+$pdf->SetXY(20, 74);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'เรียน'));
+$pdf->SetXY(30, 74);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'ผู้อำนวยการ'. $add1));
+// สิ่งที่ส่งมาด้วย
+$pdf->SetXY(20, 84);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'สิ่งที่ส่งมาด้วย'));
+$pdf->SetXY(45, 84);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'หลักฐานขออนุมัติเบิกเงิน'));
+//$pdf->Write(10,($foryear));  //ปีงบประมาณ
+$pdf->Write(10, iconv('UTF-8', 'TIS620', ' จำนวน 1 ชุด'));
+//$month_s = substr($monthpay,0,2);  // เดือนที่เลือก
+// เนื้อความ หนังสือ
+$pdf->SetXY(30, 96);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'ด้วย'.$add1_amp.' มีความประสงค์จะเบิกเงินงบประมาณ จาก'.$mess_book));
+
+//  -------------- Connect samnak database เพื่อ ตรวจสอบงบประมาณ -----------------------
+$c_khong1 = substr($c_khong,2,4);
+$c_khong2 = substr($c_khong,2,6);
+//  -------------- Connect work database เพื่อ ตรวจสอบงบประมาณ -----------------------
+$sqlwork = "SELECT * FROM `samnak` where code_sam = $c_khong1 ";
+$dbquery = mysql_db_query($dbname, $sqlwork);
+$num_rowsam = mysql_num_rows($dbquery);
+$iworksam = 1;
+if ($iworksam == $num_rowsam) {
+    $row_reg = mysql_fetch_array($dbquery);
+    $code_sam = $row_reg['code_sam'];    
+    $nam_sam = $row_reg['nam_sam'];    
+}
+//  -------------- Connect work database เพื่อ ตรวจสอบงบประมาณ -----------------------
+$sqlwork = "SELECT * FROM `work` where w_code = $c_khong2 ";
+$dbquery = mysql_db_query($dbname, $sqlwork);
+$num_rowswork = mysql_num_rows($dbquery);
+$iwork = 1;
+if ($iwork == $num_rowswork) {
+    $row_reg = mysql_fetch_array($dbquery);
+    $w_code = $row_reg['w_code'];    
+    $w_name = $row_reg['w_name'];    
+}
+
+//$pdf->Rect(10, 50, 190,0, 'D'); // เส้นตรง แนวนอน
+//$pdf->Rect(150,20, 0,30, 'D'); // เส้นตรง  แนวตั้ง
+
+
+//echo "--".$nam_sam."--";
+$pdf->SetXY(20, 103);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'โดยมีรายละเอียดดังนี้'));
+//$pdf->Write(10, iconv('UTF-8', 'TIS620',$nam_sam_.' อยู๋ในส่วนของ'.$w_name));
+$a=0;
+$b=40;
+$pdf->Rect(24,113, 140,80, 'D'); // เส้นตรง  แนวตั้ง (column,row,0,ความสูง);
+$pdf->Rect(24, 113, 140,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(30, 113+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', '     หมายเลข ID '));
+$pdf->SetXY(20+$b, 113+$a); 
+//$pdf->Write(10, iconv('UTF-8', 'TIS620',($id_item_)));
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',($id_item_)) , 0 , 1 , 'L' );
+$pdf->SetXY(85, 113+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', ' ผู้บันทึก : '));
+
+
+$pdf->Rect(57,113, 0,80, 'D'); // เส้นตรง  แนวตั้ง (column,row,0,ความสูง);
+$pdf->Rect(24, 123, 140,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(33, 123+$a);
+$pdf->Write(10, iconv('UTF-8','TIS620','เพื่อดำเนินการ '));
+$pdf->SetXY(20+$b, 123+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8','TIS620',($item2)) , 0 , 1 , 'L' );
+/*
+
+$pdf->Rect(24, 133, 140,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(43, 133+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620','ในวันที่   '));
+$pdf->SetXY(20+$b, 133+$a);
+$pdf->Write(10, $date_check2);
+*/
+
+$pdf->Rect(24, 133, 140,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(30, 133+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'งบประมาณหลัก  '));
+$pdf->SetXY(20+$b, 133+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',($nam_sam)) , 0 , 1 , 'L' );
+
+$pdf->Rect(24, 143, 140,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(30, 143+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'งบประมาณย่อย'));
+$pdf->SetXY(20+$b, 143+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',($w_name)) , 0 , 1 , 'L' );
+
+
+$pdf->Rect(24, 153, 140,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(36, 153+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'ได้รับจัดสรร'));
+$pdf->SetXY(40+$b, 153+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',(number_format($judson_,2)).'   บาท') , 0 , 1 , 'R' );
+
+$pdf->Rect(104,153, 0,40, 'D'); // เส้นตรง  แนวตั้ง (column,row,0,ความสูง);
+$pdf->Rect(24, 163, 80,0, 'D'); // เส้นตรง แนวนอน
+$pdf->SetXY(41, 163+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', ' คงเหลือ'));
+$pdf->SetXY(40+$b, 163+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',(number_format($lua_,2)).'   บาท') , 0 , 1 , 'R' );
+
+$pdf->Rect(24, 173, 80,0, 'D'); // เส้นตรง แนวนอน
+
+$pdf->SetXY(34, 173+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'เบิกจ่ายครั้งนี้ '));
+$pdf->SetXY(40+$b, 173+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',(number_format($bath,2)).'   บาท') , 0 , 1 , 'R' );
+$bath_pdf = $bath;
+
+$pdf->Rect(24, 183, 80,0, 'D'); // เส้นตรง แนวนอน
+//$bath_pdf = number_format($bath,2);
+$pdf->SetXY(25, 183+$a);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', '      - คงเหลือสุทธิ : '));
+
+$pdf->SetXY(40+$b, 183+$a);
+$pdf->Cell(20  , 10 , iconv('UTF-8', 'TIS620',(number_format($lua_-$bath_pdf,2)).'   บาท') , 0 , 1 , 'R' );
+
+
+
+$pdf->SetXY(55, 199);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'จึงเรียนมาเพื่อโปรดพิจารณา'));
+$pdf->SetXY(104, 209);
+$pdf->Write(10, iconv('UTF-8', 'TIS620', 'ขอแสดงความนับถือ'));
+
+// ลงท้ายหนังสือ ชื่อ ผอ.  ในบางกรณี ผู้บริหารไปราชการ
+//$pdf->SetXY(101,160);$pdf->Write(10,"( $director )");
+//$pdf->SetXY(55,167);$pdf->Write(10,'ผู้อำนวยการศูนย์การศึกษานอกระบบและการศึกษาตามอัธยาศัย');
+//$pdf->Write(10,substr($name,4,25));
+// ลงท้ายหนังสือ  จากหน่วยงาน
+
+
+$pdf->SetXY(20, 260);
+$pdf->Write(0, iconv('UTF-8', 'TIS620', "งานการเงิน"));
+$pdf->SetXY(20, 267);
+$pdf->Write(0, (iconv('UTF-8', 'TIS620', ("โทรศัพท์ " . $tel_amp))));
+$pdf->SetXY(20, 274);
+$pdf->Write(0, (iconv('UTF-8', 'TIS620', ("โทรสาร " . $fax_amp))));
+
+
+
+$pdf->SetFont('THSarabunNew', '', 16);
+
+
+$date_file = date("dmY-His");
+//$pdf->Output($date_file, 'F');
+$pdf->Output();
+?>
