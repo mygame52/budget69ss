@@ -43,8 +43,11 @@ if (trim($hid1) <> "03") {
                             <li>
                                 <a href="./prov_statuss.php"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt=""/>&nbsp;&nbsp;บันทึกสถานะการเบิกจ่าย</a>
                             </li>
+                            <li>
+                                <a href="#"><img src="image/icon/blog.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;ออกใบปะหน้า</a>
+                            </li>
                             <?php
-                            if ($sit == 9) {
+                            if ($sit == 9) { // $sit คือ ?
                                 ?>
                                 <li>
                                     <a href="#"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt=""/>&nbsp;&nbsp;ตั้งเบิก  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="image/25.gif" width="5" height="9" border="0" alt=""/></a>
