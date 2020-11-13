@@ -95,6 +95,8 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                             ?>
                                                 <tr <?if($ii !=1){echo "bgcolor='#eaeaea'" ;}?> class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand' >
 
+                                                    <?php $id = $row_Recordset1['id']; ?>
+
                                                     <td style="text-align:center;vertical-align:middle">
                                                         <font size="2" color="#000099"><?php echo $row_Recordset1['id']; ?></font>
                                                     </td>
