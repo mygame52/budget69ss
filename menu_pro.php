@@ -44,7 +44,7 @@ if (trim($hid1) <> "03") {
                                 <a href="./prov_statuss.php"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt=""/>&nbsp;&nbsp;บันทึกสถานะการเบิกจ่าย</a>
                             </li>
                             <li>
-                                <a href="#"><img src="image/icon/blog.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;ออกใบปะหน้า</a>
+                                <a href="./cover_sheet.php"><img src="image/icon/blog.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;ออกใบปะหน้า</a>
                             </li>
                             <?php
                             if ($sit == 9) { // $sit คือ ?
