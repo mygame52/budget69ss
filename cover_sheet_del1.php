@@ -36,7 +36,7 @@ $ok_ = $_REQUEST['ok_'];
 		<div class="rnut-nav-outer">
 			<ul class="rnut-hmenu">
 				<li>
-					<a href="year_code_work.php" class="active">Back</a>
+					<a href="cover_sheet.php" class="active">Back</a>
 				</li>
 			</ul>
 			<font size="4" color="ffffff">Login โดย :&nbsp;<?php echo $user_ ?></font>
@@ -55,11 +55,27 @@ $ok_ = $_REQUEST['ok_'];
 								<!-- start การแก้ไขข้อมูล -->
 								<?php
 								if ($ok_ == 9) {
-									$sql_del = ("delete from cover_sheet where id= '$id'");
-									$result = mysql_query($sql_del);
-									echo "<CENTER>ลบใบปะหน้า Id : $id  แล้ว</CENTER>";
-									//header("location:re1.php");  
-									echo "<meta http-equiv=\"refresh\" content=\"0;URL=cover_sheet.php\" />";
+									// Delete cover_sheet_item by cover_sheet_id
+									$del_cover_sheet_item_sql = "DELETE FROM cover_sheet_item WHERE cover_sheet_id=$id";
+									$del_cover_sheet_item_result = mysql_query($del_cover_sheet_item_sql);
+									if ($del_cover_sheet_item_result) {
+										echo "ลบ cover sheet items สำเร็จ";
+									} else {
+										echo "ลบ cover sheet items ไม่สำเร็จ";
+									}
+									
+									// Delete cover_sheet by id
+									$del_cover_sheet_sql = ("DELETE FROM cover_sheet WHERE id= '$id'");
+									$del_cover_sheet_result = mysql_query($del_cover_sheet_sql);
+
+									if ($del_cover_sheet_result) {
+										echo "<center>ลบใบปะหน้า Id : $id  แล้ว</center>";
+										echo "<meta http-equiv=\"refresh\" content=\"0;URL=cover_sheet.php\" />";
+									} else {
+										echo "<center>ERROR!!! ลบใบปะหน้า Id : $id  ไม่สำเร็จ</center>";
+
+									}
+
 								} else {
 									echo " ยกเลิก การลบข้อมูล";
 								}

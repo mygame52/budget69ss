@@ -7,6 +7,12 @@ if (trim($hid1) <> "03") {
     echo"	</SCRIPT>";
     exit();
 }
+
+$show_cover_sheet_menu = false;
+
+if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "werapong") {
+    $show_cover_sheet_menu = true;
+}
 ?>
 
 <?php include("config.inc.php"); ?>
@@ -43,9 +49,13 @@ if (trim($hid1) <> "03") {
                             <li>
                                 <a href="./prov_statuss.php"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt=""/>&nbsp;&nbsp;บันทึกสถานะการเบิกจ่าย</a>
                             </li>
-                            <li>
-                                <a href="./cover_sheet.php"><img src="image/icon/blog.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;ออกใบปะหน้า</a>
-                            </li>
+                            <?php 
+                             if ($show_cover_sheet_menu) {
+                                 echo "<li>";
+                                 echo "<a href='./cover_sheet.php'><img src='image/icon/blog.png' width='16' height='16' border='0' alt='' />&nbsp;&nbsp;ออกใบปะหน้า</a>";
+                                 echo "</li>";
+                             }
+                            ?>
                             <?php
                             if ($sit == 9) { // $sit คือ ?
                                 ?>
