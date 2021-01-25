@@ -19,10 +19,10 @@ $cover_sheet_status = $cover_sheet["status"];
 $cover_sheet_user = $cover_sheet["u_ser"];
 
 // LOG
-echo "cover_sheet_id=" . $cover_sheet_id;
-echo "cover_sheet_title=" . $cover_sheet_title;
-echo "cover_sheet_status=" . $cover_sheet_status;
-echo "cover_sheet_user=" . $cover_sheet_user;
+// echo "cover_sheet_id=" . $cover_sheet_id;
+// echo "cover_sheet_title=" . $cover_sheet_title;
+// echo "cover_sheet_status=" . $cover_sheet_status;
+// echo "cover_sheet_user=" . $cover_sheet_user;
 
 ?>
 
@@ -131,7 +131,7 @@ echo "cover_sheet_user=" . $cover_sheet_user;
 									INNER JOIN item ON cover_sheet_item.item_id = item.id_item
 									INNER JOIN amp ON item.amp_item = amp.id
 									WHERE u_ser = '$user_' and cover_sheet_item.cover_sheet_id = $cover_sheet_id
-									ORDER BY item.staus";
+									ORDER BY cover_sheet_item.id";
 
 								$objQuery = mysql_query($sqlStr) or die("Error Query [" . $sqlStr . "]");
 								$j = 0;
@@ -172,13 +172,12 @@ echo "cover_sheet_user=" . $cover_sheet_user;
                                         </td>
                                         <td style="text-align:right;vertical-align:middle;">
                                             <font size="3" color="#000099">
-                                                <? echo $objResult["id_item"]; ?>
+                                                <? echo $objResult["id_item"];  ?>
                                             </font>
                                         </td>
                                         <td style="text-align:right;vertical-align:middle;">
                                             <font size="3" color="#000099">
                                                 <? 
-                                                
                                                     $item_doc_result = $objResult["item_doc"];
                                                     $running = true;
                                                     $findme_1 = "ลว";
@@ -200,7 +199,6 @@ echo "cover_sheet_user=" . $cover_sheet_user;
                                                     }
 
                                                     echo $item_doc_result;
-                                                                      
                                                 ?>
                                             </font>
                                         </td>
@@ -231,9 +229,11 @@ echo "cover_sheet_user=" . $cover_sheet_user;
                                             <div style="text-align:right;">รวมงบประมาณ</div>
                                         </td>
                                         <td>
-                                            <font size="3" color="#000099">
-                                                <? echo number_format($total_bath, 2); ?>
-                                            </font>
+                                            <div style="text-align:right">
+                                                <font size="3" color="#000099">
+                                                    <? echo number_format($total_bath, 2); ?>
+                                                </font>
+                                            </div>
                                         </td>
                                         <td></td>
                                 

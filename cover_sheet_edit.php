@@ -177,9 +177,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                         </td>
                                         <td style="text-align:right;vertical-align:middle;">
                                             <font size="3" color="#000099">
-                                                <? 
-                                                    echo $objResult["id_item"];
-                                                ?>
+                                                <? echo $objResult["id_item"]; ?>
                                             </font>
                                         </td>
                                         <td style="text-align:right;vertical-align:middle;">
@@ -198,15 +196,14 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                     // echo "pos_2=" . $pos_2;
 
                                                     if ($pos_1 !== false) {
-                                                        $item_doc_result = substr($objResult["item_doc"], 0, $pos_1);
+                                                    $item_doc_result = substr($objResult["item_doc"], 0, $pos_1);
                                                     } 
 
                                                     if ($pos_2 !== false) {
-                                                        $item_doc_result = substr($objResult["item_doc"], 0, $pos_2);
+                                                    $item_doc_result = substr($objResult["item_doc"], 0, $pos_2);
                                                     }
 
                                                     echo $item_doc_result;
-                                                                                                
                                                 ?>
                                             </font>
                                         </td>
@@ -277,18 +274,17 @@ $cover_sheet_user = $cover_sheet["u_ser"];
 												}
 											?> -->
                                         </td>
-                                        <?	if ( $set_add ==1){?>
+                                   
                                         <td style="text-align:center;vertical-align:middle;">
-                                            <a
-                                                href="cover_sheet_item_del.php?cover_sheet_item_id=<?= $objResult['cover_sheet_item_id']; ?>&cover_sheet_id=<?= $cover_sheet_id?>"><img
-                                                    src="image/icon/cross.png" width="16" height="16" border="0"
-                                                    alt="ลบ"></a>
+                                            <a href="cover_sheet_item_del.php?cover_sheet_item_id=<?= $objResult['cover_sheet_item_id']; ?>&cover_sheet_id=<?= $cover_sheet_id?>">
+                                                <img 
+                                                    src="image/icon/cross.png" 
+                                                    width="16" 
+                                                    height="16" border="0"
+                                                    alt="ลบ"
+                                                >
+                                            </a>
                                         </td>
-
-                                        <?	}else{
-                                                    echo "<td>&nbsp;</td>"; 
-                                                    }
-                                                    ?>
                                     </tr>
                                     <? } ?>
                                     <tr bgcolor="#FFCCCC">

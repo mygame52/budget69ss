@@ -15,6 +15,7 @@ $query_Recordset1 = "SELECT *
                         ORDER BY status ASC";
 $Recordset1 = mysql_query($query_Recordset1, $objConnect) or die(mysql_error());
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
+echo "row l = " . $totalRows_Recordset1;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" []>
@@ -86,8 +87,8 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 
                                             </tr>
                                             <?php
+                                            if ($totalRows_Recordset1 > 0) {
                                             $row = mysql_fetch_assoc($Recordset1);
-
                                             do {
                                                 $l++;
                                                 $ii = ($l % 2)
@@ -123,7 +124,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                                         <div align="center"><a href="cover_sheet_del.php?id=<?echo" $id"; ?>"><img src="image/icon/cross.png" width="16" height="16" border="0" alt="ลบ"></a></div>
                                                     </td>
                                                 </tr>
-                                            <?php } while ($row = mysql_fetch_assoc($Recordset1)); ?>
+                                                <?php } while ($row = mysql_fetch_assoc($Recordset1)); } ?>
                                         </table>
                                 </div>
                                 <!-- end การแก้ไขข้อมูล -->

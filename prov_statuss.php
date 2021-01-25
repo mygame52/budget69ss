@@ -73,7 +73,8 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                     <div align="center">
 
                                         <!-- start การแก้ไขข้อมูล -->
-                                        <form id="form1" name="form1" method="post" action="prov_statuss1.php?rand=<?= $rand ?>"></th>       
+                                        <!-- <form id="form1" name="form1" method="post" action="prov_statuss1.php?rand=<?= $rand ?>"></th>        -->
+                                        <form id="form1" name="form1" method="post" action="prov_statuss1.php?rand=<?php echo rand(); ?>"></th>       
                                             <table width="40%" border="1" cellspacing="0" cellpadding="3" align="center">
                                                 <tr>  <? $rand = rand(); ?>
                                                     <td width="60%" colspan="3">

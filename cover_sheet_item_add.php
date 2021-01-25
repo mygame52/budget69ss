@@ -32,14 +32,14 @@
             $created_date = date($timeformat,$THdt);
             $insert_cover_sheet_item_sql = "INSERT INTO cover_sheet_item(cover_sheet_id, item_id, created_date) VALUES ($cover_sheet_id, $item_id, '$created_date')";
             $result = mysql_query($insert_cover_sheet_item_sql);
-
+            
 
             // after instert cover sheet item. handle result
             // if insert not success  -> display error message and back to cover sheet buttos
             // else redirect to cover_sheet_edit?cover_sheet_id=$cover_sheet_id
 
             if (!$result) {
-                echo "Error! บันทึก รายการไม่สำเร็จ";
+                echo "Error! บันทึก รายการไม่สำเร็จ " . mysql_error();
                 // echo "<a href="cover_sheet.php" class="active">Back</a>";
                 // <input type="button" 
             } else {

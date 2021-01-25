@@ -7,7 +7,6 @@ if (trim($hid1) <> "03") {
     echo"	</SCRIPT>";
     exit();
 }
-
 $show_cover_sheet_menu = false;
 
 if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "werapong") {
@@ -57,7 +56,7 @@ if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $use
                              }
                             ?>
                             <?php
-                            if ($sit == 9) { // $sit คือ ?
+                            if ($sit == 9) {
                                 ?>
                                 <li>
                                     <a href="#"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt=""/>&nbsp;&nbsp;ตั้งเบิก  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="image/25.gif" width="5" height="9" border="0" alt=""/></a>
