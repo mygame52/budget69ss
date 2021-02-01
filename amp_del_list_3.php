@@ -56,11 +56,19 @@
 			<?php
 			$ok_ = $_REQUEST['ok_'];
 			$id_item = $_REQUEST['i_del'];
+			$hadpol = $_REQUEST['hadpol'];
+
 			if ($ok_ != 'Y') {
 				echo "<CENTER>ยกเลิก การลบข้อมูล</CENTER><BR><BR>";
 				echo"<CENTER><a href=menu_amp.php> << Back.</a></CENTER>";
 				exit();
 			}
+
+			if ($hadpol == "") {
+				echo "<font size='3' color='#ff0000'><CENTER>ต้องระบุเหตุผลที่จะลบข้อมูล</CENTER></font><BR><BR>";
+				exit();
+			}
+
 			mysql_connect($dbserver, $dbuser,$dbpass) or
 							die("<hr><b> ติดต่อ server ไม่ได้>");				
 			mysql_select_db($dbname) or  die("ติดฐานข้อมูลไม่ได้");
@@ -151,6 +159,16 @@
 								$sql_update = ("UPDATE judsun SET rua  = '$rua_new' WHERE  code = '$kong'");
 								$result = mysql_query($sql_update);
 								//echo " แก้ไขจำนวนเงินคงเหลือแล้ว  $rua_old";
+
+								//<!-- เก็บข้อมูลก่อนลบ   -->
+								$insert_to_amp_del_item_query = "insert into amp_del_item ( `id_item` , `amp_item` , `c_khong` , `item` , `doc` , `date_time` , `bath` , `staus` , `user` ) select id_item , amp_item , c_khong , item , doc , date_time , bath , staus , user from  item where id_item= '$id_item'";
+								$result = mysql_query($insert_to_amp_del_item_query);
+
+								$datetime = date($timeformat, $THdt);
+								$update_to_amp_del_item_query = ("UPDATE amp_del_item SET  user_del ='$user_' , time_del = '$datetime' , hadpol ='$hadpol' where id_item= '$id_item'");
+								$result = mysql_query($update_to_amp_del_item_query);
+								//<!-- เก็บข้อมูลก่อนลบ   -->
+
 								$sql_del = ("delete from  item where id_item= '$id_item'");
 								$result = mysql_query($sql_del);
 

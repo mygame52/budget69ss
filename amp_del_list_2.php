@@ -65,8 +65,12 @@ $i_del = $_REQUEST['i_del'];
 				echo "<BR>";
  echo "<body onload='document.form1.ok_.focus()'>";
 
-	echo"<font size='3' color='#990000'>การลบ จะทำให้ข้อมูลหายไปทันที  ยืนยันการลบ กด Y</font>";
-	echo "<FORM name='form1' METHOD=POST ACTION=amp_del_list_3.php>";
+ echo "<FORM name='form1' METHOD=POST ACTION=amp_del_list_3.php>";
+ 
+ echo "<font size='3' color='#0033ff'>ระบุสาเหตุที่จะลบ</font>&nbsp;&nbsp;
+ <INPUT TYPE='text' NAME='hadpol' SIZE='70' style='font: 12pt tahoma; color: #ff0000;background: #C0F9BD; border: 1px black solid;text-align:center;'><br><br>";
+ 
+ echo"<font size='3' color='#990000'>การลบ จะทำให้ข้อมูลหายไปทันที  ยืนยันการลบ กด Y</font>";
 	echo "<br><div align='center'><table><tr><td width='20px'><INPUT TYPE='text' NAME='ok_' size = '1' style='font: 12pt tahoma; color: #ff0000;background: #83deca; border: 1px black solid'></td></tr></table></div> ";
 	echo "<INPUT TYPE='hidden' name='i_del' value='$i_del'>";
 	echo "<br><INPUT TYPE='submit' value = 'ยืนยัน'>";
