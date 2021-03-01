@@ -1,5 +1,5 @@
 <?
-$animateChart = "1"; // ËÒ¡ãªé 1 ¤×Í ¨ÐáÊ´§áºº à¤Å×èÍ¹äËÇ  ËÒ¡ãªé 0 ¨ÐäÁèà¤Å×èÍ¹äËÇ ·´ÅÍ§´Ù¡çä´é
+$animateChart = "1"; // ï¿½Ò¡ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê´ï¿½áºº ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½  ï¿½Ò¡ï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í§ï¿½Ù¡ï¿½ï¿½ï¿½
 $cap2 = $mess_header_graph;
 
 $strXML = "<chart caption='$cap2' pieSliceDepth='30' showBorder='1' formatNumberScale='0' numberSuffix='  ' animation=' " . $animateChart . "'>";
@@ -7,11 +7,13 @@ $strXML = "<chart caption='$cap2' pieSliceDepth='30' showBorder='1' formatNumber
 for ($i=1; $i<=$arr_total; $i++){
 
 	$strXML .= "<set label='" . $exp[$i][0] . "' value='" . $exp[$i][1] . "' />";
+	echo $exp[$i][0] . " - " . $exp[$i][1];
+	echo "</br>";
 }
 
 $strXML .= "</chart>";
 // Column2D.swf  Column3D.swf  Pie3D.swf
 
-echo renderChart("Column3D.swf", "", $strXML, "FactorySum", "100%", "400px", false, false);
+// echo renderChart("Column3D.swf", "", $strXML, "FactorySum", "100%", "400px", false, false);
 		  
 ?> 

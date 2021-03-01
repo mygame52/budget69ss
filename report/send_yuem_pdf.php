@@ -10,7 +10,7 @@ require('../fpdf/fpdf.php');
 $pdf = new FPDF('P', 'mm', 'A4');
 
 $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
-$pdf->Open();
+// $pdf->Open();
 $pdf->AliasNbPages();
 $pdf->SetMargins(20, 5, 1);
 
