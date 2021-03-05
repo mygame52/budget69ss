@@ -132,6 +132,15 @@
 								$sql_update = ("UPDATE judsun SET rua  = '$rua_new' WHERE  code = '$kong'");
  								$result = mysql_query($sql_update);
 								//echo " แก้ไขจำนวนเงินคงเหลือแล้ว  $rua_old";
+								
+								//<!-- เก็บข้อมูลก่อนลบ   -->
+								$insert_to_amp_del_item_query = "insert into amp_del_item ( `id_item` , `amp_item` , `c_khong` , `item` , `doc` , `date_time` , `bath` , `staus` , `user` ) select id_item , amp_item , c_khong , item , doc , date_time , bath , staus , user from  item where id_item= '$id_item'";
+								$result = mysql_query($insert_to_amp_del_item_query);
+
+								$datetime = date($timeformat, $THdt);
+								$update_to_amp_del_item_query = ("UPDATE amp_del_item SET  user_del ='$user_' , time_del = '$datetime' , hadpol ='$hadpol' where id_item= '$id_item'");
+								$result = mysql_query($update_to_amp_del_item_query);
+								//<!-- เก็บข้อมูลก่อนลบ   -->
 
 								$sql_del = ("delete from  item where id_item= '$id_item'");
  								$result = mysql_query($sql_del);
