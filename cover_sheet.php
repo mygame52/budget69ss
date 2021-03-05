@@ -12,7 +12,7 @@ mysql_select_db($dbname, $objConnect);
 $query_Recordset1 = "SELECT * 
                         FROM cover_sheet 
                         WHERE u_ser='$user_'
-                        ORDER BY status ASC";
+                        ORDER BY id DESC";
 $Recordset1 = mysql_query($query_Recordset1, $objConnect) or die(mysql_error());
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 echo "row l = " . $totalRows_Recordset1;
