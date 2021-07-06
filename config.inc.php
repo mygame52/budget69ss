@@ -3,7 +3,7 @@ $path="budget64";  // ชื่อโฟลเดอร์ของโปรแ�
 $dbserver = 'localhost';  //  
 $dbuser = 'root';
 $dbname= 'budget_data64';
-$dbpass= "data@nakhon";
+$dbpass= "q=ku4flry0Gy";
 //$objConnect = mysql_connect($dbserver,$dbuser,$dbpass) or die("Error Connect to Database");
 
  if(mysql_connect($dbserver,$dbuser,$dbpass)){     
