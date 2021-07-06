@@ -43,7 +43,7 @@
                 // echo "<a href="cover_sheet.php" class="active">Back</a>";
                 // <input type="button" 
             } else {
-                echo "<meta http-equiv=\"refresh\" content=\"0;URL=cover_sheet_edit.php?cover_sheet_id=$cover_sheet_id\" />";
+                echo "<meta http-equiv=\"refresh\" content=\"0;URL=cover_sheet_edit.php?cover_sheet_id=$cover_sheet_id#bottom\" />";
             }
 
         }

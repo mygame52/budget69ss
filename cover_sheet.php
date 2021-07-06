@@ -118,7 +118,7 @@ echo "row l = " . $totalRows_Recordset1;
                                                         ?></font>
                                                     </td>
                                                     <td>
-                                                        <div align="center"><a href="cover_sheet_edit.php?cover_sheet_id=<?echo"$id"; ?>"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt="แก้ไข"></a></div>
+                                                        <div align="center"><a href="cover_sheet_edit.php?cover_sheet_id=<?echo"$id"; ?><? echo "#bottom" ?>"><img src="image/icon/edit.gif" width="16" height="16" border="0" alt="แก้ไข"></a></div>
                                                     </td>
                                                     <td>
                                                         <div align="center"><a href="cover_sheet_del.php?id=<?echo" $id"; ?>"><img src="image/icon/cross.png" width="16" height="16" border="0" alt="ลบ"></a></div>
