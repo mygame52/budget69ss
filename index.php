@@ -175,7 +175,7 @@ for ($i = 1; $i <= $num_rows; $i++) {
                                     <h2 class="rnut-postheader">กราฟแสดงการใช้งบประมาณ</h2>
                                     <div class="rnut-postcontent" height="800">
                                         <?php
-                                            include "bar_new_graph.php"
+                                            // include "bar_new_graph.php"
                                         ?>	
                                     </div>
                                 </div>
