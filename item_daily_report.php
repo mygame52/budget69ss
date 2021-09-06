@@ -35,19 +35,139 @@ $item_sql_1 = "SELECT i.amp_item,
                     i.date_time, 
                     i.bath, 
                     i.staus,
+                    i.c_khong,
                     amp.`Name` AS amp_name
                     FROM item as i
                     INNER JOIN amp ON amp.id = i.amp_item
                     WHERE date_time LIKE '$date_time'
                     ORDER BY i.id_item DESC
                     LIMIT 300";
-// $item_sql_1 = "SELECT * 
-//                         FROM item
-//                         WHERE date_time LIKE '$date_time'
-//                         ORDER BY id_item DESC
-//                         LIMIT 300";
 $item_query_1 = mysql_query($item_sql_1, $objConnect) or die(mysql_error());
 $row_count = mysql_num_rows($item_query_1);
+
+$total_4444 = 0;
+$total_5555 = 0;
+$total_6666 = 0;
+
+$status0_4444 = 0;
+$status1_4444 = 0;
+$status2_4444 = 0;
+$status3_4444 = 0;
+$status4_4444 = 0;
+$status5_4444 = 0;
+
+$status0_5555 = 0;
+$status1_5555 = 0;
+$status2_5555 = 0;
+$status3_5555 = 0;
+$status4_5555 = 0;
+$status5_5555 = 0;
+
+$status0_6666 = 0;
+$status1_6666 = 0;
+$status2_6666 = 0;
+$status3_6666 = 0;
+$status4_6666 = 0;
+$status5_6666 = 0;
+
+$item_query_calc = mysql_query($item_sql_1, $objConnect) or die(mysql_error());
+
+for ($i = 0; $i < $row_count; $i++) {
+    $item_array = mysql_fetch_array($item_query_calc);
+
+    // ----------------- 4444 -----------------------
+    if (substr(trim($item_array['c_khong']), 2, 4) == '4444') {
+        $total_4444++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_4444++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_4444++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_4444++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_4444++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_4444++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_4444++;
+        }
+        
+    }
+    
+    // ----------------- 5555 -----------------------
+    if (substr(trim($item_array['c_khong']), 2, 4) == '5555') {
+        $total_5555++;
+  
+        if ($item_array['staus'] == 0) {
+            $status0_5555++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_5555++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_5555++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_5555++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_5555++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_5555++;
+        }
+        
+    }
+
+    // ----------------- 6666 -----------------------
+    if (substr(trim($item_array['c_khong']), 2, 4) == '6666') {
+        $total_6666++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_6666++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_6666++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_6666++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_6666++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_6666++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_6666++;
+        }
+        
+    }
+
+}
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" []>
@@ -117,12 +237,68 @@ $row_count = mysql_num_rows($item_query_1);
                                 <!-- <h3> <?php echo "date: " . $date; ?></h3> -->
                                 <!-- <h3> <?php echo "date_time: " . $date_time; ?></h3> -->
 
+                                <div align="center">
+                                    <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
+                                        <tr style="background-color: aqua;">
+                                            <th scope="col"></th>
+                                            <th scope="col"><font size="5">4444</font></th>
+                                            <th scope="col"><font size="5">5555</font></th>
+                                            <th scope="col"><font size="5">6666</font></th>
+                                        </tr>    
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td><div align="center"><font size="5">ทั้งหมด</font></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_6666; ?></font></td>
+                                        </tr>
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status0.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_6666; ?></font></td>
+                                        </tr>
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status1.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_6666; ?></font></td>
+                                        </tr>
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status2.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_6666; ?></font></td>
+                                        </tr>
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status3.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_6666; ?></font></td>
+                                        </tr>
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td><div align='center'><img src='image/status4.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_6666; ?></font></td>
+                                        </tr>
+                                        <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
+                                            <td><div align='center'><img src='image/status5.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_4444; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_5555; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_6666; ?></font></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <br>
+                                
+                                <div align="center" >                                            
+                                    <a href="#bottom"><font size="3">Bottom</font></a>
+                                </div>
                                 <br>
                                 <div align="center">
-                                    <table width="70%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
+                                    <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
                                         <tr>
-                                            
-                                            
                                             <form id="item_daily_report_form" action="item_daily_report.php" method="post">
                                                 <td>
                                                     <div class="">วันที่</div>
@@ -143,129 +319,157 @@ $row_count = mysql_num_rows($item_query_1);
                                         </tr>
                                     </table>
 
-                                    <P>
-                                        <table width="70%" align="center" border="0" cellspacing="1" cellpadding="3">
-                                            <tr bgcolor='#FFCC00'>
-                                        
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">id</th>
-                                                    <th scope="col">หน่วยงาน</th>
-                                                    <th scope="col">เลขที่เอกสาร</th>
-                                                    <th scope="col">รายการ</th>
-                                                    <th scope="col">งบประมาณ</th>
-                                                    <th scope="col">สถานะ</th>
-                                                    <th scope="col">วันที่บันทึก</th>
+                                    
+                                    <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3">
+                                        <tr bgcolor='#FFCC00'>
+                                    
+                                                <th scope="col">#</th>
+                                                <th scope="col">id</th>
+                                                <th scope="col">หน่วยงาน</th>
+                                                <th scope="col">รหัสงาน/โครงการ</th>
+                                                <th scope="col">เลขที่เอกสาร</th>
+                                                <th scope="col">รายการ</th>
+                                                <th scope="col">งบประมาณ</th>
+                                                <th scope="col">สถานะ</th>
+                                                <th scope="col">วันที่บันทึก</th>
 
 
-                                            </tr>
-                                            <?php
-                                            if ($row_count > 0) {
-                                            $item = mysql_fetch_assoc($item_query_1);
-                                            do {
-                                                $l++;
-                                                $ii = ($l % 2)
-                                            ?>
-                                                <tr <?if($ii !=1){echo "bgcolor='#eaeaea'" ;}?> class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand' >
+                                        </tr>
+                                        <?php
+                                        if ($row_count > 0) {
+                                        $item = mysql_fetch_assoc($item_query_1);
+                                        do {
+                                            $l++;
+                                            $ii = ($l % 2)
+                                        ?>
+                                            <tr <?if($ii !=1){echo "bgcolor='#eaeaea'" ;}?> class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand' >
 
-                                                    <?php $id_item = $item['id_item']; ?>
-                                                    <!-- l -->
-                                                    <td style="text-align:center;vertical-align:middle">
-                                                        <font size="2" color="#000099"><?php echo $l; ?></font>
-                                                    </td>
-                                                    <!-- id -->
-                                                    <td style="text-align:center;vertical-align:middle">
-                                                    
-                                                        <font size="3" color="red"><?php echo $item['id_item']; ?></font>
-                                                    
-                                                        <form id="form1" name="form1" method="post" action="prov_statuss1.php?rand=<?php echo rand(); ?>"></th>       
-                                                                <input type="submit" name="Submit" value="Go">
-                                                                <input type="hidden" name="idd" value="<?php echo $item['id_item']; ?>" />
-                                                        </form>
-                                                    </td>
-                                                    <!-- หน่วยงาน -->
-                                                    <td style="text-align:left;vertical-align:middle">
-                                                        <font size="2" color="#000099"><?php echo $item['amp_name']; ?></font>
-                                                    </td>
-                                                    <!-- เลขที่เอกสาร -->
-                                                    <td style="text-align:left;vertical-align:middle">
-                                                        <font size="2" color="#000099">
-                                                            <?php 
-                                                                $doc = $item['doc'];
-
-                                                                $findme_1 = "ลว";
-                                                                $findme_2 = "ลงวัน";
-        
-                                                                $pos_1 = strpos($item["doc"], $findme_1);
-                                                                $pos_2 = strpos($item["doc"], $findme_2);
-        
-                                                                // echo "pos_1=" . $pos_1;
-                                                                // echo "<br>";
-                                                                // echo "pos_2=" . $pos_2;
-        
-                                                                if ($pos_1 !== false) {
-                                                                    $doc = substr($item["doc"], 0, $pos_1);
-                                                                } 
-        
-                                                                if ($pos_2 !== false) {
-                                                                    $doc = substr($item["doc"], 0, $pos_2);
-                                                                }
-
-                                                                echo $doc;
-                                                            ?>
-                                                        </font>
-                                                    </td>
-                                                    <!-- รายการ -->
-                                                    <td style="text-align:left;vertical-align:middle">
-                                                        <font size="2" color="#000099"><?php echo $item['item']; ?></font>
-                                                    </td>
-                                                    <!-- งบประมาณ -->
-                                                    <td style="text-align:right;vertical-align:middle">
-                                                        <font size="2" color="#000099"><?php echo number_format($item['bath'], 2); ?></font>
-                                                    </td>
-                                                    <!-- สถานะ -->
-                                                    <td style="vertical-align:middle">                                                            
+                                                <?php $id_item = $item['id_item']; ?>
+                                                <!-- l -->
+                                                <td style="text-align:center;vertical-align:middle">
+                                                    <font size="2" color="#000099"><?php echo $l; ?></font>
+                                                </td>
+                                                <!-- id -->
+                                                <td style="text-align:center;vertical-align:middle">
+                                                
+                                                    <font size="3" color="red"><?php echo $item['id_item']; ?></font>
+                                                
+                                                    <form id="form1" name="form1" method="post" action="prov_statuss1.php?rand=<?php echo rand(); ?>"></th>       
+                                                            <input type="submit" name="Submit" value="Go">
+                                                            <input type="hidden" name="idd" value="<?php echo $item['id_item']; ?>" />
+                                                    </form>
+                                                </td>
+                                                <!-- หน่วยงาน -->
+                                                <td style="text-align:left;vertical-align:middle">
+                                                    <font size="2" color="#000099"><?php echo $item['amp_name']; ?></font>
+                                                </td>
+                                                <!--  รหัสงาน/โครงการ -->
+                                                <td style="text-align:left;vertical-align:middle">
+                                                    <div class="">
                                                         <font size="2" color="#000099">
                                                             <?php
-                                                                $pic = NULL;
-                                                                $_status = $item['staus'];
-                                                                $_statusStr = "";
-                                                                if ($_status == 0) {
-                                                                    $pic = "image/status0.png";
-                                                                    $_statusStr = "สถานศึกษา ขอเบิก"; // สีแดง
-                                                                } elseif ($_status == 1) {
-                                                                    $pic = "image/status1.png";
-                                                                    $_statusStr = "ตรวจสอบหลักฐานแล้ว"; // สีแดง
-                                                                } elseif ($_status == 2) {
-                                                                    $pic = "image/status2.png";
-                                                                    $_statusStr = "ตัดยอดงบประมาณแล้ว"; // สีเขียว
-                                                                } elseif ($_status == 3) {
-                                                                    $pic = "image/status3.png";
-                                                                    $_statusStr = "ทำระบบ PO แล้ว"; // สีฟ้า
-                                                                } elseif ($_status == 4) {
-                                                                    $pic = "image/status4.png";
-                                                                    $_statusStr = "เบิกจ่ายแล้ว"; // สีน้ำเงิน
-                                                                } elseif ($_status == 5) {
-                                                                    $pic = "image/status5.png";
-                                                                    $_statusStr = "เอกสารผิดพลาด"; // เหลือง
-                                                                }
-
-                                                                if ($_status == 5){
-                                                                    echo "<div align='center'><img src='$pic' width='90%' border='0' alt='$_statusStr'></div> "; 
-                                                                  }else{
-                                                                    echo "<div align='center' width='100'><img src='$pic' width='90%' border='0' alt='$_statusStr'></div> "; 
-                                                                  }
-                                                                // echo $_statusStr;
-                                                                // echo "<font size='3' color='#000099'>$_status : $_statusStr</font>"
+                                                            
+                                                                // echo $item['c_khong']; 
+                                                                echo substr($item['c_khong'], 2);
                                                             ?>
                                                         </font>
-                                                    </td>
-                                                    <!-- สถานะ -->
-                                                    <td style="vertical-align:middle">
-                                                        <font size="2" color="#000099"><?php echo $item['date_time']; ?></font>
-                                                    </td>
-                                                </tr>
-                                                <?php } while ($item = mysql_fetch_assoc($item_query_1)); } ?>
-                                        </table>
+                                                    </div>
+                                                    <div class="">
+                                                        <font size="2" color="#000099">
+                                                            <?php 
+                                                                $c_khong = $item['c_khong']; 
+                                                                include("work.inc.php");
+                                                            ?>
+                                                        </font>
+                                                    </div>
+                                                </td>
+                                                <!-- เลขที่เอกสาร -->
+                                                <td style="text-align:left;vertical-align:middle">
+                                                    <font size="2" color="#000099">
+                                                        <?php 
+                                                            $doc = $item['doc'];
+
+                                                            $findme_1 = "ลว";
+                                                            $findme_2 = "ลงวัน";
+    
+                                                            $pos_1 = strpos($item["doc"], $findme_1);
+                                                            $pos_2 = strpos($item["doc"], $findme_2);
+    
+                                                            // echo "pos_1=" . $pos_1;
+                                                            // echo "<br>";
+                                                            // echo "pos_2=" . $pos_2;
+    
+                                                            if ($pos_1 !== false) {
+                                                                $doc = substr($item["doc"], 0, $pos_1);
+                                                            } 
+    
+                                                            if ($pos_2 !== false) {
+                                                                $doc = substr($item["doc"], 0, $pos_2);
+                                                            }
+
+                                                            echo $doc;
+                                                        ?>
+                                                    </font>
+                                                </td>
+                                                <!-- รายการ -->
+                                                <td style="text-align:left;vertical-align:middle">
+                                                    <font size="2" color="#000099"><?php echo $item['item']; ?></font>
+                                                </td>
+                                                <!-- งบประมาณ -->
+                                                <td style="text-align:right;vertical-align:middle">
+                                                    <font size="2" color="#000099"><?php echo number_format($item['bath'], 2); ?></font>
+                                                </td>
+                                                <!-- สถานะ -->
+                                                <td style="vertical-align:middle">                                                            
+                                                    <font size="2" color="#000099">
+                                                        <?php
+                                                            $pic = NULL;
+                                                            $_status = $item['staus'];
+                                                            $_statusStr = "";
+                                                            if ($_status == 0) {
+                                                                $pic = "image/status0.png";
+                                                                $_statusStr = "สถานศึกษา ขอเบิก"; // สีแดง
+                                                            } elseif ($_status == 1) {
+                                                                $pic = "image/status1.png";
+                                                                $_statusStr = "ตรวจสอบหลักฐานแล้ว"; // สีแดง
+                                                            } elseif ($_status == 2) {
+                                                                $pic = "image/status2.png";
+                                                                $_statusStr = "ตัดยอดงบประมาณแล้ว"; // สีเขียว
+                                                            } elseif ($_status == 3) {
+                                                                $pic = "image/status3.png";
+                                                                $_statusStr = "ทำระบบ PO แล้ว"; // สีฟ้า
+                                                            } elseif ($_status == 4) {
+                                                                $pic = "image/status4.png";
+                                                                $_statusStr = "เบิกจ่ายแล้ว"; // สีน้ำเงิน
+                                                            } elseif ($_status == 5) {
+                                                                $pic = "image/status5.png";
+                                                                $_statusStr = "เอกสารผิดพลาด"; // เหลือง
+                                                            }
+
+                                                            if ($_status == 5){
+                                                                echo "<div align='center'><img src='$pic' width='90%' border='0' alt='$_statusStr'></div> "; 
+                                                                }else{
+                                                                echo "<div align='center' width='100'><img src='$pic' width='90%' border='0' alt='$_statusStr'></div> "; 
+                                                                }
+                                                            // echo $_statusStr;
+                                                            // echo "<font size='3' color='#000099'>$_status : $_statusStr</font>"
+                                                        ?>
+                                                    </font>
+                                                </td>
+                                                <!-- สถานะ -->
+                                                <td style="vertical-align:middle">
+                                                    <font size="2" color="#000099"><?php echo $item['date_time']; ?></font>
+                                                </td>
+                                            </tr>
+                                            <?php } while ($item = mysql_fetch_assoc($item_query_1)); } ?>
+                                    </table>
+
+                                    <br />
+
+                                    <div >                                            
+                                        <a href="#top"><font size="4">Top</font></a>
+                                        <a name="bottom"></a>
+                                    </div>
                                 </div>
                                 <!-- end การแก้ไขข้อมูล -->
                                 <?php include("./include/footer.inc"); ?>
