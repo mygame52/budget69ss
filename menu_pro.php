@@ -8,9 +8,14 @@ if (trim($hid1) <> "03") {
     exit();
 }
 $show_cover_sheet_menu = false;
+$show_item_daily_report = false;
 
 if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "werapong") {
     $show_cover_sheet_menu = true;
+}
+
+if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "werapong") {
+    $show_item_daily_report = true;
 }
 ?>
 
@@ -55,6 +60,14 @@ if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $use
                                  echo "</li>";
                              }
                             ?>
+                            <?php 
+                             if ($show_item_daily_report) {
+                                 echo "<li>";
+                                 echo "<a href='./item_daily_report.php'><img src='image/icon/blog.png' width='16' height='16' border='0' alt='' />&nbsp;&nbsp;รายงานบันทึกการเบิกจ่ายรายวัน</a>";
+                                 echo "</li>";
+                             }
+                            ?>
+
                             <?php
                             if ($sit == 9) {
                                 ?>
