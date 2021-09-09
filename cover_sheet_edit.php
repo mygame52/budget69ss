@@ -238,22 +238,35 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             
                                             <td style="text-align:right;vertical-align:middle;">
                                                 <?php
-                                                $_status = $objResult['item_status'];
-                                                $_statusStr = "";
-                                                if ($_status == 0) {
-                                                    $_statusStr = "สถานศึกษา ขอเบิก"; // สีแดง
-                                                } elseif ($_status == 1) {
-                                                    $_statusStr = "ตรวจสอบหลักฐานแล้ว"; // สีแดง
-                                                } elseif ($_status == 2) {
-                                                    $_statusStr = "ตัดยอดงบประมาณแล้ว"; // สีเขียว
-                                                } elseif ($_status == 3) {
-                                                    $_statusStr = "ทำระบบ PO แล้ว"; // สีฟ้า
-                                                } elseif ($_status == 4) {
-                                                    $_statusStr = "เบิกจ่ายแล้ว"; // สีน้ำเงิน
-                                                } elseif ($_status == 5) {
-                                                    $_statusStr = "เอกสารผิดพลาด"; // เหลือง
-                                                }
-                                                echo "<font size='3' color='#000099'>$_status : $_statusStr</font>"
+                                                    $pic = NULL;
+                                                    $_status = $objResult['item_status'];
+                                                    $_statusStr = "";
+                                                    if ($_status == 0) {
+                                                        $pic = "image/status0.png";
+                                                        $_statusStr = "สถานศึกษา ขอเบิก"; // สีแดง
+                                                    } elseif ($_status == 1) {
+                                                        $pic = "image/status1.png";
+                                                        $_statusStr = "ตรวจสอบหลักฐานแล้ว"; // สีแดง
+                                                    } elseif ($_status == 2) {
+                                                        $pic = "image/status2.png";
+                                                        $_statusStr = "ตัดยอดงบประมาณแล้ว"; // สีเขียว
+                                                    } elseif ($_status == 3) {
+                                                        $pic = "image/status3.png";
+                                                        $_statusStr = "ทำระบบ PO แล้ว"; // สีฟ้า
+                                                    } elseif ($_status == 4) {
+                                                        $pic = "image/status4.png";
+                                                        $_statusStr = "เบิกจ่ายแล้ว"; // สีน้ำเงิน
+                                                    } elseif ($_status == 5) {
+                                                        $pic = "image/status5.png";
+                                                        $_statusStr = "เอกสารผิดพลาด"; // เหลือง
+                                                    }
+
+                                                    // echo "<font size='3' color='#000099'>$_status : $_statusStr</font>"
+                                                    if ($_status == 5){
+                                                        echo "<div align='center'><img src='$pic' width='90%' border='0' alt='$_statusStr'></div> "; 
+                                                    }else{
+                                                        echo "<div align='center' width='100'><img src='$pic' width='90%' border='0' alt='$_statusStr'></div> "; 
+                                                    }
                                                 ?>
                                             </td style="text-align:right;vertical-align:middle">
 

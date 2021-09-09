@@ -15,7 +15,7 @@ $query_Recordset1 = "SELECT *
                         ORDER BY id DESC";
 $Recordset1 = mysql_query($query_Recordset1, $objConnect) or die(mysql_error());
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
-echo "row l = " . $totalRows_Recordset1;
+// echo "row l = " . $totalRows_Recordset1;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" []>
@@ -66,9 +66,15 @@ echo "row l = " . $totalRows_Recordset1;
                                 <div align="center">
                                     <TABLE width="70%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
                                         <TR>
-                                            <TD rowspan="2">
+                                            <!-- <td>
+                                                <button>กำลังดำเนินการ</button>
+                                            </td>
+                                            <td>
+                                                <button>ทั้งหมด</button>
+                                            </td> -->
+                                            <td rowspan="2">
                                                 <div align='right'><a href="cover_sheet_add.php"><img src="image/filesaveas.jpg" width="24" height="24" border="0" alt="เพิ่มข้อมูล"><br>เพิ่มข้อมูล</a></div>
-                                            </TD>
+                                            </td>
                                         </tr>
                                         <tr>
                                         </TR>
