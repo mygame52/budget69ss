@@ -136,110 +136,113 @@ $cover_sheet_user = $cover_sheet["u_ser"];
 								$objQuery = mysql_query($sqlStr) or die("Error Query [" . $sqlStr . "]");
 								$j = 0;
 								?>
-                                <table width="80%" border="0" align="center" cellspacing="3">
-                                    <tr bgcolor="#43d1eb">
-                                        <!-- <th scope="col">csi_id</th> -->
-                                        <th scope="col"> ที่ </th>
-                                        <th scope="col"> หน่วยงาน/สถานศึกษา</th>
-                                        <th scope="col"> ID</th>
-                                        <th scope="col"> เลขที่เอกสาร</th>
-                                        <th scope="col"> รายการ</th>
-                                        <th scope="col"> งบประมาณ</th>
-                                        <th scope="col"> หมายเหตุ</th>
-                                    </tr>
-                                    <?
-										while($objResult = mysql_fetch_array($objQuery)) {
-                                                $j++;
-												$i=($j%2);
-												$total_bath = $total_bath + $objResult["item_bath"];
-                                                ?>
-                                    <tr <?if($i==1){echo "bgcolor='#FFFFCC'" ;}?> >
-                                        <!-- 
-                                        <td style="text-align:center;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo $objResult["cover_sheet_item_id"]; ?>
-                                            </font>
-                                        </td> -->
-                                        <td style="text-align:center;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo $j ?>
-                                            </font>
-                                        </td>
-                                        <td style="text-align:left;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo $objResult["amp_name"]; ?>
-                                            </font>
-                                        </td>
-                                        <td style="text-align:right;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo $objResult["id_item"];  ?>
-                                            </font>
-                                        </td>
-                                        <td style="text-align:right;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? 
-                                                    $item_doc_result = $objResult["item_doc"];
-                                                    $running = true;
-                                                    $findme_1 = "ลว";
-                                                    $findme_2 = "ลงวัน";
-
-                                                    $pos_1 = strpos($objResult["item_doc"], $findme_1);
-                                                    $pos_2 = strpos($objResult["item_doc"], $findme_2);
-
-                                                    // echo "pos_1=" . $pos_1;
-                                                    // echo "<br>";
-                                                    // echo "pos_2=" . $pos_2;
-
-                                                    if ($pos_1 !== false) {
-                                                        $item_doc_result = substr($objResult["item_doc"], 0, $pos_1);
-                                                    } 
-
-                                                    if ($pos_2 !== false) {
-                                                        $item_doc_result = substr($objResult["item_doc"], 0, $pos_2);
-                                                    }
-
-                                                    echo $item_doc_result;
-                                                ?>
-                                            </font>
-                                        </td>
-                                        <td style="text-align:right;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo $objResult["item_item"]; ?>
-                                            </font>
-                                        </td>
-                                        <td style="text-align:right;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo number_format($objResult["item_bath"], 2) ?>
-                                            </font>
-                                        </td>
-                                        <td style="text-align:right;vertical-align:middle;">
-                                            <font size="3" color="#000099">
-                                                <? echo $objResult["cover_sheet_item_remark"]; ?>
-                                            </font>
-                                        </td>  
-                                    </tr>
-                                    <? } ?>
-                                    <tr bgcolor="#FFCCCC">
-                                        <!-- <td></td> -->
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div style="text-align:right;">รวมงบประมาณ</div>
-                                        </td>
-                                        <td>
-                                            <div style="text-align:right">
+                                 <div align="center">
+                                    <table width="80%" border="0" align="center" cellspacing="3">
+                                        <tr bgcolor="#43d1eb">
+                                            <!-- <th scope="col">csi_id</th> -->
+                                            <th scope="col"> ที่ </th>
+                                            <th scope="col"> หน่วยงาน/สถานศึกษา</th>
+                                            <th scope="col"> ID</th>
+                                            <th scope="col"> เลขที่เอกสาร</th>
+                                            <th scope="col"> รายการ</th>
+                                            <th scope="col"> งบประมาณ</th>
+                                            <th scope="col"> หมายเหตุ</th>
+                                        </tr>
+                                        <?
+                                            while($objResult = mysql_fetch_array($objQuery)) {
+                                                    $j++;
+                                                    $i=($j%2);
+                                                    $total_bath = $total_bath + $objResult["item_bath"];
+                                                    ?>
+                                        <tr <?if($i==1){echo "bgcolor='#FFFFCC'" ;}?> >
+                                            <!-- 
+                                            <td style="text-align:center;vertical-align:middle;">
                                                 <font size="3" color="#000099">
-                                                    <? echo number_format($total_bath, 2); ?>
+                                                    <? echo $objResult["cover_sheet_item_id"]; ?>
                                                 </font>
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                
-                                    </tr>
+                                            </td> -->
+                                            <td style="text-align:center;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? echo $j ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:left;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? echo $objResult["amp_name"]; ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:right;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? echo $objResult["id_item"];  ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:right;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? 
+                                                        $item_doc_result = $objResult["item_doc"];
+                                                        $running = true;
+                                                        $findme_1 = "ลว";
+                                                        $findme_2 = "ลงวัน";
 
-                                </table>
+                                                        $pos_1 = strpos($objResult["item_doc"], $findme_1);
+                                                        $pos_2 = strpos($objResult["item_doc"], $findme_2);
+
+                                                        // echo "pos_1=" . $pos_1;
+                                                        // echo "<br>";
+                                                        // echo "pos_2=" . $pos_2;
+
+                                                        if ($pos_1 !== false) {
+                                                            $item_doc_result = substr($objResult["item_doc"], 0, $pos_1);
+                                                        } 
+
+                                                        if ($pos_2 !== false) {
+                                                            $item_doc_result = substr($objResult["item_doc"], 0, $pos_2);
+                                                        }
+
+                                                        echo $item_doc_result;
+                                                    ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:right;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? echo $objResult["item_item"]; ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:right;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? echo number_format($objResult["item_bath"], 2) ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:right;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? echo $objResult["cover_sheet_item_remark"]; ?>
+                                                </font>
+                                            </td>  
+                                        </tr>
+                                        <? } ?>
+                                        <tr bgcolor="#FFCCCC">
+                                            <!-- <td></td> -->
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <div style="text-align:right;">รวมงบประมาณ</div>
+                                            </td>
+                                            <td>
+                                                <div style="text-align:right">
+                                                    <font size="3" color="#000099">
+                                                        <? echo number_format($total_bath, 2); ?>
+                                                    </font>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                    
+                                        </tr>
+
+                                    </table>
+                                </div>
+
                                 <!-- end การแก้ไขข้อมูล -->
 
                                 <?php include("./include/footer.inc"); ?>

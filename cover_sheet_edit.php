@@ -158,7 +158,6 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             <th scope="col"> งบประมาณ</th>
                                             <th scope="col"> หมายเหตุ</th>
                                             <th scope="col"> สถานะ</th>
-                                            <th scope="col"> ตรวจสอบ</th>
                                             <th scope="col"> ดำเนินการ</th>
                                         </tr>
                                         <?
@@ -269,27 +268,6 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                     }
                                                 ?>
                                             </td style="text-align:right;vertical-align:middle">
-
-
-                                            <td <?php 
-                                                    if($objResult['item_status'] == 0 || $objResult['item_status'] == 1) {
-                                                        echo "bgcolor='orangered'" ;
-                                                    } elseif($objResult['item_status'] == 2) {
-                                                        echo "bgcolor='limegreen'";
-                                                    } elseif ($objResult['item_status'] == 3) {
-                                                        echo "bgcolor='aquablue'";
-                                                    } elseif ($objResult['item_status'] == 4) {
-                                                        echo "bgcolor='aqua'";
-                                                    } elseif ($objResult['item_status'] == 5) {
-                                                        echo "bgcolor='#FBC02D'";
-                                                    }
-                                                ?>>
-                                                <!-- <?php 
-                                                    if ($objResult['item_status'] == 4) {
-                                                        echo "<font size='3' color='white'></font>";
-                                                    }
-                                                ?> -->
-                                            </td>
                                     
                                             <td style="text-align:center;vertical-align:middle;">
                                                 <a href="cover_sheet_item_del.php?cover_sheet_item_id=<?= $objResult['cover_sheet_item_id']; ?>&cover_sheet_id=<?= $cover_sheet_id?>">
@@ -320,14 +298,12 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
                                         </tr>
                                         <form name="frmMain" method="post" action="cover_sheet_item_add.php">
                                             <input type="hidden" name="cover_sheet_id"
                                                 value="<? echo $cover_sheet_id ?>" />
                                             <tr bgcolor="#FFCCCC">
                                                 <!-- <td></td> -->
-                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
