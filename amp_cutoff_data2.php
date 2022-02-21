@@ -219,6 +219,9 @@ if (!isset($bath_t)) {
                                                 <?php
                                                 echo "<tr><td><div align='right'></div></td><td>";
                                                 if ((($bath1 > $lua) and ( $cmoney != 1)) or ( ($bath_berg > $lua) and ( $cmoney != 1))) {
+                                                    // echo "bath1: " . $bath1 . "<br>";
+                                                    // echo "bath_berg: " . $bath_berg . "<br>";
+                                                    // echo "cmoney: " . $cmoney . "<br>";
                                                     echo "<font color='#ff0000' size='3'><h2>จำนวนเงินไม่พอ </h2></font><br>";
 //							echo"<A HREF='amp_cutoff.php'>กลับ</A>";
                                                     exit();

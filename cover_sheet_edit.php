@@ -158,7 +158,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             <th scope="col"> งบประมาณ</th>
                                             <th scope="col"> หมายเหตุ</th>
                                             <th scope="col"> สถานะ</th>
-                                            <th scope="col"> ดำเนินการ</th>
+                                            <th scope="col"></th>
                                         </tr>
                                         <?
                                             while($objResult = mysql_fetch_array($objQuery)) {
@@ -306,17 +306,17 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                 <!-- <td></td> -->
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
                                                 <td>
                                                     <input size="5" name="item_id" id="item_id" type="number"
                                                         placeholder="กรอก ID" />
                                                     <input name="cover_sheet_but_submit" type="submit" id="btnSubmit" value="เพิ่ม">
                                                 </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         </form>
                                     </table>

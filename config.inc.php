@@ -1,8 +1,8 @@
 ﻿<?php
-$path="budget64";  // ชื่อโฟลเดอร์ของโปรแกรม
+$path="budget65";  // ชื่อโฟลเดอร์ของโปรแกรม
 $dbserver = 'localhost';  //  
 $dbuser = 'root';
-$dbname= 'budget_data64';
+$dbname= 'budget_data65';
 $dbpass= "q=ku4flry0Gy";
 //$objConnect = mysql_connect($dbserver,$dbuser,$dbpass) or die("Error Connect to Database");
 
@@ -23,8 +23,8 @@ error_reporting(E_ALL);
 mysql_query("SET NAMES UTF8");
 $pro_use = "จังหวัดนครศรีธรรมราช";
 $mess_title = "ระบบบริหารงบประมาณ : สำนักงาน กศน.".$pro_use;
-$mess_header1 = "ระบบบริหารงบประมาณ e-Budget64";
-$mess_header_graph = "Graph for Budget 2564";
+$mess_header1 = "ระบบบริหารงบประมาณ e-Budget65";
+$mess_header_graph = "Graph for Budget 2565";
 $mess_header2 = "<br>สำนักงาน กศน.".$pro_use;
 $mess_book = "สำนักงาน กศน.".$pro_use;
 $mess_budget = "BMS : Budget Management Nakhon Si Thammarat";
