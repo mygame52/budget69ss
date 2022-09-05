@@ -41,13 +41,39 @@ $item_sql_1 = "SELECT i.amp_item,
                     INNER JOIN amp ON amp.id = i.amp_item
                     WHERE date_time LIKE '$date_time'
                     ORDER BY i.id_item DESC
-                    LIMIT 300";
+                    LIMIT 500";
 $item_query_1 = mysql_query($item_sql_1, $objConnect) or die(mysql_error());
 $row_count = mysql_num_rows($item_query_1);
 
+$total_1111 = 0;
+$total_2222 = 0;
+$total_3333 = 0;
 $total_4444 = 0;
 $total_5555 = 0;
 $total_6666 = 0;
+$total_7777 = 0;
+$total_8888 = 0;
+
+$status0_1111 = 0;
+$status1_1111 = 0;
+$status2_1111 = 0;
+$status3_1111 = 0;
+$status4_1111 = 0;
+$status5_1111 = 0;
+
+$status0_2222 = 0;
+$status1_2222 = 0;
+$status2_2222 = 0;
+$status3_2222 = 0;
+$status4_2222 = 0;
+$status5_2222 = 0;
+
+$status0_3333 = 0;
+$status1_3333 = 0;
+$status2_3333 = 0;
+$status3_3333 = 0;
+$status4_3333 = 0;
+$status5_3333 = 0;
 
 $status0_4444 = 0;
 $status1_4444 = 0;
@@ -70,13 +96,115 @@ $status3_6666 = 0;
 $status4_6666 = 0;
 $status5_6666 = 0;
 
+$status0_7777 = 0;
+$status1_7777 = 0;
+$status2_7777 = 0;
+$status3_7777 = 0;
+$status4_7777 = 0;
+$status5_7777 = 0;
+
+$status0_8888 = 0;
+$status1_8888 = 0;
+$status2_8888 = 0;
+$status3_8888 = 0;
+$status4_8888 = 0;
+$status5_8888 = 0;
+
 $item_query_calc = mysql_query($item_sql_1, $objConnect) or die(mysql_error());
 
 for ($i = 0; $i < $row_count; $i++) {
     $item_array = mysql_fetch_array($item_query_calc);
+    $samnak_code_sam =  substr(trim($item_array['c_khong']), 2, 4);
+
+    // ----------------- 1111 -----------------------
+    if ($samnak_code_sam == '1111') {
+        $total_1111++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_1111++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_1111++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_1111++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_1111++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_1111++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_1111++;
+        }
+    }
+
+    // ----------------- 2222 -----------------------
+    if ($samnak_code_sam == '2222') {
+        $total_2222++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_2222++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_2222++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_2222++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_2222++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_2222++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_2222++;
+        }
+    }
+
+    // ----------------- 3333 -----------------------
+    if ($samnak_code_sam == '3333') {
+        $total_3333++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_3333++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_3333++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_3333++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_3333++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_3333++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_3333++;
+        }
+    }
 
     // ----------------- 4444 -----------------------
-    if (substr(trim($item_array['c_khong']), 2, 4) == '4444') {
+    if ($samnak_code_sam == '4444') {
         $total_4444++;
 
         if ($item_array['staus'] == 0) {
@@ -106,7 +234,7 @@ for ($i = 0; $i < $row_count; $i++) {
     }
     
     // ----------------- 5555 -----------------------
-    if (substr(trim($item_array['c_khong']), 2, 4) == '5555') {
+    if ($samnak_code_sam == '5555') {
         $total_5555++;
   
         if ($item_array['staus'] == 0) {
@@ -136,7 +264,7 @@ for ($i = 0; $i < $row_count; $i++) {
     }
 
     // ----------------- 6666 -----------------------
-    if (substr(trim($item_array['c_khong']), 2, 4) == '6666') {
+    if ($samnak_code_sam == '6666') {
         $total_6666++;
 
         if ($item_array['staus'] == 0) {
@@ -161,6 +289,66 @@ for ($i = 0; $i < $row_count; $i++) {
 
         if ($item_array['staus'] == 5) {
             $status5_6666++;
+        }
+        
+    }
+
+    // ----------------- 7777 -----------------------
+    if ($samnak_code_sam == '7777') {
+        $total_7777++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_7777++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_7777++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_7777++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_7777++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_7777++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_7777++;
+        }
+        
+    }
+
+    // ----------------- 8888 -----------------------
+    if ($samnak_code_sam == '8888') {
+        $total_8888++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_8888++;
+        }
+        
+        if ($item_array['staus'] == 1) {
+            $status1_8888++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_8888++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_8888++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_8888++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_8888++;
         }
         
     }
@@ -232,7 +420,10 @@ for ($i = 0; $i < $row_count; $i++) {
                                 <h2 class="rnut-postheader" style="text-align: center;">รายงานบันทึกการเบิกจ่ายรายวัน</h2>
                                 <br/>
                                 <div align="center">
-                                    <font size="6" color="blue"> <?php echo "วันที่: " . $time; ?></font size="5" color="blue">    
+                                    <font size="5" color="blue"> <?php echo "บันทึกวันที่: " . $time; ?></font size="5" color="blue">    
+                                </div>
+                                <div align="center">
+                                    <font size="5" color="blue"> <?php echo "จำนวน: " . $row_count . " รายการ"; ?></font size="5" color="blue">    
                                 </div>
                                 <!-- <h3> <?php echo "date: " . $date; ?></h3> -->
                                 <!-- <h3> <?php echo "date_time: " . $date_time; ?></h3> -->
@@ -241,51 +432,92 @@ for ($i = 0; $i < $row_count; $i++) {
                                     <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
                                         <tr style="background-color: aqua;">
                                             <th scope="col"></th>
-                                            <th scope="col"><font size="5">4444</font></th>
-                                            <th scope="col"><font size="5">5555</font></th>
-                                            <th scope="col"><font size="5">6666</font></th>
+                                            <!-- 1111 บุคลากร -->
+                                            <th scope="col"><font size="4">1111 <br>บุคลากร</font></th> 
+                                            <th scope="col"><font size="4">2222 <br>งบลงทุน ผลผลิตที่ 4</font></th> 
+                                            <th scope="col"><font size="4">3333 <br>งบลงทุน ผลผลิตที่ 5</font></th> 
+                                            <th scope="col"><font size="4">4444 <br>งบดำเนินงาน ผลผลิตที่ 4</font></th>
+                                            <th scope="col"><font size="4">5555 <br>งบดำเนินงาน ผลผลิตที่ 5</font></th>
+                                            <th scope="col"><font size="4">6666 <br>งบเงินอุดหนุน</font></th>
+                                            <th scope="col"><font size="4">7777 <br>งบประมาณอื่นๆ</font></th>
+                                            <th scope="col"><font size="4">8888 <br>งบรายจ่ายอื่น</font></th>
                                         </tr>    
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td><div align="center"><font size="5">ทั้งหมด</font></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_8888; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status0.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_8888; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status1.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_8888; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status2.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_8888; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status3.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_8888; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td><div align='center'><img src='image/status4.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_8888; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td><div align='center'><img src='image/status5.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_1111; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_2222; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_3333; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_4444; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_5555; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_6666; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_7777; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_8888; ?></font></td>
                                         </tr>
                                     </table>
                                 </div>
