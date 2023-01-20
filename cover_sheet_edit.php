@@ -69,6 +69,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                     <div class="rnut-box rnut-post">
                         <div class="rnut-box-body rnut-post-body">
                             <div class="rnut-post-inner rnut-article">
+                                <a name="top"></a>
                                 <h2 class="rnut-postheader" style="text-align: center;">แก้ไขข้อมูลใบปะหน้า</h2>
 								<br>
 								<div align="center">
@@ -320,6 +321,11 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             </tr>
                                         </form>
                                     </table>
+                                    <div>
+                                        <a href="cover_sheet_detail.php?cover_sheet_id=<? echo $cover_sheet_id; ?>">
+                                            <button>รายงาน</button>
+                                        </a>
+                                    </div>
                                 </div>
                                 <!-- end การแก้ไขข้อมูล -->
                                 
