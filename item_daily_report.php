@@ -420,10 +420,31 @@ for ($i = 0; $i < $row_count; $i++) {
                                 <h2 class="rnut-postheader" style="text-align: center;">รายงานบันทึกการเบิกจ่ายรายวัน</h2>
                                 <br/>
                                 <div align="center">
+                                    <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
+                                        <tr>
+                                            <form id="item_daily_report_form" action="item_daily_report.php" method="post">
+                                                <!-- <td>
+                                                    <div class="">วันที่</div>
+                                                </td> -->
+                                                <td>	
+                                                    <input autocomplete="off" type="text" name="dateInput" id="dateInput" size="13" style="font: 12pt tahoma; color: #ff0000;background: #eff48a; border: 1px black solid" align="center" placeholder="เลือกวันที่บันทึก" />
+                                                    <br>
+                                                    <?php $dateInput=''?>
+
+                                                    <INPUT TYPE="hidden" name="dateinput" value=<?=$dateInput?>>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div align="center">
                                     <font size="5" color="blue"> <?php echo "บันทึกวันที่: " . $time; ?></font size="5" color="blue">    
                                 </div>
                                 <div align="center">
                                     <font size="5" color="blue"> <?php echo "จำนวน: " . $row_count . " รายการ"; ?></font size="5" color="blue">    
+                                </div>
+                                <div align="center" >                                            
+                                    <a href="#bottom"><font size="3">Bottom</font></a>
                                 </div>
                                 <!-- <h3> <?php echo "date: " . $date; ?></h3> -->
                                 <!-- <h3> <?php echo "date_time: " . $date_time; ?></h3> -->
@@ -524,34 +545,7 @@ for ($i = 0; $i < $row_count; $i++) {
 
                                 <br>
                                 
-                                <div align="center" >                                            
-                                    <a href="#bottom"><font size="3">Bottom</font></a>
-                                </div>
-                                <br>
                                 <div align="center">
-                                    <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
-                                        <tr>
-                                            <form id="item_daily_report_form" action="item_daily_report.php" method="post">
-                                                <td>
-                                                    <div class="">วันที่</div>
-                                                </td>
-                                                <td>	
-                                                    <input autocomplete="off" type="text" name="dateInput" id="dateInput" size="13" style="font: 12pt tahoma; color: #ff0000;background: #eff48a; border: 1px black solid" align="center" />
-                                                    <br>
-                                                    <?php $dateInput=''?>
-
-                                                    <INPUT TYPE="hidden" name="dateinput" value=<?=$dateInput?>>
-                                                </td>
-                                                <!-- <td>
-                                                    <input type="submit" value=" ตกลง ">
-                                                </td> -->
-                                            </form>
-                                        </tr>
-                                        <tr>
-                                        </tr>
-                                    </table>
-
-                                    
                                     <table width="90%" align="center" border="0" cellspacing="1" cellpadding="3">
                                         <tr bgcolor='#FFCC00'>
                                     
