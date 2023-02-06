@@ -119,6 +119,9 @@ $hid1 = "03";
                                             <li>
                                                 <a href="./report_director/prov_report_classification_job.php"><img src="image/icon/download.png" width="16" height="16" border="0" alt="">&nbsp;&nbsp;ค้นหารายการเบิกจ่าย</a>
                                             </li>
+                                            <li>
+                                                <a href="./report_director/prov_report_item_error_list.php"><img src="image/icon/blog.png" width="16" height="16" border="0" alt="">&nbsp;&nbsp;เอกสารผิดพลาด</a>
+                                            </li>
                                             </ul>
                                             </li>	
                                             <li>

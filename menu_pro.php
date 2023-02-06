@@ -67,6 +67,9 @@ if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $use
                                  echo "</li>";
                              }
                             ?>
+                            <li>
+                                <a href="./item_error_list.php"><img src="image/icon/blog.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;เอกสารผิดพลาด</a>
+                            </li>
 
                             <?php
                             if ($sit == 9) {
