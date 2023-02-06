@@ -12,7 +12,20 @@ if (trim($hid1) <> "03") {
 
 $r = 0;
 mysql_select_db($dbname, $objConnect);
-$query_Recordset1 = "SELECT * FROM item where staus=5";
+// $query_Recordset1 = "SELECT * FROM item where staus=5";
+$query_Recordset1 = "SELECT  
+                        item.id_item AS item_id_item,
+                        item.amp_item AS item_amp_item,
+                        item.id_yuem  AS item_id_yuem,
+                        item.item AS item_item,
+                        item.doc AS item_doc,
+                        item.date_time AS item_date_time,
+                        item.bath AS item_bath,
+                        item.staus AS item_staus,
+                        amp.Name AS amp_name
+                        FROM `item`
+                        INNER JOIN amp ON amp.id = item.amp_item
+                        WHERE staus=5";
 $Recordset1 = mysql_query($query_Recordset1, $objConnect) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
@@ -67,6 +80,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                         <tr bgcolor="#00ff99" align="center">
                                             <font size="2" color="#3300ff">
                                                 <th width="10%" scope="col">ID</th>
+                                                <th width="10%" scope="col">สถานศึกษา</th>
                                                 <th width="30%" scope="col">รายการ</th>
                                                 <th width="10%" scope="col">ที่เอกสาร</th>
                                                 <th width="10%" scope="col">เวลาที่บันทึก</th>
@@ -94,24 +108,25 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                                     } ?> class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
 
                                                     <font size="2" color="#003333">
-                                                        <?php $i_del = $row_Recordset1['id_item']; ?>
-                                                        <?php $am_del = $row_Recordset1['amp_item']; ?>
-                                                        <?php $id_yuem_del = $row_Recordset1['id_yuem']; ?>
-                                                        <td style="text-align: center;vertical-align:middle;"><?php echo $row_Recordset1['id_item']; ?></td>
-                                                        <?php $i_tem = $row_Recordset1['item'];
+                                                        <?php $i_del = $row_Recordset1['item_id_item']; ?>
+                                                        <?php $am_del = $row_Recordset1['item_amp_item']; ?>
+                                                        <?php $id_yuem_del = $row_Recordset1['item_id_yuem']; ?>
+                                                        <td style="text-align: center;vertical-align:middle;"><?php echo $row_Recordset1['item_id_item']; ?></td>
+                                                        <td style="text-align: center;vertical-align:middle;"><?php echo $row_Recordset1['amp_name']; ?></td>
+                                                        <?php $i_tem = $row_Recordset1['item_item'];
                                                         ?>
-                                                        <td style="vertical-align:middle;"><?php echo $row_Recordset1['item']; ?></td>
-                                                        <td style="vertical-align:middle;"><?php echo $row_Recordset1['doc']; ?></td>
-                                                        <td style="text-align: center;vertical-align:middle;"><?php echo $row_Recordset1['date_time']; ?></td>
+                                                        <td style="vertical-align:middle;"><?php echo $row_Recordset1['item_item']; ?></td>
+                                                        <td style="vertical-align:middle;"><?php echo $row_Recordset1['item_doc']; ?></td>
+                                                        <td style="text-align: center;vertical-align:middle;"><?php echo $row_Recordset1['item_date_time']; ?></td>
                                                         <td style="vertical-align:middle;">
                                                             <div align="right">
 
                                                                 <?php
-                                                                $bath = $row_Recordset1['bath'];
+                                                                $bath = $row_Recordset1['item_bath'];
                                                                 if (substr($i_tem, 0, 37) == "ล้างเงินยืม :- ") {
                                                                     $total = $total + 0;
                                                                 } else {
-                                                                    $total = $total + $row_Recordset1['bath'];
+                                                                    $total = $total + $row_Recordset1['item_bath'];
                                                                 }
                                                                 echo number_format($bath, 2);
                                                                 ?>
@@ -119,8 +134,8 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                                                 <div>
                                                         </td>
                                                         <td><?php
-                                                            $ta = $row_Recordset1['staus'];
-                                                            if ($row_Recordset1['bath'] < 1) {
+                                                            $ta = $row_Recordset1['item_staus'];
+                                                            if ($row_Recordset1['item_bath'] < 1) {
                                                             } else {
 
                                                                 if ($ta == 0) {
