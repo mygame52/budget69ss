@@ -206,7 +206,9 @@ if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $use
                         <li>
                             <a href="./prov_report_delete.php"><img src="image/icon/cross.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;ตรวจสอบ id ที่ลบ</a>
                         </li>
-
+                        <li>
+                            <a href="./prov_report_amp_delete.php"><img src="image/icon/cross.png" width="16" height="16" border="0" alt="" />&nbsp;&nbsp;ตรวจสอบ id ที่อำเภอที่ลบ</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
