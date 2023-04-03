@@ -119,9 +119,17 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 
                                                         </div></td>
 
-                                                    <td><div align="right"><!-- เหลือ --><?php
-                                                            echo number_format($trab - $row_Recordset1['rua'], 2);
-                                                            // $totalrua = $totalrua + $row_Recordset1['rua'];
+                                                    <td><div align="right"><!-- คงเหลือ --><?php
+                                                            //echo number_format($trab - $row_Recordset1['rua'], 2);
+                                                             $totalrua = $trab - $row_Recordset1['rua'];
+															 if($totalrua<0){
+																 $show_num = $totalrua;
+																 $show_ret = preg_replace("-", " ", $show_num);
+																echo number_format($show_ret,2);
+															 }else{
+																echo number_format($totalrua,2);	 
+															 }
+															 
                                                             ?>
 
                                                         </div></td>
