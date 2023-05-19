@@ -5,7 +5,7 @@
 	$p_size=5; //จำนวนแถวที่ใหแสดงต่อ 1 หน้า
     error_reporting(0);
 	session_start();
-	$sel = $_REQUEST['sel'];  // กศน.อำเภอ
+	$sel = $_REQUEST['sel'];  // ศสกร.อำเภอ
 	$find = $_REQUEST['find'];   // คำค้น
 	$ser = $_REQUEST['ser'];    // ค้นด้วยเงิน
 
@@ -84,9 +84,9 @@
 						<TR bgcolor="#FFFFCC">
 							<TD><div align="center">
 									<?php
-									echo "<FONT SIZE='4' COLOR='#FF3300'>รหัส กศน. " ;
+									echo "<FONT SIZE='4' COLOR='#FF3300'>รหัส สกร. " ;
 									if (empty($sel)) {
-										echo "ทุก กศน.</div></td>";
+										echo "ทุก สกร.</div></td>";
 									}else{
 										echo $sel."&nbsp;:&nbsp;".$xxx[$sel]."</div></td>";
 									}
@@ -100,7 +100,7 @@
 
 						<table width="100%" border="2" cellspacing="1" cellpadding="3">
 						  <tr bgcolor="#ffcccc">
-							 <th scope="col">รหัส กศน.</th>
+							 <th scope="col">รหัส สกร.</th>
 							 <th scope="col">id</th>
 							<th scope="col">ชื่องาน/โครงการ</th>
 							<th scope="col">รายการจ่าย</th>

@@ -168,7 +168,7 @@ $rand = rand();
                                                             <div align="left"><font size="3" color="000099">
                                                                     <?php
                                                                     echo $sele_amp . "  :  ";
-                                                                    echo "" . $full_name;  //ชื่อ กศน.อำเภอ
+                                                                    echo "" . $full_name;  //ชื่อ ศสกร.อำเภอ
                                                                     ?></font>
                                                             </div>
                                                         </td>

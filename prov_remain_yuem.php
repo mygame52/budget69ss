@@ -59,7 +59,7 @@ mysql_select_db($dbname, $objConnect);
 						<div class="rnut-box rnut-post">
 						<div class="rnut-box-body rnut-post-body">
 						<div class="rnut-post-inner rnut-article">
-						<h2 class="rnut-postheader" style="text-align: center;">รายงานเงินยืม ค้างส่ง  กศน.จังหวัด</h2>
+						<h2 class="rnut-postheader" style="text-align: center;">รายงานเงินยืม ค้างส่ง  สกร.จังหวัด</h2>
 
 <!-- // Start editor -->
 

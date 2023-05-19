@@ -146,7 +146,7 @@ if (!isset($date_work)) {
                                                                 $_SESSION[$date_work] = $date_work;
 //echo $_SESSION[$date_work];
                                                                 echo $sele_amp . "  :  ";
-                                                                echo "" . $full_name;  //ชื่อ กศน.อำเภอ
+                                                                echo "" . $full_name;  //ชื่อ ศสกร.อำเภอ
                                                                 $id_yuem_ = $id_personyuem;
 // ------------ ดึงข้อมูล ผู้ยืมเงิน
                                                                 $psqls = "SELECT * FROM person_yuem where id_yuem =$id_yuem_";

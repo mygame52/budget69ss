@@ -117,7 +117,7 @@
                     <div class="rnut-box-body rnut-vmenublockcontent-body">
                 <ul class="rnut-vmenu">
 	<li>
-		<a href="./home.html" class="active">สถานะ กศน.อำเภอ</a>
+		<a href="./home.html" class="active">สถานะ ศสกร.อำเภอ</a>
 	</li>	
 	<li>
 		<a href="./new-page.html">ตรวจสอบ:ค้างเงินยืม</a>

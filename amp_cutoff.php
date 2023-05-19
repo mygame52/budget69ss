@@ -74,7 +74,7 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
                                         <?php
                                         if ($totalRows_Recordset2 == 0) {
                                             echo "<div align='center'><font size='3' color=''> ยังไม่ได้รับการจัดสรรงบประมาณ </font><br></div>";
-                                            echo "<div align='center'><font size='3' color=''> กรุณาติดต่อ สำนักงาน กศน.จังหวัด </font></div>";
+                                            echo "<div align='center'><font size='3' color=''> กรุณาติดต่อ สำนักงานส่งเสริมการเรียนรู้จังหวัด </font></div>";
                                             echo "<meta http-equiv=\"refresh\" content=\"5;URL=menu_amp.php\" />";
                                         }else{
                                         ?>

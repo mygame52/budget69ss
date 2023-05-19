@@ -141,7 +141,7 @@ $hid1 = "03";
                                                                     <h2 class="t"><font size="3">มุมบริการ</font></h2>
                                                                 </div>
                                                                 <div class="rnut-postcontent">
-                                                                    <font size="3">: กศน.จังหวัด</font>
+                                                                    <font size="3">: สกร.จังหวัด</font>
                                                                     <ul class="rnut-vmenu">
                                                                         <li>    
                                                                             <font size="2"><a href="./direct_remain_yuem.php">ตรวจสอบ:ผู้ค้างเงินยืม</a></font>
@@ -150,7 +150,7 @@ $hid1 = "03";
                                                                             <font size="2"><a href="./direct_yuem_person_show.php">ตรวจสอบ:สิทธิยืมเงิน</a></font>
                                                                         </li>
                                                                     </ul>
-                                                                    <font size="3">: กศน.อำเภอ</font>                                                                                                                                                 
+                                                                    <font size="3">: ศสกร.อำเภอ</font>                                                                                                                                                 
                                                                     <ul class="rnut-vmenu">                                                                                                                                                    
                                                                         <li>
                                                                             <font size="2"><a href="./direct_remain_yuem_amp.php">ตรวจสอบ:ค้างเงินยืม</a></font>

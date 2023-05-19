@@ -345,7 +345,7 @@ if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $use
                             </h2>
                         </div>
                         <div class="rnut-postcontent">
-                            <font size="2">: กศน.จังหวัด</font>
+                            <font size="2">: สกร.จังหวัด</font>
                             <ul class="rnut-vmenu">
                                 <li>
                                     <font size="2"><a href="./prov_remain_yuem.php">ตรวจสอบ:ผู้ค้างเงินยืม</a></font>
@@ -354,7 +354,7 @@ if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $use
                                     <font size="2"><a href="./prov_yuem_person_show.php">ตรวจสอบ:สิทธิยืมเงิน</a></font>
                                 </li>
                             </ul>
-                            <font size="2">: กศน.อำเภอ</font>
+                            <font size="2">: ศสกร.อำเภอ</font>
                             <ul class="rnut-vmenu">
                                 <li>
                                     <font size="2"><a href="./prov_remain_yuem_amp.php">ตรวจสอบ:ค้างเงินยืม</a></font>

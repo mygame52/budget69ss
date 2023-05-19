@@ -38,7 +38,7 @@
                             <div class="rnut-box-body rnut-post-body">
                                 <div class="rnut-post-inner rnut-article">
 
-                                    <h2 class="rnut-postheader" style="text-align: center;">ผู้บริหาร กศน.จังหวัด Login</h2>
+                                    <h2 class="rnut-postheader" style="text-align: center;">ผู้บริหาร สกร.จังหวัด Login</h2>
                                     <!-- <div class="rnut-postcontent">
                                                                     <p style="text-align: center;">test1</p>
                                                                     <p style="text-align: center;">test2</p>

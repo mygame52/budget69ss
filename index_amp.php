@@ -113,7 +113,7 @@ include("fgets_explode.php"); // manage graph
                         <a href="#" class="active">Home</a>
                     </li>	
                     <li>
-                        <a href="#">กศน.จังหวัด</a>
+                        <a href="#">สกร.จังหวัด</a>
                         <ul>
                             <li>
                                 <a href="login_pro.php"><img src="image/icon/menu_organize.png" width="16" height="16" border="0" alt="">&nbsp;เจ้าหน้าที่</a>
@@ -126,7 +126,7 @@ include("fgets_explode.php"); // manage graph
                         </ul>
                     </li>	
                     <li>
-                        <a href="./login_amp.php">กศน.อำเภอ</a>
+                        <a href="./login_amp.php">ศสกร.อำเภอ</a>
                     </li>	
                     <li>
                         <a href="./#">คู่มือการใช้งาน</a>

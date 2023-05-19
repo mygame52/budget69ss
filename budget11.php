@@ -81,7 +81,7 @@
           <option value="fream3.php">รายงานจำแนกตามสถานศึกษา ...</option>
           <option value="fream4.php">รายงานจำแนกตาม งาน/โครงการ ...</option>
           <option value="search1.php">ค้นหารายการที่เบิกจ่าย...</option>
-          <option value="calculate_up.php">ส่งรายงานให้สำนักงาน กศน.</option>
+          <option value="calculate_up.php">ส่งรายงานให้สำนักงานส่งเสริมการเรียนรู้</option>
           <option value="#">------------------------------------------</option>
 		   <option value="check_yuem.php">ตรวจสอบสถานศึกษาที่ค้างเงินยืม</option>
 

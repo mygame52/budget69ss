@@ -59,7 +59,7 @@ include("config.inc.php");
                                             <FORM METHOD=POST ACTION="amp_cp_update">
                                                 <TABLE align="center">
                                                     <TR>
-                                                        <TD>รหัส กศน อำเภอ. </TD>
+                                                        <TD>รหัส ศสกร.อำเภอ. </TD>
                                                         <TD>
                                                             <INPUT TYPE="text" NAME="id_in">
                                                                 <INPUT TYPE="hidden" name="ch_p" value="<?echo $ch_p?>"/>

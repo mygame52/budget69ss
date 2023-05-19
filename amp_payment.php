@@ -65,7 +65,7 @@
 						<div class="rnut-box rnut-post">
 						<div class="rnut-box-body rnut-post-body">
 						<div class="rnut-post-inner rnut-article">
-						<h2 class="rnut-postheader" style="text-align: center;">การล้างเงินยืม : กศน.อำเภอ<?echo " : ".$full_name;  ?> </h2>
+						<h2 class="rnut-postheader" style="text-align: center;">การล้างเงินยืม : ศสกร.อำเภอ<?echo " : ".$full_name;  ?> </h2>
 
 <!-- start การแก้ไขข้อมูล -->
 <br>

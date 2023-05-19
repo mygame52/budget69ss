@@ -52,7 +52,7 @@ while ($i < $num_rows) {
     $fax = $result['fax'];
     $i++;
 }
-// ค้นหาที่อยู่ หัวหนังสือ จะต้องเป็นของ กศน.อำเภอที่ต้างเงินยืม
+// ค้นหาที่อยู่ หัวหนังสือ จะต้องเป็นของ ศสกร.อำเภอที่ต้างเงินยืม
 $sql = "select * from amp where id='$amp_'";
 $dbquery = mysql_db_query($dbname, $sql);
 @mysql_query("SET NAMES UTF8");
@@ -239,7 +239,7 @@ while ($i < $num_rows) {
     $fax = $result['fax'];
     $i++;
 }
-// ค้นหาที่อยู่ หัวหนังสือ จะต้องเป็นของ กศน.อำเภอที่ต้างเงินยืม
+// ค้นหาที่อยู่ หัวหนังสือ จะต้องเป็นของ ศสกร.อำเภอที่ต้างเงินยืม
 /*$sql = "select * from amp where id='$amp_'";
 $dbquery = mysql_db_query($dbname, $sql);
 @mysql_query("SET NAMES UTF8");
