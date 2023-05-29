@@ -150,7 +150,7 @@ $hid1 = "03";
                                                                             <font size="2"><a href="./direct_yuem_person_show.php">ตรวจสอบ:สิทธิยืมเงิน</a></font>
                                                                         </li>
                                                                     </ul>
-                                                                    <font size="3">: ศสกร.อำเภอ</font>                                                                                                                                                 
+                                                                    <font size="3">: สกร.อำเภอ</font>                                                                                                                                                 
                                                                     <ul class="rnut-vmenu">                                                                                                                                                    
                                                                         <li>
                                                                             <font size="2"><a href="./direct_remain_yuem_amp.php">ตรวจสอบ:ค้างเงินยืม</a></font>

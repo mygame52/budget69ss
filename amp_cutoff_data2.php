@@ -139,7 +139,7 @@ if (!isset($bath_t)) {
                                                         <div align="left"><font size="3" color="000099">&nbsp;
                                                                 <?php
                                                                 echo $sele_amp . "  :  ";
-                                                                echo "" . $full_name;  //ชื่อ ศสกร.อำเภอ
+                                                                echo "" . $full_name;  //ชื่อ สกร.อำเภอ
                                                                 ?></font>
                                                         </div>
                                                     </td>

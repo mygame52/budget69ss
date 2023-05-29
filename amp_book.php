@@ -78,7 +78,7 @@ if ($nums_rows >= 1) {
                                             <FORM METHOD=POST ACTION="amp_book_update.php">
                                                 <TABLE align="center" width="50%">
                                                     <TR>
-                                                        <TD style="text-align: right;vertical-align: middle">ศสกร.อำเภอ </TD>
+                                                        <TD style="text-align: right;vertical-align: middle">สกร.อำเภอ </TD>
                                                         <TD>
                                                             <INPUT TYPE="text" NAME="name" value="<?php echo $name ?>" readonly>
                                                                 <INPUT TYPE="hidden" name="ch_book" value="<?echo $ch_book?>"/>

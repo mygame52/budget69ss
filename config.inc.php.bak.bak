@@ -22,11 +22,11 @@ $THdt= mktime(gmdate("H")+7,gmdate("i")+4,gmdate("s"),gmdate("m")  ,gmdate("d"),
 error_reporting(E_ALL);
 mysql_query("SET NAMES UTF8");
 $pro_use = "จังหวัดนครศรีธรรมราช";
-$mess_title = "ระบบบริหารงบประมาณ : สำนักงาน กศน.".$pro_use;
+$mess_title = "ระบบบริหารงบประมาณ : สำนักงานส่งเสริมการเรียนรู้".$pro_use;
 $mess_header1 = "ระบบบริหารงบประมาณ e-Budget64";
 $mess_header_graph = "Graph for Budget 2564";
-$mess_header2 = "<br>สำนักงาน กศน.".$pro_use;
-$mess_book = "สำนักงาน กศน.".$pro_use;
+$mess_header2 = "<br>สำนักงานส่งเสริมการเรียนรู้".$pro_use;
+$mess_book = "สำนักงานส่งเสริมการเรียนรู้".$pro_use;
 $mess_budget = "BMS : Budget Management Nakhon Si Thammarat";
 $mess_province = $pro_use;;
 

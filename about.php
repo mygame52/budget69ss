@@ -115,7 +115,7 @@
                         </ul>
                     </li>	
                     <li>
-                        <a href="./login_amp.php">ศสกร.อำเภอ</a>
+                        <a href="./login_amp.php">สกร.อำเภอ</a>
                     </li>	
                     <li>
                         <a href="./#">คู่มือการใช้งาน</a>

@@ -53,6 +53,7 @@ $total_5555 = 0;
 $total_6666 = 0;
 $total_7777 = 0;
 $total_8888 = 0;
+$total_9999 = 0;
 
 $status0_1111 = 0;
 $status1_1111 = 0;
@@ -109,6 +110,13 @@ $status2_8888 = 0;
 $status3_8888 = 0;
 $status4_8888 = 0;
 $status5_8888 = 0;
+
+$status0_9999 = 0;
+$status1_9999 = 0;
+$status2_9999 = 0;
+$status3_9999 = 0;
+$status4_9999 = 0;
+$status5_9999 = 0;
 
 $item_query_calc = mysql_query($item_sql_1, $objConnect) or die(mysql_error());
 
@@ -350,7 +358,34 @@ for ($i = 0; $i < $row_count; $i++) {
         if ($item_array['staus'] == 5) {
             $status5_8888++;
         }
+    }
+    // ----------------- 9999 -----------------------
+    if ($samnak_code_sam == '9999') {
+        $total_9999++;
+
+        if ($item_array['staus'] == 0) {
+            $status0_9999++;
+        }
         
+        if ($item_array['staus'] == 1) {
+            $status1_9999++;
+        }
+
+        if ($item_array['staus'] == 2) {
+            $status2_9999++;
+        }
+
+        if ($item_array['staus'] == 3) {
+            $status3_9999++;
+        }
+
+        if ($item_array['staus'] == 4) {
+            $status4_9999++;
+        }
+
+        if ($item_array['staus'] == 5) {
+            $status5_9999++;
+        }
     }
 
 }
@@ -462,6 +497,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <th scope="col"><font size="4">6666 <br>งบเงินอุดหนุน</font></th>
                                             <th scope="col"><font size="4">7777 <br>งบประมาณอื่นๆ</font></th>
                                             <th scope="col"><font size="4">8888 <br>งบรายจ่ายอื่น</font></th>
+                                            <th scope="col"><font size="4">9999 <br>ดิจิทัลชุมชน</font></th>
                                         </tr>    
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td><div align="center"><font size="5">ทั้งหมด</font></div></td>
@@ -473,6 +509,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $total_9999; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status0.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
@@ -484,6 +521,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status0_9999; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status1.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
@@ -495,6 +533,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status1_9999; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status2.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
@@ -506,6 +545,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status2_9999; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td style="text-align:center;vertical-align:middle"><div align='center'><img src='image/status3.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
@@ -517,6 +557,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status3_9999; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td><div align='center'><img src='image/status4.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
@@ -528,6 +569,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status4_9999; ?></font></td>
                                         </tr>
                                         <tr class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand'>
                                             <td><div align='center'><img src='image/status5.png' width='120px' border='0' alt='ส่งเอกสาร'></div></td>
@@ -539,6 +581,7 @@ for ($i = 0; $i < $row_count; $i++) {
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_6666; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_7777; ?></font></td>
                                             <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_8888; ?></font></td>
+                                            <td style="text-align:center;vertical-align:middle"><font size="4"><?php echo $status5_9999; ?></font></td>
                                         </tr>
                                     </table>
                                 </div>

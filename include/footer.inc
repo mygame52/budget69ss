@@ -16,7 +16,7 @@
                             <div class="rnut-footer-text"><font size="3">
 								<p><?php echo $mess_header1?></p>
 								<p>พัฒนาโปรแกรม โดย : <font color="ffff00"> นายอนัตชัย  เกตุแก้ว</font></p>
-								<p><font color="334455"> สำนักงาน กศน.จังหวัดสุราษฎร์ธานี</font></p>
+								<p><font color="334455"> สำนักงานส่งเสริมการเรียนรู้จังหวัดสุราษฎร์ธานี</font></p>
                                                                 <p>Copyright © 2016. All Rights Reserved.&nbsp;&nbsp;<font color="00ff33"> update 16 ตุลาคม 2559</font></p>
 								<p>&nbsp;</p>
 								</font>

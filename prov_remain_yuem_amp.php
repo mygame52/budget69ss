@@ -64,7 +64,7 @@ mysql_select_db($dbname, $objConnect);
 						<div class="rnut-box rnut-post">
 						<div class="rnut-box-body rnut-post-body">
 						<div class="rnut-post-inner rnut-article">
-						<h2 class="rnut-postheader" style="text-align: center;">รายงานเงินยืม ค้างส่ง  ศสกร.อำเภอ</h2>
+						<h2 class="rnut-postheader" style="text-align: center;">รายงานเงินยืม ค้างส่ง  สกร.อำเภอ</h2>
 
 
 <!-- // Start editor -->
@@ -74,7 +74,7 @@ mysql_select_db($dbname, $objConnect);
 <TABLE width="100%" border="1" cellspacing="0" cellpadding="5" align="center">
 					  <tr bgcolor="#E3E1B7">
 						<td scope="col" style="text-align:center"><font size="3" color="#6633ff">เลข ID</font></td>
-						<td scope="col" style="text-align:center"><font size="3" color="#6633ff">ศสกร.อำเภอ</font></td>
+						<td scope="col" style="text-align:center"><font size="3" color="#6633ff">สกร.อำเภอ</font></td>
 						<td scope="col" style="text-align:center"><font size="3" color="#6633ff">รายการเงินยืม </font></td>
 						<td scope="col" style="text-align:center"><font size="3" color="#6633ff">ผู้ยืม</font></td>
 						<td scope="col" style="text-align:center"><font size="3" color="#6633ff">จำนวนเงิน</font></td>

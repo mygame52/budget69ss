@@ -183,7 +183,7 @@
 						
 					<? 
 						echo "  :  ".$sele_amp;
-						echo $full_name;  //ชื่อ ศสกร.อำเภอ
+						echo $full_name;  //ชื่อ สกร.อำเภอ
 						?></div></th>
 				  </tr>
 				  <tr>

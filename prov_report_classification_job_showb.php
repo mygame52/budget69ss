@@ -5,7 +5,7 @@
 	$p_size=5; //จำนวนแถวที่ใหแสดงต่อ 1 หน้า
     error_reporting(0);
 	session_start();
-	$sel = $_REQUEST['sel'];  // ศสกร.อำเภอ
+	$sel = $_REQUEST['sel'];  // สกร.อำเภอ
 	$find = $_REQUEST['find'];   // คำค้น
 	$ser = $_REQUEST['ser'];    // ค้นด้วยเงิน
 
