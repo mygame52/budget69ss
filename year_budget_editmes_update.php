@@ -70,7 +70,10 @@ $result = mysql_query($sql_up);
 							echo "ไม่สามารถทำรายการได้"; 
 							exit(); }
 						echo "<CENTER><font size='3' color='#ff0000'>".' แก้ไขข้อมูล  Record :'. $w_code .'  แล้ว' ."</font></CENTER>";
-						echo "<meta http-equiv=\"refresh\" content=\"3;URL=year_budget_edit_work.php\" />";
+						$sel_w = substr($w_code,2,6);
+						$url = "year_budget_edit_show2.php?sel_work=" . $sel_w;
+						echo "<meta http-equiv=\"refresh\" content=\"3;URL=". $url . "\" />";
+						// echo "<meta http-equiv=\"refresh\" content=\"3;URL=year_budget_edit_work.php\" />";
 
 						?>
 <!-- end การแก้ไขข้อมูล -->

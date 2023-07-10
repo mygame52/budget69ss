@@ -2,8 +2,8 @@
 session_start();
 session_destroy();
 include("config.inc.php");
-include("FusionCharts.php");   // manage graph
-include("fgets_explode.php"); // manage graph
+// include("FusionCharts.php");   // manage graph
+// include("fgets_explode.php"); // manage graph
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>

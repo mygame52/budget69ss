@@ -23,7 +23,7 @@ error_reporting(E_ALL);
 mysql_query("SET NAMES UTF8");
 $pro_use = "จังหวัดนครศรีธรรมราช";
 $mess_title = "ระบบบริหารงบประมาณ : สำนักงานส่งเสริมการเรียนรู้".$pro_use;
-$mess_header1 = "ระบบบริหารงบประมาณ e-Budget66";
+$mess_header1 = "ระบบบริหารงบประมาณ E-Budget66";
 $mess_header_graph = "Graph for Budget 2566";
 $mess_header2 = "<br>สำนักงานส่งเสริมการเรียนรู้".$pro_use;
 $mess_book = "สำนักงานส่งเสริมการเรียนรู้".$pro_use;
