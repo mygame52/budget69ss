@@ -16,6 +16,30 @@ $query_Recordset1 = "SELECT *
 $Recordset1 = mysql_query($query_Recordset1, $objConnect) or die(mysql_error());
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 // echo "row l = " . $totalRows_Recordset1;
+
+
+
+// Query ค้นหา ID ใน Cover Sheet
+$is_idd_empty = false;
+if (empty($_REQUEST['idd'])) {
+    $is_idd_empty = true;
+} 
+$totalRows_Recordset2 = 0;
+if (!$is_idd_empty) {
+
+    $i = 0;
+    $idd = $_REQUEST['idd'];
+    
+    $query_Recordset2 = "SELECT * 
+                        FROM cover_sheet_item
+                        LEFT JOIN item on item.id_item=item_id
+                        LEFT JOIN cover_sheet on cover_sheet.id=cover_sheet_id
+                        WHERE item_id='$idd'
+                    ";
+$Recordset2 = mysql_query($query_Recordset2, $objConnect) or die(mysql_error());
+$totalRows_Recordset2 = mysql_num_rows($Recordset2);
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" []>
@@ -63,8 +87,84 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                 <h2 class="rnut-postheader" style="text-align: center;">รายการใบปะหน้า</h2>
              
                                 <br>
+
                                 <div align="center">
-                                    <TABLE width="70%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
+                                    <form id="form1" name="form1" method="post" action="cover_sheet.php"></th>       
+                                        <table width="40%" border="1" cellspacing="0" cellpadding="3" align="center">
+                     
+                                            <tr>
+                                                <td width="10%"><div align="right"><font size="3" color="#0033cc"><br/> ค้นหา ID</font>&nbsp;&nbsp; </div></td>
+                                                <td width="10%">&nbsp;&nbsp;&nbsp;<input type="text" name="idd" size="20" style="font: 12pt tahoma; color: #ff0000;background: #C0F9BD; border: 1px black solid"/>
+                                                    </td>
+                                                <td width="5%" align="center"><br/><input type="submit" name="Submit" value="ค้นหา"></td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                                <br>
+                                <?php 
+                                    if ($totalRows_Recordset2 > 0) {
+                                ?>
+                                    <div align="center" >
+                                        <table width="70%" align="center" border="0" cellspacing="1" cellpadding="3">
+                                            <tr bgcolor='#35A29F'>
+                                                <!th scope="col">
+                                                    </th>
+                                                    <!-- <th scope="col">id</th> -->
+                                                    <th scope="col">ชื่อใบปะหน้า</th>
+                                                    <th scope="col">เจ้าของใบปะหน้า</th>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">รายการ</th>
+                                                    <!-- <th scope="col">created_date</th> -->
+                                            </tr>
+                                            <?php
+                                            if ($totalRows_Recordset2 > 0) {
+                                            $row = mysql_fetch_assoc($Recordset2);
+                                            do {
+                                                $i++;
+                                                $ij = ($i % 2)
+                                            ?>
+                                                <tr <?if($ij !=1){echo "bgcolor='#eaeaea'" ;}?> class='off unamed1' onmouseover=this.className='onping' onmouseout=this.className='off' style='cursor:hand' >
+
+                                                    <?php 
+                                                        $id = $row['id']; 
+                                                        $cover_sheet_id = $row['cover_sheet_id'];
+                                                    ?>
+
+                                                    <!-- <td style="text-align:center;vertical-align:middle">
+                                                        <font size="2" color="#000099"><?php echo $row['id']; ?></font>
+                                                    </td> -->
+                                                    <td style="text-align:center;vertical-align:middle">
+                                                        <div align="center"><a href="cover_sheet_edit.php?cover_sheet_id=<?echo "$cover_sheet_id"; ?><? echo "#bottom" ?>"><?php echo $row['title'] ?></a></div>
+
+                                                    </td>
+                                                    <td style="text-align:center;vertical-align:middle">
+                                                        <font size="2" color="#000099"><?php echo $row['u_ser']; ?></font>
+                                                    </td>
+                                                    <td style="text-align:center;vertical-align:middle">
+                                                        <font size="2" color="#000099"><?php echo $row['item_id']; ?></font>
+                                                    </td>
+                                                    <td style="text-align:left;vertical-align:middle">
+                                                        <font size="2" color="#000099"><?php echo $row['item']; ?></font>
+                                                    </td>
+                                         
+                                                    <!-- <td>
+                                                        <font size="2" color="#000099"><?php echo $row['created_date']; ?></font>
+                                                    </td> -->
+                                                </tr>
+                                                <?php } while ($row = mysql_fetch_assoc($Recordset2)); } ?>
+                                        </table>
+                                    </div>
+                                    
+                                <?php 
+                                    } 
+                                    ?>
+
+                                <br>
+
+
+                                <div align="center">
+                                    <table width="70%" align="center" border="0" cellspacing="1" cellpadding="3" bgcolor='#FFFF99'>
                                         <TR>
                                             <!-- <td>
                                                 <button>กำลังดำเนินการ</button>
@@ -78,7 +178,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                                         </tr>
                                         <tr>
                                         </TR>
-                                    </TABLE>
+                                    </table>
 
                                     <P>
                                         <table width="70%" align="center" border="0" cellspacing="1" cellpadding="3">
