@@ -167,7 +167,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                     $i=($j%2);
                                                     $total_bath = $total_bath + $objResult["item_bath"];
                                                     ?>
-                                        <tr <?if($i==1){echo "bgcolor='#FFFFCC'" ;}?> >
+                                        <tr id="<?php echo $objResult["id_item"]; ?>" <?if($i==1){echo "bgcolor='#FFFFCC'" ;}?> >
                                             <td style="text-align:center;vertical-align:middle;">
                                                 <font size="3" color="#000099">
                                                     <? echo $j ?>

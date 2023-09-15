@@ -135,8 +135,7 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
                                                         <font size="2" color="#000099"><?php echo $row['id']; ?></font>
                                                     </td> -->
                                                     <td style="text-align:center;vertical-align:middle">
-                                                        <div align="center"><a href="cover_sheet_edit.php?cover_sheet_id=<?echo "$cover_sheet_id"; ?><? echo "#bottom" ?>"><?php echo $row['title'] ?></a></div>
-
+                                                        <div align="center"><a href="cover_sheet_edit.php?cover_sheet_id=<?echo "$cover_sheet_id"; ?><? echo "#" . $row['item_id']; ?>"><?php echo $row['title'] ?></a></div>
                                                     </td>
                                                     <td style="text-align:center;vertical-align:middle">
                                                         <font size="2" color="#000099"><?php echo $row['u_ser']; ?></font>
@@ -207,7 +206,8 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
                                                         <font size="2" color="#000099"><?php echo $row['id']; ?></font>
                                                     </td>
                                                     <td style="text-align:center;vertical-align:middle">
-                                                        <font size="2" color="#000099"><?php echo $row['title']; ?></font>
+                                                        <div align="center"><a href="cover_sheet_edit.php?cover_sheet_id=<?echo"$id"; ?><? echo "#bottom" ?>"><?php echo $row['title']; ?></a></div>
+
                                                     </td>
                                                     <td style="text-align:center;vertical-align:middle">
                                                         <font size="2" color="#000099"><?php 
