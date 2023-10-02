@@ -58,20 +58,35 @@ $a = 0;
                                         <?php
                                         $ok_ = $_REQUEST['ok_'];
                                         if ($ok_ == '9') {
+                                            
+                                            $sql = ("TRUNCATE TABLE `cover_sheet_item` ");
+                                            $result = mysql_query($sql);
+
+                                            $sql = ("TRUNCATE TABLE `cover_sheet` ");
+                                            $result = mysql_query($sql);
+
                                             $sql = ("TRUNCATE TABLE `item` ");
                                             $result = mysql_query($sql);
+
                                             $sql = ("TRUNCATE TABLE `chk_balance` ");
                                             $result = mysql_query($sql);
+                                            
                                             $sql = ("TRUNCATE TABLE `del_item` ");
                                             $result = mysql_query($sql);
+                                            
+                                            $sql = ("TRUNCATE TABLE `amp_del_item` ");
+                                            $result = mysql_query($sql);
+                                            
                                             $sql = ("TRUNCATE TABLE `history_detail` ");
                                             $result = mysql_query($sql);
 
                                             $sql = ("TRUNCATE TABLE `judsun` ");
                                             $result = mysql_query($sql);
+                                            
                                             $sql = ("TRUNCATE TABLE `logfile` ");
                                             $result = mysql_query($sql);
-                                          /*  $sql = ("TRUNCATE TABLE `samnak` ");
+                                          
+                                            /*  $sql = ("TRUNCATE TABLE `samnak` ");
                                             $result = mysql_query($sql);
 
 
