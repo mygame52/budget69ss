@@ -11,14 +11,14 @@ $show_cover_sheet_menu = false;
 $show_item_daily_report = false;
 $show_item_monthly_report = false;
 
-if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "hamemawan") {
+if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "hamemawan" || $user_ == "pawaret") {
     $show_cover_sheet_menu = true;
 }
 
-if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "hamemawan") {
+if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "hamemawan" || $user_ == "pawaret") {
     $show_item_daily_report = true;
 }
-if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "hamemawan") {
+if ($user_ == "admin" || $user_ == "ANONGNART" || $user_ == "pakkawadee" || $user_ == "pongkrit" || $user_ == "hamemawan" || $user_ == "pawaret") {
     $show_item_monthly_report = true;
 }
 ?>

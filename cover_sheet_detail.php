@@ -171,12 +171,12 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                     <? echo $objResult["amp_name"]; ?>
                                                 </font>
                                             </td>
-                                            <td style="text-align:right;vertical-align:middle;">
+                                            <td style="text-align:center;vertical-align:middle;">
                                                 <font size="3" color="#000099">
                                                     <? echo $objResult["id_item"];  ?>
                                                 </font>
                                             </td>
-                                            <td style="text-align:right;vertical-align:middle;">
+                                            <td style="text-align:left;vertical-align:middle;">
                                                 <font size="3" color="#000099">
                                                     <? 
                                                         $item_doc_result = $objResult["item_doc"];
@@ -203,7 +203,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                     ?>
                                                 </font>
                                             </td>
-                                            <td style="text-align:right;vertical-align:middle;">
+                                            <td style="text-align:left;vertical-align:middle;">
                                                 <font size="3" color="#000099">
                                                     <? echo $objResult["item_item"]; ?>
                                                 </font>
