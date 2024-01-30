@@ -155,6 +155,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             <th scope="col"> หน่วยงาน/สถานศึกษา</th>
                                             <th scope="col"> ID</th>
                                             <th scope="col"> เลขที่เอกสาร</th>
+                                            <th scope="col"> รหัสงาน/โครงการ
                                             <th style="col"> รายการ</th>
                                             <th scope="col"> งบประมาณ</th>
                                             <th scope="col"> หมายเหตุ</th>
@@ -208,6 +209,14 @@ $cover_sheet_user = $cover_sheet["u_ser"];
 
                                                         echo $item_doc_result;
                                                     ?>
+                                                </font>
+                                            </td>
+                                            <td style="text-align:left;vertical-align:middle;">
+                                                <font size="3" color="#000099">
+                                                    <? 
+                                                        $c_khong = $objResult["c_khong"];
+                                                        include("work.inc.php");
+                                                     ?>
                                                 </font>
                                             </td>
                                             <td style="text-align:left;vertical-align:middle;">
@@ -288,6 +297,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                             <td>
                                                 <div style="text-align:right;">รวมงบประมาณ</div>
                                             </td>
@@ -312,6 +322,7 @@ $cover_sheet_user = $cover_sheet["u_ser"];
                                                         placeholder="กรอก ID" />
                                                     <input name="cover_sheet_but_submit" type="submit" id="btnSubmit" value="เพิ่ม">
                                                 </td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
