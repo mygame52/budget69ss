@@ -1,7 +1,8 @@
 <?php
 session_start();
 //	@ini_set("display_errors", "0"); //ใส่บรรทัดแรก
-include("config.inc.php");
+require_once("config.inc.php");
+require_once('call_work.php');
 if ($act != "ok") {
     echo "	<SCRIPT language='JavaScript'>";
     echo "			alert('ท่านเข้าสู่ระบบไม่ถูกต้อง')";
@@ -15,6 +16,8 @@ session_unregister('work');
 
 
 $sele_amp;
+// echo $sele_amp;
+// echo "work: " . $work;
 mysql_select_db($dbname, $objConnect);
 
 $query_Recordset2 = "SELECT * FROM judsun left join work on judsun.cod = work.w_code where  judsun.amp like '$sele_amp' ORDER BY code ASC";
@@ -95,7 +98,10 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
                                                                     <?php
                                                                     do {
                                                                         ?>
-                                                                        <option value="<?php echo $row_Recordset2['code'] ?>"><?php echo $row_Recordset2['w_name'] ?></option>
+                                                                        <?php 
+                                                                            $label = $row_Recordset2['work'] . " - " . $row_Recordset2['w_name'];
+                                                                        ?>
+                                                                        <option value="<?php echo $row_Recordset2['code'] ?>"><?php echo $label; ?></option>
                                                                         <?php
                                                                     } while ($row_Recordset2 = mysql_fetch_assoc($Recordset2));
                                                                     $rows = mysql_num_rows($Recordset2);
