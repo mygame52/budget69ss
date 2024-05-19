@@ -46,7 +46,7 @@ if (isset($_POST['itemStatus'])) {
         <div class="rnut-nav-outer">
             <ul class="rnut-hmenu">
                 <li>
-                    <a href="cover_sheet.php" class="active">Back</a>
+                    <a href="menu_pro.php" class="active">Back</a>
                 </li>
             </ul>
             <font size="4" color="ffffff">Login โดย :&nbsp;<?php echo $user_ ?></font>
@@ -64,15 +64,30 @@ if (isset($_POST['itemStatus'])) {
                                 <h2 class="rnut-postheader" style="text-align: center;">รายงานรายการจ่ายทั้งหมดตามสถานะ</h2>
 
                                 <br>
+                                <div align="center">  
+                                <!-- <?php 
+                                    $workSql = "SELECT * FROM work ORDER BY w_code";
+                                    $result = mysql_query($workSql) or die("Error Query [" . $workSql . "]");
+                                    echo '<select name="workSelect" id="workSelect" style="font: 11pt tahoma; color: #000000;background: #ffff66; border: 1px black solid" align="center">';
+                                        // Loop through the query results and create options
+                                        while ($row = mysql_fetch_array($result) or die(mysql_error())) {
+                                            echo '<option value="' . htmlspecialchars($row['w_code']) . '">' . htmlspecialchars($row['w_name']) . '</option>';
+                                        }
+                                    echo '</select>';
+                                ?>
+                                </div> -->
+    
                                 <div align="center">
                                     <form method="POST" action="" id="itemStatusImgForm">
-                                        <input type="hidden" name="itemStatus" id="itemStatus"></input>
-                                        <img src="image/status0.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(0)" >    
-                                        <img src="image/status1.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(1)" >
-                                        <img src="image/status2.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(2)" >
-                                        <img src="image/status3.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(3)" >
-                                        <img src="image/status4.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(4)" >
-                                        <img src="image/status5.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(5)" >
+                                        <div class=""> 
+                                            <input type="hidden" name="itemStatus" id="itemStatus"></input>
+                                            <img src="image/status0.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(0)" >    
+                                            <img src="image/status1.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(1)" >
+                                            <img src="image/status2.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(2)" >
+                                            <img src="image/status3.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(3)" >
+                                            <img src="image/status4.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(4)" >
+                                            <img src="image/status5.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(5)" >
+                                        </div>
                                     </form>
                                 </div>
                                 <br>

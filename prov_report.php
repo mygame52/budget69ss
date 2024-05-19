@@ -127,7 +127,7 @@ if (trim($hid1) <> "03") {
                                                                 <?php
                                                                 do {
                                                                     ?>
-                                                                    <option value="<?php echo $row_Recordset2['code'] ?>"><?php echo $row_Recordset2['w_name'] ?></option>
+                                                                    <option value="<?php echo $row_Recordset2['code'] ?>"><?php echo $row_Recordset2['w_code']?>:<?php echo $row_Recordset2['w_name'] ?></option>
                                                                     <?php
                                                                 } while ($row_Recordset2 = mysql_fetch_assoc($Recordset_));
                                                                 $rows = mysql_num_rows($Recordset_);
