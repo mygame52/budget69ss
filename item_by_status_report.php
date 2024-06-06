@@ -9,11 +9,15 @@ mysql_connect($dbserver, $dbuser, $dbpass) or
 mysql_select_db($dbname) or  die("ติดฐานข้อมูลไม่ได้");
 
 $currentItemStatus = 0;
+$currentWork = 'all';
 
 if (isset($_POST['itemStatus'])) {
     $currentItemStatus = $_POST['itemStatus'];
 }
 
+if (isset($_POST['work'])) {
+    $currentWork = $_POST['work'];
+}
 
 ?>
 
@@ -46,7 +50,7 @@ if (isset($_POST['itemStatus'])) {
         <div class="rnut-nav-outer">
             <ul class="rnut-hmenu">
                 <li>
-                    <a href="cover_sheet.php" class="active">Back</a>
+                    <a href="menu_pro.php" class="active">Back</a>
                 </li>
             </ul>
             <font size="4" color="ffffff">Login โดย :&nbsp;<?php echo $user_ ?></font>
@@ -63,16 +67,33 @@ if (isset($_POST['itemStatus'])) {
                                 <a name="top"></a>
                                 <h2 class="rnut-postheader" style="text-align: center;">รายงานรายการจ่ายทั้งหมดตามสถานะ</h2>
 
-                                <br>
+                                <br>    
                                 <div align="center">
                                     <form method="POST" action="" id="itemStatusImgForm">
-                                        <input type="hidden" name="itemStatus" id="itemStatus"></input>
-                                        <img src="image/status0.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(0)" >    
-                                        <img src="image/status1.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(1)" >
-                                        <img src="image/status2.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(2)" >
-                                        <img src="image/status3.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(3)" >
-                                        <img src="image/status4.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(4)" >
-                                        <img src="image/status5.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(5)" >
+                                        <select name="work" id="work">
+                                            <option value="all">--ทั้งหมด--</option>
+                                        <?php 
+                                            $workSql = "SELECT * FROM work ORDER BY w_code";
+                                            $result = mysql_query($workSql) or die("Error Query [" . $workSql . "]");
+                                            while($row = mysql_fetch_array($result)) {
+                                                //echo $row['w_code'];
+                                                $selected = '';
+                                                if ($row['w_code'] == $currentWork) {
+                                                    $selected = 'selected';
+                                                }
+                                                echo "<option value='".$row["w_code"]."' $selected>".$row["w_code"]." - ".$row["w_name"]."</option>";
+                                            }
+                                        ?>
+                                        </select>
+                                        <div style="margin-top: 1rem;"> 
+                                            <input type="hidden" name="itemStatus" id="itemStatus"></input>
+                                            <img src="image/status0.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(0)" >    
+                                            <img src="image/status1.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(1)" >
+                                            <img src="image/status2.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(2)" >
+                                            <img src="image/status3.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(3)" >
+                                            <img src="image/status4.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(4)" >
+                                            <img src="image/status5.png" width='10%' border="0" alt="สถานศึกษาขอเบิก" onclick="submitItemStatus(5)" >
+                                        </div>
                                     </form>
                                 </div>
                                 <br>
@@ -93,6 +114,22 @@ if (isset($_POST['itemStatus'])) {
                                     FROM `item` 
                                     INNER JOIN amp on amp.id = amp_item
                                     WHERE item.staus = $currentItemStatus";
+                                if ($currentWork !== 'all') {
+                                    $sqlStr = "SELECT item.id_item, 
+                                        item.amp_item,
+                                        amp.Name AS amp_name,
+                                        item.`c_khong`,
+                                        item.item,
+                                        item.doc,
+                                        item.date_time,
+                                        item.bath,
+                                        item.staus,
+                                        item.date_pay,
+                                        item.user
+                                        FROM `item` 
+                                        INNER JOIN amp on amp.id = amp_item
+                                        WHERE item.staus = $currentItemStatus AND item.`c_khong` like '%$currentWork'";
+                                }
 
 								$objQuery = mysql_query($sqlStr) or die("Error Query [" . $sqlStr . "]");
 								$j = 0;
@@ -260,7 +297,9 @@ function submitItemStatus(itemStatus) {
     //   var imageSrc = document.querySelector('img').src;
     console.log('item itemstatus', itemStatus)
     document.getElementById('itemStatus').value = itemStatus;
-
+    var work = document.getElementById('work').value
+    console.log('work', work)
+    console.log('>>>>>>>>>>>>>>>>');
     document.getElementById('itemStatusImgForm').submit();
 }
 
