@@ -42,6 +42,15 @@ $egp51 = $_REQUEST['egp51'];
 $egp52 = $_REQUEST['egp52'];
 $egp61 = $_REQUEST['egp61'];
 $egp62 = $_REQUEST['egp62'];
+
+$form_token = $_REQUEST['form_token'];
+if (empty($form_token) || empty($_SESSION['form_token']) || $form_token !== $_SESSION['form_token']) {
+    echo "<h3> ข้อมูลนี้ถูกบันทึกไปแล้ว (ป้องกันการกด 2 ครั้ง) </h3>";
+    echo "<br><a href='./amp_yuem.php'>กลับไปหน้าหลัก</a>";
+    exit();
+}
+// Clear token so next submit with same token fails
+unset($_SESSION['form_token']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">

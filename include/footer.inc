@@ -18,6 +18,7 @@
 								<p>พัฒนาโปรแกรม โดย : <font color="ffff00"> นายอนัตชัย  เกตุแก้ว</font></p>
 								<p><font color="334455"> สำนักงานส่งเสริมการเรียนรู้จังหวัดสุราษฎร์ธานี</font></p>
                                                                 <p>Copyright © 2016. All Rights Reserved.&nbsp;&nbsp;<font color="00ff33"> update 16 ตุลาคม 2559</font></p>
+								<p><font color="00ff33"> Update 1 เมษายน 2569 โดย สำนักงานส่งเสริมการเรียนรู้ประจำจังหวัดนครศรีธรรมราช </font></p>
 								<p>&nbsp;</p>
 								</font>
                             </div>

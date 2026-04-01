@@ -26,6 +26,10 @@ if (!isset($bath_t)) {
 if (!isset($date_work)) {
     $bath_work = "";
 }
+
+if (empty($_SESSION['form_token'])) {
+    $_SESSION['form_token'] = uniqid();
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>
@@ -244,7 +248,7 @@ if (!isset($date_work)) {
 
                                         <!-- <FORM METHOD="POST" ACTION="amp_yuem_data2_save2.php"> -->
                                         <div align="center">
-                                            <FORM METHOD="POST" ACTION="./amp_yuem_data2_save2.php?date_work=<?php echo $_SESSION[$date_work]; ?>">
+                                            <FORM METHOD="POST" ACTION="./amp_yuem_data2_save2.php?date_work=<?php echo $_SESSION[$date_work]; ?>" onsubmit="if(this.submitted) return false; this.submitted=true; this.querySelector('input[type=submit]').disabled=true; this.querySelector('input[type=submit]').value='กำลังบันทึก...';">
                                                 <TABLE width="70%" border="0" align="center" cellpadding="10" cellspacing="0">
                                                     <TR><td> <div align="center">
                                                                             <!--	<INPUT TYPE="hidden" NAME="sel" value="<?php echo $sele_amp ?>">-->
@@ -271,6 +275,7 @@ if (!isset($date_work)) {
                                                                     <INPUT TYPE="hidden" NAME="id_personyuem" value="<?php echo $id_personyuem ?> "/>
                                                                     <INPUT TYPE="hidden" NAME="id_item_update" value="<?php echo $id_item_update ?>"/>
                                                                     <INPUT TYPE="hidden" NAME="yuem_money" value="<?php echo $yuem_money ?>"/>
+                                                                    <INPUT TYPE="hidden" NAME="form_token" value="<?php echo $_SESSION['form_token']; ?>"/>
                                                                     <?php
                                                                     if ($sav != "savesave") {
                                                                         echo "<INPUT TYPE='submit' value=' บันทึกข้อมูล '>";

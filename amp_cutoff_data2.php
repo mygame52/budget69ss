@@ -23,6 +23,10 @@ if (!isset($sav)) {
 if (!isset($bath_t)) {
     $bath_t = " ";
 }
+
+if (empty($_SESSION['form_token'])) {
+    $_SESSION['form_token'] = uniqid();
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"[]>
@@ -285,7 +289,7 @@ if (!isset($bath_t)) {
 
                                         <!-- //-------------สิ้นสุด การแสดงเลขโครงการ eGP ---------- -->
                                         <div align="center">    
-                                            <FORM METHOD="POST" ACTION="amp_cutoff_data2_save2.php">
+                                            <FORM METHOD="POST" ACTION="amp_cutoff_data2_save2.php" onsubmit="if(this.submitted) return false; this.submitted=true; this.querySelector('input[type=submit]').disabled=true; this.querySelector('input[type=submit]').value='กำลังบันทึก...';">
                                                 <TABLE width="70%" border="0" align="center" cellpadding="10" cellspacing="0">
                                                     <TR>
                                                         <td>
@@ -314,6 +318,7 @@ if (!isset($bath_t)) {
                                                                 <INPUT TYPE="hidden" NAME="egp61" value="<?php echo $egp61 ?> "/>
                                                                 <INPUT TYPE="hidden" NAME="egp62" value="<?php echo $egp62 ?> "/>
                                                                 <INPUT TYPE="hidden" NAME="id_personyuem" value="<?php echo $id_personyuem ?> "/>
+                                                                <INPUT TYPE="hidden" NAME="form_token" value="<?php echo $_SESSION['form_token']; ?>"/>
 
 
                                                                 <INPUT TYPE="hidden" NAME="id_item_update" value="<?php echo $id_item_update ?>"/>

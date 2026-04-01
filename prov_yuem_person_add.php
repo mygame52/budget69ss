@@ -100,7 +100,7 @@ if (trim($hid1) <> "03") {
                                                 $mes_chk = "-";
                                             }
                                             echo "  <td align='left' width='50%' style='text-align:left;vertical-align:middle'>&nbsp;&nbsp;&nbsp;&nbsp;$mes_chk</td>  ";
-                                            echo "  <td align='center' width='10%' style='text-align:center;vertical-align:middle'><a href='person_ydelete_prov.php?id_yuem_=$id_item_&chk_sta=$chk_status_'><IMG SRC='./image/cross.png' WIDTH='16' HEIGHT='16' BORDER='0' ALT='ลบ' onClick='return Conf(this)'></a></td>  ";
+                                            echo "  <td align='center' width='10%' style='text-align:center;vertical-align:middle'><a href='person_ydelete_prov.php?id_yuem_=$id_item_&chk_sta=$chk_status_'><IMG SRC='./image/cross.png' WIDTH='16' HEIGHT='16' BORDER='0' ALT='ลบ' onClick='return Conf(this)'></a> &nbsp;&nbsp; <a href='prov_yuem_person_edit.php?id_yuem_=$id_item_&chk_sta=$chk_status_'><IMG SRC='./image/submitticket.png' WIDTH='16' HEIGHT='16' BORDER='0' ALT='แก้ไข'></a></td>  ";
                                         }
                                         echo "</tr>";
                                         echo"</table>";
